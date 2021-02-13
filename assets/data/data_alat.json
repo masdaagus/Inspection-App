@@ -1,0 +1,199 @@
+[
+    {
+    "01":[{
+        "code"       : "BF-07",
+        "equipments" : "Bag Filter",
+        "checkpoints": "Hopper, cerobong dan sistem purging"
+    }],
+    "02":{
+        "code"       : "FN-07",
+        "equipments"  : "Fan Bag Filter",
+        "checkpoints" : "Motor temperatur dan vibrasi"
+    },
+    "03":{
+        "code"       : "BF-08",
+        "equipments" : "Bag Filter",
+        "checkpoints": "Hopper, cerobong dan sistem purging"
+    },
+    "04":{
+        "code"       : "FN-08",
+        "equipments" : "Fan Bag Filter",
+        "checkpoints": "Motor temperatur dan vibrasi"
+    },
+    "05":{
+        "code"       : "BF-09",
+        "equipments" : "Bag Filter",
+        "checkpoints": "Hopper, cerobong dan sistem purging"
+    },
+    "06":{
+        "code"       : "FN-09",
+        "equipments" : "Fan Bag Filter",
+        "checkpoints": "Motor temperatur dan vibrasi"
+    },
+    "07":{
+        "code"       : "BF-10",
+        "equipments" : "Bag Filter",
+        "checkpoints": "Hopper, cerobong dan sistem purging"
+    },
+    "08":{
+        "code"       : "FN-10",
+        "equipments" : "Fan Bag Filter",
+        "checkpoints": "Motor temperatur dan vibrasi"
+    },
+    "09":{
+        "code"       : "NG-01",
+        "equipments" : "Bag Needle Gate",
+        "checkpoints": "Posisi Round Bar"
+    },
+    "10":{
+        "code"       : "NG-02",
+        "equipments" : "Bag Needle Gate",
+        "checkpoints": "Posisi Round Bar"
+    },
+    "11":{
+        "code"       : "NG-03",
+        "equipments" : "Bag Needle Gate",
+        "checkpoints": "Posisi Round Bar"
+    },
+    "12":{
+        "code"       : "NG-04",
+        "equipments" : "Bag Needle Gate",
+        "checkpoints": "Posisi Round Bar"
+    },
+    "13":{
+        "code"       : "WF-01",
+        "equipments" : "Bag Wiight Feeder Limestone",
+        "checkpoints": "Belt, chute, buffle, motor, dan gear box"
+    },
+    "14":{
+        "code"       : "WF-02",
+        "equipments" : "Bag Wiight Feeder Clinker",
+        "checkpoints": "Belt, chute, buffle, motor, dan gear box"
+    },
+    "15":{
+        "code"       : "WF-03",
+        "equipments" : "Bag Wiight Feeder Trass",
+        "checkpoints": "Belt, chute, buffle, motor, dan gear box"
+    },
+    "16":{
+        "code"       : "WF-04",
+        "equipments" : "Bag Wiight Feeder Gypsum",
+        "checkpoints": "Belt, chute, buffle, motor, dan gear box"
+    },
+    "17":{
+        "code"       : "BC-01",
+        "equipments" : "Belt Conveyor",
+        "checkpoints": "Motor, belt, rubber, roller (carry & return), cleaner"
+    },
+    "18":{
+        "code"       : "BC-02",
+        "equipments" : "Belt Conveyor",
+        "checkpoints": "Motor, belt, rubber, roller (carry & return), cleaner"
+    },
+    "19":{
+        "code"       : "BF-02",
+        "equipments" : "Bag Filter",
+        "checkpoints": "Hopper, cerobong dan sistem purging"
+    },
+    "20":{
+        "code"       : "FN-02",
+        "equipments" : "Fan Bag Filter",
+        "checkpoints": "Motor temperatur dan vibrasi"
+    },
+    "21":{
+        "code"       : "BF-03",
+        "equipments" : "Bag Filter",
+        "checkpoints": "Hopper, cerobong dan sistem purging"
+    },
+    "22":{
+        "code"       : "FN-03",
+        "equipments" : "Fan Bag Filter",
+        "checkpoints": "Motor temperatur dan vibrasi"
+    },
+    "23":{
+        "code"       : "BF-04",
+        "equipments" : "Bag Filter",
+        "checkpoints": "Hopper, cerobong dan sistem purging"
+    },
+    "24":{
+        "code"       : "FN-04",
+        "equipments" : "Fan Bag Filter",
+        "checkpoints": "Motor temperatur dan vibrasi"
+    },
+    "25":{
+        "code"       : "BF-05",
+        "equipments" : "Bag Filter",
+        "checkpoints": "Hopper, cerobong dan sistem purging"
+    },
+    "26":{
+        "code"       : "FN-05",
+        "equipments" : "Fan Bag Filter",
+        "checkpoints": "Motor temperatur dan vibrasi"
+    },
+    "27":{
+        "code"       : "BF-06",
+        "equipments" : "Bag Filter",
+        "checkpoints": "Hopper, cerobong dan sistem purging"
+    },
+    "28":{
+        "code"       : "FN-06",
+        "equipments" : "Fan Bag Filter",
+        "checkpoints": "Motor temperatur dan vibrasi"
+    },
+    "29":{
+        "code"       : "SC-01",
+        "equipments" : "Screw Conveyor",
+        "checkpoints": "Level Oli, motor, screw, gear box"
+    },
+    "30":{
+        "code"       : "SC-02",
+        "equipments" : "Screw Conveyor",
+        "checkpoints": "Level Oli, motor, screw, gear box"
+    },
+    "31":{
+        "code"       : "SC-03",
+        "equipments" : "Screw Conveyor",
+        "checkpoints": "Level Oli, motor, screw, gear box"
+    },
+    "32":{
+        "code"       : "BE-01",
+        "equipments" : "Bucket Elevator",
+        "checkpoints": "Level Oli, motor, screw, gear box, noise"
+    },
+    "33":{
+        "code"       : "BM-01",
+        "equipments" : "Ball Mill",
+        "checkpoints": "Motor gearbox (temp & vibration), Baut & Mur (tube mill main hole, coupling), Mill head trinion (inlet & outlet)"
+    },
+    "34":{
+        "code"       : "LQ-01",
+        "equipments" : "Oil Circulation GearBox",
+        "checkpoints": "Laju Sirkulasi Oli, level dan temp oli"
+    },
+    "35":{
+        "code"       : "LQ-02",
+        "equipments" : "Oil Circulation for Bearing",
+        "checkpoints": "Laju Sirkulasi Oli, level dan temp oli"
+    },
+    "36":{
+        "code"       : "SR-01",
+        "equipments" : "Clasifier",
+        "checkpoints": "Motor, coupling dan V-Belt classifer, level grease"
+    },
+    "37":{
+        "code"       : "BF-01",
+        "equipments" : "Main Bag Filter",
+        "checkpoints": "Hopper, cerobong dan sistem purging"
+    },
+    "38":{
+        "code"       : "FN-01",
+        "equipments" : "Main FanBag Filter",
+        "checkpoints": "Motor, Coupling, bearing dan vibrasi"
+    },
+    "39":{
+        "code"       : "RF-01",
+        "equipments" : "Rotary Valve",
+        "checkpoints": "Motor dan putaran RV, leakage (kebocoran)"
+    }
+    }
+]

@@ -41,8 +41,6 @@ class _DataListViewState extends State<DataListView> {
   Widget build(BuildContext context) {
     return Material(
       child: FutureBuilder(
-        // future:
-        //     DefaultAssetBundle.of(context).loadString("assets/data/data.json"),
         future: parseJson(),
         builder: (context, snapshot) {
           if (snapshot.data == null) {

@@ -59,6 +59,7 @@ class DetailPage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 8),
                 // height: MediaQuery.of(context).size.height * .4,
                 width: double.infinity,
+                // height: double.infinity,
                 color: Colors.grey[400],
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

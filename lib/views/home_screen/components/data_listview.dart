@@ -59,6 +59,22 @@ class _DataListViewState extends State<DataListView> {
                             icon: Icons.edit,
                             onTap: () {
                               print("Selectd ${snapshot.data[index].code}");
+
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Scaffold(
+                                    body: Center(
+                                      child: Text(
+                                        snapshot.data[index].code,
+                                        style: TextStyle(
+                                            fontSize: 32,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              );
                             },
                           ),
                         ],

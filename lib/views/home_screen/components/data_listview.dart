@@ -4,6 +4,8 @@ import 'dart:convert';
 import 'package:Inspection/data.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
+import 'tes.dart';
+
 class DataListView extends StatefulWidget {
   const DataListView({
     Key key,
@@ -60,21 +62,26 @@ class _DataListViewState extends State<DataListView> {
                             onTap: () {
                               print("Selectd ${snapshot.data[index].code}");
 
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) => Scaffold(
+                              //       body: Center(
+                              //         child: Text(
+                              //           snapshot.data[index].code,
+                              //           style: TextStyle(
+                              //               fontSize: 32,
+                              //               fontWeight: FontWeight.bold),
+                              //         ),
+                              //       ),
+                              //     ),
+                              //   ),
+                              // );
+
                               Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Scaffold(
-                                    body: Center(
-                                      child: Text(
-                                        snapshot.data[index].code,
-                                        style: TextStyle(
-                                            fontSize: 32,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              );
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => DetailsPage()));
                             },
                           ),
                         ],

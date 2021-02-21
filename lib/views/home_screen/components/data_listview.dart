@@ -4,18 +4,21 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 
 import 'tes.dart';
 
-class DataListView extends StatelessWidget {
-  final json = parseJson();
-
-  List<DetailsData> masda;
+class DataListView extends StatefulWidget {
   DataListView({
     Key key,
   }) : super(key: key);
+
+  @override
+  _DataListViewState createState() => _DataListViewState();
+}
+
+class _DataListViewState extends State<DataListView> {
   @override
   Widget build(BuildContext context) {
     return Material(
       child: FutureBuilder(
-        future: json,
+        future: parseJson(),
         builder: (context, snapshot) {
           if (snapshot.data == null) {
             return Container(child: Center(child: Text("Loading...")));

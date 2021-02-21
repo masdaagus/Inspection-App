@@ -1,5 +1,4 @@
 import 'package:Inspection/views/home_screen/components/data_listview.dart';
-import 'package:Inspection/views/home_screen/components/detail_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginButton extends StatelessWidget {

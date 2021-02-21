@@ -1,49 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'dart:convert';
 import 'package:Inspection/data.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 import 'tes.dart';
 
-class DataListView extends StatefulWidget {
-  const DataListView({
+class DataListView extends StatelessWidget {
+  final json = parseJson();
+
+  List<DetailsData> masda;
+  DataListView({
     Key key,
   }) : super(key: key);
-
-  @override
-  _DataListViewState createState() => _DataListViewState();
-}
-
-class _DataListViewState extends State<DataListView> {
-  var detailsLine1 = List<bool>();
-  var detailsLine2 = List<bool>();
-
-  Future<String> _loadFromAsset() async {
-    return await rootBundle.loadString("assets/data/data.json");
-  }
-
-  Future parseJson() async {
-    String jsonString = await _loadFromAsset();
-    final jsonResponse = jsonDecode(jsonString);
-
-    List<DetailsData> details = [];
-
-    for (var d in jsonResponse) {
-      DetailsData detailsData =
-          DetailsData(d["code"], d["equipments"], d["checkpoints"]);
-      details.add(detailsData);
-      detailsLine1.add(false);
-      detailsLine2.add(false);
-    }
-    return details;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Material(
       child: FutureBuilder(
-        future: parseJson(),
+        future: json,
         builder: (context, snapshot) {
           if (snapshot.data == null) {
             return Container(child: Center(child: Text("Loading...")));
@@ -112,20 +84,20 @@ class _DataListViewState extends State<DataListView> {
                                     child: Checkbox(
                                         value: detailsLine1[index],
                                         onChanged: (bool val) {
-                                          setState(() {
-                                            detailsLine1[index] =
-                                                !detailsLine1[index];
-                                          });
+                                          // setState(() {
+                                          //   detailsLine1[index] =
+                                          //       !detailsLine1[index];
+                                          // });
                                         })),
                                 Transform.scale(
                                     scale: .8,
                                     child: Checkbox(
                                         value: detailsLine2[index],
                                         onChanged: (bool val) {
-                                          setState(() {
-                                            detailsLine2[index] =
-                                                !detailsLine2[index];
-                                          });
+                                          // setState(() {
+                                          //   detailsLine2[index] =
+                                          //       !detailsLine2[index];
+                                          // });
                                         })),
                               ],
                             ),

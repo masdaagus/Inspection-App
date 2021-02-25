@@ -1,10 +1,7 @@
-// import 'package:Inspection/views/home_screen/components/tes.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
-import '../../../data.dart';
 import 'package:Inspection/views/home_screen/components/detail_page.dart';
-
-import 'tes.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:flutter/material.dart';
+import '../../../data.dart';
 
 class DataListView extends StatefulWidget {
   DataListView({

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:Inspection/data.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:Inspection/details_data.dart';
 
 import 'tes.dart';
 
@@ -18,14 +18,16 @@ class _DataListViewState extends State<DataListView> {
   Widget build(BuildContext context) {
     return Material(
       child: FutureBuilder(
-        future: parseJson(),
+        future: fetchData(context),
         builder: (context, snapshot) {
           if (snapshot.data == null) {
             return Container(child: Center(child: Text("Loading...")));
           } else {
             return ListView.builder(
+                shrinkWrap: true,
                 itemCount: snapshot.data.length,
                 itemBuilder: (BuildContext context, int index) {
+                  DetailsData data = snapshot.data[index];
                   return Column(
                     children: [
                       Slidable(
@@ -35,23 +37,7 @@ class _DataListViewState extends State<DataListView> {
                             color: Colors.grey,
                             icon: Icons.edit,
                             onTap: () {
-                              print("Selectd ${snapshot.data[index].code}");
-
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => Scaffold(
-                              //       body: Center(
-                              //         child: Text(
-                              //           snapshot.data[index].code,
-                              //           style: TextStyle(
-                              //               fontSize: 32,
-                              //               fontWeight: FontWeight.bold),
-                              //         ),
-                              //       ),
-                              //     ),
-                              //   ),
-                              // );
+                              print("Selectd ${data.code}");
 
                               Navigator.push(
                                   context,
@@ -65,15 +51,15 @@ class _DataListViewState extends State<DataListView> {
                         child: ListTile(
                           contentPadding: EdgeInsets.symmetric(horizontal: 7),
                           title: Text(
-                            snapshot.data[index].subtittle,
+                            data.code,
                             style: TextStyle(fontWeight: FontWeight.w600),
                           ),
                           subtitle: Text(
-                            snapshot.data[index].tittle,
+                            data.checkpoints,
                           ),
                           tileColor: Colors.grey[300],
                           leading: Text(
-                            "\t4#6\n${snapshot.data[index].code}",
+                            "\t4#6\n${data.code}",
                             style:
                                 TextStyle(color: Colors.black45, fontSize: 11),
                           ),
@@ -82,26 +68,26 @@ class _DataListViewState extends State<DataListView> {
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Transform.scale(
-                                    scale: .8,
-                                    child: Checkbox(
-                                        value: detailsLine1[index],
-                                        onChanged: (bool val) {
-                                          // setState(() {
-                                          //   detailsLine1[index] =
-                                          //       !detailsLine1[index];
-                                          // });
-                                        })),
-                                Transform.scale(
-                                    scale: .8,
-                                    child: Checkbox(
-                                        value: detailsLine2[index],
-                                        onChanged: (bool val) {
-                                          // setState(() {
-                                          //   detailsLine2[index] =
-                                          //       !detailsLine2[index];
-                                          // });
-                                        })),
+                                // Transform.scale(
+                                //     scale: .8,
+                                //     child: Checkbox(
+                                //         value: detailsLine1[index],
+                                //         onChanged: (bool val) {
+                                //           setState(() {
+                                //             detailsLine1[index] =
+                                //                 !detailsLine1[index];
+                                //           });
+                                //         })),
+                                // Transform.scale(
+                                //     scale: .8,
+                                //     child: Checkbox(
+                                //         value: detailsLine2[index],
+                                //         onChanged: (bool val) {
+                                //           setState(() {
+                                //             detailsLine2[index] =
+                                //                 !detailsLine2[index];
+                                //           });
+                                //         })),
                               ],
                             ),
                           ),

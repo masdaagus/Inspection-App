@@ -15,11 +15,11 @@ class DataListView extends StatefulWidget {
 class _DataListViewState extends State<DataListView> {
   @override
   Widget build(BuildContext context) {
+    print("Update listview page");
     return Material(
       child: FutureBuilder(
         future: fetchData(context),
         builder: (context, snapshot) {
-          print("Update");
           if (snapshot.data == null) {
             return Container(child: Center(child: Text("Loading...")));
           } else {
@@ -69,26 +69,24 @@ class _DataListViewState extends State<DataListView> {
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                // Transform.scale(
-                                //     scale: .8,
-                                //     child: Checkbox(
-                                //         value: detailsLine1[index],
-                                //         onChanged: (bool val) {
-                                //           setState(() {
-                                //             detailsLine1[index] =
-                                //                 !detailsLine1[index];
-                                //           });
-                                //         })),
-                                // Transform.scale(
-                                //     scale: .8,
-                                //     child: Checkbox(
-                                //         value: detailsLine2[index],
-                                //         onChanged: (bool val) {
-                                //           setState(() {
-                                //             detailsLine2[index] =
-                                //                 !detailsLine2[index];
-                                //           });
-                                //         })),
+                                Transform.scale(
+                                    scale: .8,
+                                    child: Checkbox(
+                                        value: data.line1,
+                                        onChanged: (bool val) {
+                                          setState(() {
+                                            data.line1 = val;
+                                          });
+                                        })),
+                                Transform.scale(
+                                    scale: .8,
+                                    child: Checkbox(
+                                        value: data.line2,
+                                        onChanged: (bool val) {
+                                          setState(() {
+                                            data.line2 = val;
+                                          });
+                                        })),
                               ],
                             ),
                           ),

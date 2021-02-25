@@ -18,6 +18,7 @@ class _DetailPageState extends State<DetailPage> {
   void lineWhere() {}
   @override
   Widget build(BuildContext context) {
+    print("Update details page");
     return Scaffold(
       body: GestureDetector(
         onTap: () {

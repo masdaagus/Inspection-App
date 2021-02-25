@@ -1,6 +1,9 @@
+// import 'package:Inspection/views/home_screen/components/tes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import '../../../data.dart';
+import 'package:Inspection/views/home_screen/components/detail_page.dart';
+
 import 'tes.dart';
 
 class DataListView extends StatefulWidget {
@@ -19,6 +22,7 @@ class _DataListViewState extends State<DataListView> {
       child: FutureBuilder(
         future: fetchData(context),
         builder: (context, snapshot) {
+          print("Update");
           if (snapshot.data == null) {
             return Container(child: Center(child: Text("Loading...")));
           } else {
@@ -37,11 +41,12 @@ class _DataListViewState extends State<DataListView> {
                             icon: Icons.edit,
                             onTap: () {
                               print("Selectd ${data.code}");
-
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => DetailsPage()));
+                                      builder: (context) => DetailPage(
+                                            data: data,
+                                          )));
                             },
                           ),
                         ],

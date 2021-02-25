@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:Inspection/data.dart';
 
 class DetailPage extends StatefulWidget {
+  final DetailsData data;
+
+  DetailPage({
+    Key key,
+    @required this.data,
+  }) : super(key: key);
   @override
   _DetailPageState createState() => _DetailPageState();
 }
@@ -34,7 +41,7 @@ class _DetailPageState extends State<DetailPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Fan Bag Filter",
+                          widget.data.equipments,
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w600,
@@ -45,7 +52,7 @@ class _DetailPageState extends State<DetailPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Text(
-                              "(FN-09)",
+                              "(${widget.data.code})",
                               style: TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.w600),
                             ),

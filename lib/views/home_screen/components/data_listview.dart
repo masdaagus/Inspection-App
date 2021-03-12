@@ -78,24 +78,36 @@ class DataListView extends StatelessWidget {
                                     scale: .8,
                                     child: Consumer<DataModel>(
                                       builder: (context, model, _) => Checkbox(
-                                          value: model.isSelected(data),
-                                          onChanged: (value) {
-                                            Provider.of<DataModel>(context,
-                                                    listen: false)
-                                                .check(data);
-
-                                            print(data.code);
-                                          }),
+                                        value: model.isSelected1(data),
+                                        onChanged: (value) {
+                                          Provider.of<DataModel>(context,
+                                                  listen: false)
+                                              .check1(data);
+                                          var mas = model.isSelected1(data);
+                                          print(data.code);
+                                          print('Line - 1');
+                                          print(mas);
+                                          print('=' * 10);
+                                        },
+                                      ),
                                     )),
                                 Transform.scale(
                                     scale: .8,
-                                    child: Checkbox(
-                                        value: data.line2,
-                                        onChanged: (bool val) {
-                                          // setState(() {
-                                          //   data.line2 = val;
-                                          // });
-                                        })),
+                                    child: Consumer<DataModel>(
+                                      builder: (context, model, _) => Checkbox(
+                                        value: model.isSelected2(data),
+                                        onChanged: (value) {
+                                          Provider.of<DataModel>(context,
+                                                  listen: false)
+                                              .check2(data);
+                                          var mas = model.isSelected2(data);
+                                          print(data.code);
+                                          print('Line - 2');
+                                          print(mas);
+                                          print('=' * 10);
+                                        },
+                                      ),
+                                    )),
                               ],
                             ),
                           ),

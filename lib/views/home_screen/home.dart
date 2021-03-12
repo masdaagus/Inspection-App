@@ -5,11 +5,24 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          child: DataListView(),
-        ),
+      appBar: buildAppBar(),
+      body: Container(child: DataListView()),
+    );
+  }
+
+  Widget buildAppBar() {
+    return AppBar(
+      title: Text(
+        "INSPECTION MILL",
+        style: TextStyle(fontSize: 17),
       ),
+      centerTitle: true,
+      actions: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(Icons.edit),
+        ),
+      ],
     );
   }
 }

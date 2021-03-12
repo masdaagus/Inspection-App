@@ -1,18 +1,16 @@
 import 'package:Inspection/views/home_screen/components/detail_page.dart';
+import 'package:Inspection/views/home_screen/models/dataModel.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter/material.dart';
-import '../../../data.dart';
+import 'package:provider/provider.dart';
+import '../../../data/data.dart';
+import '../../../tes.dart';
 
-class DataListView extends StatefulWidget {
+class DataListView extends StatelessWidget {
   DataListView({
     Key key,
   }) : super(key: key);
 
-  @override
-  _DataListViewState createState() => _DataListViewState();
-}
-
-class _DataListViewState extends State<DataListView> {
   @override
   Widget build(BuildContext context) {
     print("Update listview page");
@@ -28,6 +26,7 @@ class _DataListViewState extends State<DataListView> {
                 itemCount: snapshot.data.length,
                 itemBuilder: (BuildContext context, int index) {
                   DetailsData data = snapshot.data[index];
+
                   return Column(
                     children: [
                       Slidable(
@@ -38,10 +37,16 @@ class _DataListViewState extends State<DataListView> {
                             icon: Icons.edit,
                             onTap: () {
                               print("Selectd ${data.code}");
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (context) => DetailPage(
+                              //               data: data,
+                              //             )));
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => DetailPage(
+                                      builder: (context) => DemoDetailsPage(
                                             data: data,
                                           )));
                             },
@@ -52,7 +57,7 @@ class _DataListViewState extends State<DataListView> {
                         child: ListTile(
                           contentPadding: EdgeInsets.symmetric(horizontal: 7),
                           title: Text(
-                            data.code,
+                            data.equipments,
                             style: TextStyle(fontWeight: FontWeight.w600),
                           ),
                           subtitle: Text(
@@ -71,21 +76,25 @@ class _DataListViewState extends State<DataListView> {
                               children: [
                                 Transform.scale(
                                     scale: .8,
-                                    child: Checkbox(
-                                        value: data.line1,
-                                        onChanged: (bool val) {
-                                          setState(() {
-                                            data.line1 = val;
-                                          });
-                                        })),
+                                    child: Consumer<DataModel>(
+                                      builder: (context, model, _) => Checkbox(
+                                          value: model.isSelected(data),
+                                          onChanged: (value) {
+                                            Provider.of<DataModel>(context,
+                                                    listen: false)
+                                                .check(data);
+
+                                            print(data.code);
+                                          }),
+                                    )),
                                 Transform.scale(
                                     scale: .8,
                                     child: Checkbox(
                                         value: data.line2,
                                         onChanged: (bool val) {
-                                          setState(() {
-                                            data.line2 = val;
-                                          });
+                                          // setState(() {
+                                          //   data.line2 = val;
+                                          // });
                                         })),
                               ],
                             ),

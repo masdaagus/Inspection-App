@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Inspection/data.dart';
+import 'package:Inspection/data/data.dart';
 
 class DetailPage extends StatefulWidget {
   final DetailsData data;
@@ -15,7 +15,6 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   String line = "Line - ?";
 
-  void lineWhere() {}
   @override
   Widget build(BuildContext context) {
     print("Update details page");
@@ -25,7 +24,7 @@ class _DetailPageState extends State<DetailPage> {
           FocusScope.of(context).requestFocus(new FocusNode());
         },
         child: Container(
-          margin: EdgeInsets.only(top: 32),
+          margin: const EdgeInsets.only(top: 32),
           color: Colors.grey[400],
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,

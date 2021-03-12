@@ -1,4 +1,4 @@
-import 'package:Inspection/views/home_screen/components/data_listview.dart';
+import 'package:Inspection/views/home_screen/home.dart';
 import 'package:flutter/material.dart';
 
 class LoginButton extends StatelessWidget {
@@ -13,8 +13,7 @@ class LoginButton extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          // MaterialPageRoute(builder: (context) => DetailPage()),
-          MaterialPageRoute(builder: (context) => DataListView()),
+          MaterialPageRoute(builder: (context) => HomeScreen()),
         );
       },
       child: Container(

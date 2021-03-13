@@ -15,7 +15,7 @@ class DemoDetailsPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            data.code,
+            data.equipments,
             style: TextStyle(fontSize: 17),
           ),
           centerTitle: true,
@@ -25,13 +25,26 @@ class DemoDetailsPage extends StatelessWidget {
               child: Icon(Icons.edit),
             ),
           ],
+          leading: Center(
+              child: Text(
+            data.code,
+            style: TextStyle(fontSize: 12, color: Colors.black45),
+          )),
         ),
         backgroundColor: Colors.amber,
         body: ListView(
           children: [
             Container(
-              margin: const EdgeInsets.only(top: 32),
-              child: Center(child: Text(data.code)),
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Remarks",
+                    style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                  )
+                ],
+              ),
             ),
           ],
         ),

@@ -85,28 +85,28 @@
     },
     {
         "code"       : "WF-01",
-        "equipments" : "Wiight Feeder Limestone",
+        "equipments" : "Weight Feeder Limestone",
         "checkpoints": "Belt, chute, buffle, motor, dan gear box",
         "statusLine1": false,
         "statusLine2": false
     },
     {
         "code"       : "WF-02",
-        "equipments" : "Wiight Feeder Clinker",
+        "equipments" : "Weight Feeder Clinker",
         "checkpoints": "Belt, chute, buffle, motor, dan gear box",
         "statusLine1": false,
         "statusLine2": false
     },
     {
         "code"       : "WF-03",
-        "equipments" : "Wiight Feeder Trass",
+        "equipments" : "Weight Feeder Trass",
         "checkpoints": "Belt, chute, buffle, motor, dan gear box",
         "statusLine1": false,
         "statusLine2": false
     },
     {
         "code"       : "WF-04",
-        "equipments" : "Wiight Feeder Gypsum",
+        "equipments" : "Weight Feeder Gypsum",
         "checkpoints": "Belt, chute, buffle, motor, dan gear box",
         "statusLine1": false,
         "statusLine2": false

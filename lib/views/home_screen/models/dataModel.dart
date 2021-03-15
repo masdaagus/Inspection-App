@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 class DataModel extends ChangeNotifier {
   final List<DetailsData> _selected1 = [];
   final List<DetailsData> _selected2 = [];
+  List get masda => _selected1;
 
   bool isSelected1(DetailsData item) {
     return _selected1.contains(item);
@@ -31,5 +32,16 @@ class DataModel extends ChangeNotifier {
       _selected2.remove(item);
       notifyListeners();
     }
+  }
+
+  String lineBerapa = '?';
+  String line1() {
+    lineBerapa = '1';
+    notifyListeners();
+  }
+
+  String line2() {
+    lineBerapa = '2';
+    notifyListeners();
   }
 }

@@ -1,159 +1,139 @@
-import 'package:flutter/material.dart';
 import 'package:Inspection/data/data.dart';
+import 'package:Inspection/views/home_screen/models/dataModel.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class DetailPage extends StatefulWidget {
+class DemoDetailsPage extends StatelessWidget {
   final DetailsData data;
-
-  DetailPage({
+  DemoDetailsPage({
     Key key,
     @required this.data,
   }) : super(key: key);
   @override
-  _DetailPageState createState() => _DetailPageState();
-}
-
-class _DetailPageState extends State<DetailPage> {
-  String line = "Line - ?";
-
-  @override
   Widget build(BuildContext context) {
-    print("Update details page");
-    return Scaffold(
-      body: GestureDetector(
-        onTap: () {
-          FocusScope.of(context).requestFocus(new FocusNode());
-        },
-        child: Container(
-          margin: const EdgeInsets.only(top: 32),
-          color: Colors.grey[400],
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
+    final provider = Provider.of<DataModel>(context, listen: false);
+
+    print("Update Detail page");
+    return Material(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            data.equipments,
+            style: TextStyle(fontSize: 17),
+          ),
+          centerTitle: true,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Center(
+                child: Text(
+                  data.code,
+                  style: TextStyle(fontSize: 12, color: Colors.white),
+                ),
+              ),
+            ),
+          ],
+        ),
+        // backgroundColor: Colors.amber,
+        body: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
+          },
+          child: ListView(
+            children: [
               Container(
-                  height: 75,
-                  width: double.infinity,
-                  color: Colors.grey,
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          widget.data.equipments,
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 1),
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text(
-                              "(${widget.data.code})",
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.w600),
-                            ),
-                            Text(
-                              "14-02-2021   ",
-                              style: TextStyle(
-                                  fontSize: 13, fontWeight: FontWeight.w600),
-                            ),
-                            Text(
-                              "Shift-1",
-                              style: TextStyle(
-                                  fontSize: 13, fontWeight: FontWeight.w600),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  )),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 8),
-                width: double.infinity,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          "Remakrs",
-                          style: TextStyle(
-                              fontSize: 24, fontWeight: FontWeight.bold),
+                        Consumer<DataModel>(
+                          builder: (context, model, _) => Text(
+                            "Remarks :  ${model.lineBerapa}",
+                            style: TextStyle(
+                                fontSize: 26, fontWeight: FontWeight.bold),
+                          ),
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Container(
-                              height: 25,
-                              width: 55,
-                              child: RaisedButton(
-                                child: Center(
-                                    child: Text(
-                                  "#1",
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold),
-                                )),
-                                onPressed: () {
-                                  setState(() {
-                                    line = "Line -1";
-                                  });
+                            button(
+                                tittle: '1',
+                                onpress: () {
+                                  provider.line1();
+                                  print("press line 1");
                                 },
-                                color: Color(0xFFB0BEC5),
-                                elevation: 3,
-                              ),
-                            ),
-                            SizedBox(width: 5),
-                            Container(
-                              height: 25,
-                              width: 55,
-                              child: RaisedButton(
-                                child: Center(
-                                    child: Text(
-                                  "#2",
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold),
-                                )),
-                                onPressed: () {
-                                  setState(() {
-                                    line = "Line - 2";
-                                  });
+                                width: 60,
+                                height: 30),
+                            SizedBox(width: 6),
+                            button(
+                                tittle: '2',
+                                onpress: () {
+                                  provider.line2();
                                 },
-                                color: Color(0xFFB0BEC5),
-                                elevation: 3,
-                              ),
-                            ),
+                                width: 60,
+                                height: 30),
                           ],
-                        )
+                        ),
                       ],
                     ),
-                    SizedBox(height: 2),
-                    Center(
-                      child: Text(
-                        line,
-                        style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.w700),
+                    SizedBox(height: 12),
+                    TextField(
+                      maxLines: 10,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15)),
                       ),
                     ),
-                    SizedBox(height: 6),
-                    TextFormField(
-                      maxLines: 8,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15))),
+                    SizedBox(height: 18),
+                    Center(
+                      child: button(
+                          tittle: 'Save',
+                          onpress: () {
+                            print("press save button");
+                            print(provider.lineBerapa);
+                            print(provider.masda);
+                          },
+                          width: MediaQuery.of(context).size.width * .6,
+                          height: 40,
+                          fontsize: 18),
                     )
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget button(
+      {Function onpress,
+      String tittle,
+      double width,
+      double height,
+      double fontsize}) {
+    return Container(
+      height: height,
+      width: width,
+      child: RaisedButton(
+          onPressed: onpress,
+          color: Color(0xFFB0BEC5),
+          splashColor: Colors.white,
+          elevation: 0.20,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          child: Center(
+            child: Text(
+              tittle,
+              style: TextStyle(color: Colors.blueGrey[600], fontSize: fontsize),
+            ),
+          ),
+          textColor: Colors.white),
     );
   }
 }

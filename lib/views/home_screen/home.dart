@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'components/data_listview.dart';
-import 'models/dataModel.dart';
+import '../../models/data_model.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 print("press save");
-                print(provider.masda);
+                print(provider.masda.length);
               },
               child: Icon(
                 Icons.send_and_archive,

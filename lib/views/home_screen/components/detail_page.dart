@@ -1,24 +1,34 @@
 import 'package:Inspection/data/data.dart';
-import 'package:Inspection/views/home_screen/models/dataModel.dart';
+import 'package:Inspection/models/data_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class DemoDetailsPage extends StatelessWidget {
-  final DetailsData data;
+class DemoDetailsPage extends StatefulWidget {
   DemoDetailsPage({
     Key key,
     @required this.data,
   }) : super(key: key);
+
+  final DetailsData data;
+
+  @override
+  _DemoDetailsPageState createState() => _DemoDetailsPageState();
+}
+
+class _DemoDetailsPageState extends State<DemoDetailsPage> {
+  TextEditingController controller = TextEditingController();
+
+  get masdaaa => controller;
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<DataModel>(context, listen: false);
-
     print("Update Detail page");
     return Material(
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            data.equipments,
+            widget.data.equipments,
             style: TextStyle(fontSize: 17),
           ),
           centerTitle: true,
@@ -27,14 +37,13 @@ class DemoDetailsPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Center(
                 child: Text(
-                  data.code,
+                  widget.data.code,
                   style: TextStyle(fontSize: 12, color: Colors.white),
                 ),
               ),
             ),
           ],
         ),
-        // backgroundColor: Colors.amber,
         body: GestureDetector(
           onTap: () {
             FocusScope.of(context).requestFocus(new FocusNode());
@@ -81,7 +90,8 @@ class DemoDetailsPage extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: 12),
-                    TextField(
+                    TextFormField(
+                      controller: controller,
                       maxLines: 10,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
@@ -95,12 +105,13 @@ class DemoDetailsPage extends StatelessWidget {
                           onpress: () {
                             print("press save button");
                             print(provider.lineBerapa);
-                            print(provider.masda);
+                            print(provider.masda.length);
+                            print(controller.text);
                           },
                           width: MediaQuery.of(context).size.width * .6,
                           height: 40,
                           fontsize: 18),
-                    )
+                    ),
                   ],
                 ),
               ),

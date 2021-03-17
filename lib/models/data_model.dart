@@ -35,12 +35,12 @@ class DataModel extends ChangeNotifier {
   }
 
   String lineBerapa = '?';
-  String line1() {
+  void line1() {
     lineBerapa = '1';
     notifyListeners();
   }
 
-  String line2() {
+  void line2() {
     lineBerapa = '2';
     notifyListeners();
   }

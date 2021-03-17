@@ -1,6 +1,5 @@
-import 'package:Inspection/views/home_screen/components/componen/button.dart';
 import 'package:Inspection/views/home_screen/components/detail_page.dart';
-import 'package:Inspection/views/home_screen/models/dataModel.dart';
+import 'package:Inspection/models/data_model.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

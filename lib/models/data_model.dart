@@ -44,4 +44,9 @@ class DataModel extends ChangeNotifier {
     lineBerapa = '2';
     notifyListeners();
   }
+
+  void tesbox(bool val) {
+    val = !val;
+    notifyListeners();
+  }
 }

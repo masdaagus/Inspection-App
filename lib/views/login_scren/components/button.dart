@@ -1,3 +1,4 @@
+import 'package:Inspection/Tess/mainn.dart';
 import 'package:Inspection/views/list_screen/home.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,8 @@ class LoginButton extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => HomeListScreen()),
+          // MaterialPageRoute(builder: (context) => HomeListScreen()),
+          MaterialPageRoute(builder: (context) => TesScreen()),
         );
       },
       child: Container(

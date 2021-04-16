@@ -6,6 +6,16 @@ import 'package:provider/provider.dart';
 import '../../models/data_model.dart';
 
 class HomeListScreen extends StatelessWidget {
+  List<String> _masda = [];
+
+  void _checkdata(String item) {
+    if (!_masda.contains(item)) {
+      _masda.add(item);
+    } else {
+      _masda.remove(item);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<DataModel>(context, listen: false);
@@ -26,8 +36,9 @@ class HomeListScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: () {
-                  print("press save");
-                  print('data ceklis line1 =  ');
+                  print("=" * 20);
+                  print(_masda.length);
+                  print("=" * 20);
                 },
                 child: Icon(
                   Icons.send_and_archive,
@@ -54,6 +65,7 @@ class HomeListScreen extends StatelessWidget {
                             itemCount: snapshot.data.length,
                             itemBuilder: (BuildContext context, int index) {
                               DetailsData data = snapshot.data[index];
+
                               return Column(
                                 children: [
                                   Slidable(
@@ -96,9 +108,15 @@ class HomeListScreen extends StatelessWidget {
                                                       provider.tesbox(
                                                           data.line1 = value);
 
+                                                      _checkdata(data.code);
+
                                                       print('Line - 1');
-                                                      print(data.code);
-                                                      print(value);
+
+                                                      print(data.code +
+                                                          ' - ' +
+                                                          data.line1
+                                                              .toString());
+
                                                       print('=' * 10);
                                                     },
                                                   ),

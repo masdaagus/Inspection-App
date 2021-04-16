@@ -1,4 +1,5 @@
 import 'package:Inspection/data/data.dart';
+
 import 'package:Inspection/models/data_model.dart';
 import 'package:Inspection/views/details_screen/components/pick_line.dart';
 import 'package:Inspection/views/details_screen/components/remarks_text.dart';
@@ -89,7 +90,6 @@ class DetailsPage extends StatelessWidget {
                       onpress: () {
                         print("press save button");
                         print(provider.lineBerapa);
-                        print(provider.masda.length);
                       },
                       width: MediaQuery.of(context).size.width * .6,
                       height: 40,

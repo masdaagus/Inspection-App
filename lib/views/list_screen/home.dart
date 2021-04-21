@@ -1,20 +1,34 @@
-import 'package:Inspection/data/data.dart';
+// import 'package:Inspection/data/data.dart';
+import 'package:Inspection/data/data2.dart';
 import 'package:Inspection/views/details_screen/home.dart';
+import 'package:Inspection/views/penampung_database/hasil.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
-import '../../models/data_model.dart';
+import '../models/data_model.dart';
 
+// ignore: must_be_immutable
 class HomeListScreen extends StatelessWidget {
-  List<String> _masda = [];
+  List<Data> _bismillah = [];
 
-  void _checkdata(String item) {
-    if (!_masda.contains(item)) {
-      _masda.add(item);
-    } else {
-      _masda.remove(item);
-    }
+  List<IsiData> _isiData = [];
+  void _tambahData(dynamic value) {
+    _isiData.add(value);
   }
+  // List<String> _masda = [];
+  // List<String> _listt = [];
+
+  // void _checkdata(String item) {
+  //   if (!_masda.contains(item)) {
+  //     _masda.add(item);
+  //   } else {
+  //     _masda.remove(item);
+  //   }
+  // }
+
+  // void _ambilData(String item) {
+  //   _listt.add(item);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +44,29 @@ class HomeListScreen extends StatelessWidget {
           actions: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Icon(Icons.edit),
+              child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Penampung(),
+                      ),
+                    );
+                  },
+                  child: Icon(Icons.edit)),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: () {
                   print("=" * 20);
-                  print(_masda.length);
+                  // print(_susu);
+                  // print(_bismillah);
+                  _bismillah.forEach((data) {
+                    print("${data.data[0].code}   ${data.data[0].statusLine1}");
+                  });
+
+                  // print(_listt);
                   print("=" * 20);
                 },
                 child: Icon(
@@ -53,8 +82,10 @@ class HomeListScreen extends StatelessWidget {
               child: Column(
                 children: [
                   FutureBuilder(
-                    future: fetchData(context),
+                    future: fetchData2(context),
                     builder: (context, snapshot) {
+                      // _susu = snapshot.data;
+                      _bismillah = snapshot.data;
                       if (snapshot.data == null) {
                         return Container(
                             child: Center(child: Text("Loading...")));
@@ -64,7 +95,8 @@ class HomeListScreen extends StatelessWidget {
                             shrinkWrap: true,
                             itemCount: snapshot.data.length,
                             itemBuilder: (BuildContext context, int index) {
-                              DetailsData data = snapshot.data[index];
+                              Data data = snapshot.data[index];
+                              IsiData masda = snapshot.data[index].data[0];
 
                               return Column(
                                 children: [
@@ -78,16 +110,16 @@ class HomeListScreen extends StatelessWidget {
                                       contentPadding:
                                           EdgeInsets.symmetric(horizontal: 7),
                                       title: Text(
-                                        data.equipments,
+                                        masda.equipments,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w600),
                                       ),
                                       subtitle: Text(
-                                        data.checkpoints,
+                                        masda.checkpoints,
                                       ),
                                       tileColor: Colors.grey[300],
                                       leading: Text(
-                                        "\t4#6\n${data.code}",
+                                        "\t4#6\n${masda.code}",
                                         style: TextStyle(
                                             color: Colors.black45,
                                             fontSize: 11),
@@ -103,18 +135,14 @@ class HomeListScreen extends StatelessWidget {
                                                   builder:
                                                       (context, model, _) =>
                                                           Checkbox(
-                                                    value: data.line1,
+                                                    value: masda.statusLine1,
                                                     onChanged: (value) {
-                                                      provider.tesbox(
-                                                          data.line1 = value);
-
-                                                      _checkdata(data.code);
-
+                                                      provider.tesbox(masda
+                                                          .statusLine1 = value);
                                                       print('Line - 1');
-
-                                                      print(data.code +
+                                                      print(masda.code +
                                                           ' - ' +
-                                                          data.line1
+                                                          masda.statusLine1
                                                               .toString());
 
                                                       print('=' * 10);
@@ -126,13 +154,15 @@ class HomeListScreen extends StatelessWidget {
                                               child: Consumer<DataModel>(
                                                 builder: (context, model, _) =>
                                                     Checkbox(
-                                                  value: data.line2,
+                                                  value: masda.statusLine2,
                                                   onChanged: (value) {
-                                                    provider.tesbox(
-                                                        data.line2 = value);
+                                                    provider.tesbox(masda
+                                                        .statusLine2 = value);
                                                     print('Line - 2');
-                                                    print(data.code);
-                                                    print(value);
+                                                    print(masda.code +
+                                                        ' - ' +
+                                                        masda.statusLine2
+                                                            .toString());
                                                     print('=' * 10);
                                                   },
                                                 ),
@@ -159,13 +189,14 @@ class HomeListScreen extends StatelessWidget {
         ));
   }
 
-  Widget iconSlide(DetailsData data, BuildContext context) {
+  Widget iconSlide(Data data, BuildContext context) {
+    IsiData masda = data.data[0];
     return IconSlideAction(
       caption: 'Remarks',
       color: Colors.grey,
       icon: Icons.edit,
       onTap: () {
-        print("Selectd ${data.code}");
+        print("Selectd ${masda.code}");
         Navigator.push(
             context,
             MaterialPageRoute(
@@ -173,13 +204,6 @@ class HomeListScreen extends StatelessWidget {
                       data: data,
                     )));
       },
-    );
-  }
-
-  Text buildText(String text) {
-    return Text(
-      text,
-      style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
     );
   }
 }

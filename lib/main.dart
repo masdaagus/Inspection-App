@@ -1,4 +1,4 @@
-import 'package:Inspection/models/data_model.dart';
+import 'package:Inspection/views/models/data_model.dart';
 import 'package:Inspection/views/login_scren/login.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

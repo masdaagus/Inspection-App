@@ -1,6 +1,5 @@
-import 'package:Inspection/data/data.dart';
-
-import 'package:Inspection/models/data_model.dart';
+import 'package:Inspection/data/data2.dart';
+import 'package:Inspection/views/models/data_model.dart';
 import 'package:Inspection/views/details_screen/components/pick_line.dart';
 import 'package:Inspection/views/details_screen/components/remarks_text.dart';
 import 'package:flutter/material.dart';
@@ -12,17 +11,18 @@ class DetailsPage extends StatelessWidget {
     @required this.data,
   }) : super(key: key);
 
-  final DetailsData data;
+  final Data data;
 
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<DataModel>(context, listen: false);
     print("Update Detail page");
+    IsiData masda = data.data[0];
     return Material(
       child: Scaffold(
         appBar: AppBar(
             title: Text(
-              data.equipments,
+              masda.equipments,
               style: TextStyle(fontSize: 17),
             ),
             centerTitle: true,
@@ -31,7 +31,7 @@ class DetailsPage extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Center(
                       child: Text(
-                    data.code,
+                    masda.code,
                     style: TextStyle(fontSize: 12, color: Colors.white),
                   )))
             ]),
@@ -82,6 +82,7 @@ class DetailsPage extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: 12),
+                    // ini yg akan di kerjakan
                     RemarksTextField(),
                     SizedBox(height: 18),
                     Center(

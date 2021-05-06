@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final detailsData = detailsDataFromMap(jsonString);
-
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
@@ -68,4 +64,14 @@ Future<List<Data>> fetchData2(BuildContext context) async {
   final jsonString =
       await DefaultAssetBundle.of(context).loadString("assets/data/data2.json");
   return detailsDataFromMap(jsonString);
+}
+
+class Remakrks {
+  Remakrks({
+    // this.line,
+    this.description,
+  });
+
+  // bool line;
+  final String description;
 }

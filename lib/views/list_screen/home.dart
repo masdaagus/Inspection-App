@@ -1,35 +1,24 @@
 // import 'package:Inspection/data/data.dart';
 import 'package:Inspection/data/data2.dart';
 import 'package:Inspection/views/details_screen/home.dart';
-import 'package:Inspection/views/penampung_database/hasil.dart';
+import 'package:Inspection/views/penampung_database/show_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import '../models/data_model.dart';
 
 // ignore: must_be_immutable
-class HomeListScreen extends StatelessWidget {
-  List<Data> _bismillah = [];
-
-  List<IsiData> _isiData = [];
-  void _tambahData(dynamic value) {
-    _isiData.add(value);
+class HomeListScreen extends StatefulWidget {
+  @override
+  _HomeListScreenState createState() => _HomeListScreenState();
+  List<Data> get bismillah {
+    return _bismillah;
   }
-  // List<String> _masda = [];
-  // List<String> _listt = [];
+}
 
-  // void _checkdata(String item) {
-  //   if (!_masda.contains(item)) {
-  //     _masda.add(item);
-  //   } else {
-  //     _masda.remove(item);
-  //   }
-  // }
+List<Data> _bismillah = [];
 
-  // void _ambilData(String item) {
-  //   _listt.add(item);
-  // }
-
+class _HomeListScreenState extends State<HomeListScreen> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<DataModel>(context, listen: false);
@@ -49,7 +38,8 @@ class HomeListScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Penampung(),
+                        // builder: (context) => Penampung(),
+                        builder: (context) => SaveWidget(),
                       ),
                     );
                   },
@@ -60,10 +50,11 @@ class HomeListScreen extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   print("=" * 20);
-                  // print(_susu);
-                  // print(_bismillah);
                   _bismillah.forEach((data) {
-                    print("${data.data[0].code}   ${data.data[0].statusLine1}");
+                    print(
+                        "Line 1 =  ${data.data[0].code}   ${data.data[0].statusLine1}");
+                    // print(
+                    //     "Line 2 = ${data.data[0].code}   ${data.data[0].statusLine2}");
                   });
 
                   // print(_listt);
@@ -129,6 +120,7 @@ class HomeListScreen extends StatelessWidget {
                                         child: Row(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
+                                            // CheckBox Line 1
                                             Transform.scale(
                                                 scale: .8,
                                                 child: Consumer<DataModel>(
@@ -149,6 +141,7 @@ class HomeListScreen extends StatelessWidget {
                                                     },
                                                   ),
                                                 )),
+                                            // CheckBox Line 1
                                             Transform.scale(
                                               scale: .8,
                                               child: Consumer<DataModel>(

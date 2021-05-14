@@ -54,7 +54,6 @@ flutter:
   assets:
     - assets/images/
     - assets/data/data.json
-    - assets/data/data2.json
     
     
 

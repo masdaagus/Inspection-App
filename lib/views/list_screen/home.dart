@@ -1,7 +1,7 @@
-// import 'package:Inspection/data/data.dart';
-import 'package:Inspection/data/data2.dart';
+import 'package:Inspection/Database/mill_database.dart';
+import 'package:Inspection/data/data.dart';
+import 'package:Inspection/models/mill.dart';
 import 'package:Inspection/views/details_screen/home.dart';
-import 'package:Inspection/views/penampung_database/show_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
@@ -11,14 +11,12 @@ import '../models/data_model.dart';
 class HomeListScreen extends StatefulWidget {
   @override
   _HomeListScreenState createState() => _HomeListScreenState();
-  List<Data> get bismillah {
-    return _bismillah;
-  }
 }
 
-List<Data> _bismillah = [];
-
 class _HomeListScreenState extends State<HomeListScreen> {
+  List _listData = [];
+  List _data = [];
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<DataModel>(context, listen: false);
@@ -35,13 +33,7 @@ class _HomeListScreenState extends State<HomeListScreen> {
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        // builder: (context) => Penampung(),
-                        builder: (context) => SaveWidget(),
-                      ),
-                    );
+                    print("Press");
                   },
                   child: Icon(Icons.edit)),
             ),
@@ -50,15 +42,9 @@ class _HomeListScreenState extends State<HomeListScreen> {
               child: GestureDetector(
                 onTap: () {
                   print("=" * 20);
-                  _bismillah.forEach((data) {
-                    print(
-                        "Line 1 =  ${data.data[0].code}   ${data.data[0].statusLine1}");
-                    // print(
-                    //     "Line 2 = ${data.data[0].code}   ${data.data[0].statusLine2}");
+                  _listData.forEach((data) {
+                    print("${data.code} = ${data.line1}");
                   });
-
-                  // print(_listt);
-                  print("=" * 20);
                 },
                 child: Icon(
                   Icons.send_and_archive,
@@ -73,10 +59,11 @@ class _HomeListScreenState extends State<HomeListScreen> {
               child: Column(
                 children: [
                   FutureBuilder(
-                    future: fetchData2(context),
+                    future: fetchData(context),
                     builder: (context, snapshot) {
-                      // _susu = snapshot.data;
-                      _bismillah = snapshot.data;
+                      // Memasukkan hasil data ke dalam _listData
+                      _listData = snapshot.data;
+
                       if (snapshot.data == null) {
                         return Container(
                             child: Center(child: Text("Loading...")));
@@ -86,8 +73,7 @@ class _HomeListScreenState extends State<HomeListScreen> {
                             shrinkWrap: true,
                             itemCount: snapshot.data.length,
                             itemBuilder: (BuildContext context, int index) {
-                              Data data = snapshot.data[index];
-                              IsiData masda = snapshot.data[index].data[0];
+                              DataMill data = snapshot.data[index];
 
                               return Column(
                                 children: [
@@ -101,16 +87,16 @@ class _HomeListScreenState extends State<HomeListScreen> {
                                       contentPadding:
                                           EdgeInsets.symmetric(horizontal: 7),
                                       title: Text(
-                                        masda.equipments,
+                                        data.equipments,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w600),
                                       ),
                                       subtitle: Text(
-                                        masda.checkpoints,
+                                        data.checkpoints,
                                       ),
                                       tileColor: Colors.grey[300],
                                       leading: Text(
-                                        "\t4#6\n${masda.code}",
+                                        "\t4#6\n${data.code}",
                                         style: TextStyle(
                                             color: Colors.black45,
                                             fontSize: 11),
@@ -127,36 +113,28 @@ class _HomeListScreenState extends State<HomeListScreen> {
                                                   builder:
                                                       (context, model, _) =>
                                                           Checkbox(
-                                                    value: masda.statusLine1,
+                                                    value: data.line1,
                                                     onChanged: (value) {
-                                                      provider.tesbox(masda
-                                                          .statusLine1 = value);
-                                                      print('Line - 1');
-                                                      print(masda.code +
+                                                      provider.tesbox(
+                                                          data.line1 = value);
+                                                      print(data.code +
                                                           ' - ' +
-                                                          masda.statusLine1
+                                                          data.line1
                                                               .toString());
-
-                                                      print('=' * 10);
                                                     },
                                                   ),
                                                 )),
-                                            // CheckBox Line 1
+                                            // CheckBox Line 2
                                             Transform.scale(
                                               scale: .8,
                                               child: Consumer<DataModel>(
                                                 builder: (context, model, _) =>
                                                     Checkbox(
-                                                  value: masda.statusLine2,
+                                                  value: data.line2,
                                                   onChanged: (value) {
-                                                    provider.tesbox(masda
-                                                        .statusLine2 = value);
+                                                    provider.tesbox(
+                                                        data.line2 = value);
                                                     print('Line - 2');
-                                                    print(masda.code +
-                                                        ' - ' +
-                                                        masda.statusLine2
-                                                            .toString());
-                                                    print('=' * 10);
                                                   },
                                                 ),
                                               ),
@@ -182,14 +160,18 @@ class _HomeListScreenState extends State<HomeListScreen> {
         ));
   }
 
-  Widget iconSlide(Data data, BuildContext context) {
-    IsiData masda = data.data[0];
+  Future addData() async {
+    final mill = Mill(lineSatu: _listData);
+    await MillDatabase.instance.create(mill);
+  }
+
+  Widget iconSlide(DataMill data, BuildContext context) {
     return IconSlideAction(
       caption: 'Remarks',
       color: Colors.grey,
       icon: Icons.edit,
       onTap: () {
-        print("Selectd ${masda.code}");
+        print("Selectd ${data.code}");
         Navigator.push(
             context,
             MaterialPageRoute(

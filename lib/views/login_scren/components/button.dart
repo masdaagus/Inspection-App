@@ -1,4 +1,4 @@
-import 'package:Inspection/views/list_screen/home.dart';
+import 'package:Inspection/views/choice%20screen/choise_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginButton extends StatelessWidget {
@@ -13,7 +13,7 @@ class LoginButton extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => HomeListScreen()),
+          MaterialPageRoute(builder: (context) => HomeChoice()),
         );
       },
       child: Container(

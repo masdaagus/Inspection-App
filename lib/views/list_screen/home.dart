@@ -1,7 +1,8 @@
-import 'package:Inspection/Database/mill_database.dart';
+import 'package:Inspection/Database/database_mill.dart';
 import 'package:Inspection/data/data.dart';
-import 'package:Inspection/models/mill.dart';
+import 'package:Inspection/models/mill_model.dart';
 import 'package:Inspection/views/details_screen/home.dart';
+import 'package:Inspection/views/penampung_database/bismilah.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
@@ -14,8 +15,13 @@ class HomeListScreen extends StatefulWidget {
 }
 
 class _HomeListScreenState extends State<HomeListScreen> {
-  List _listData = [];
-  List _data = [];
+  List<DataMill> _listData = [];
+  List<bool> _data = [];
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +40,10 @@ class _HomeListScreenState extends State<HomeListScreen> {
               child: GestureDetector(
                   onTap: () {
                     print("Press");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Bismillah()),
+                    );
                   },
                   child: Icon(Icons.edit)),
             ),
@@ -41,10 +51,7 @@ class _HomeListScreenState extends State<HomeListScreen> {
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: () {
-                  print("=" * 20);
-                  _listData.forEach((data) {
-                    print("${data.code} = ${data.line1}");
-                  });
+                  addData();
                 },
                 child: Icon(
                   Icons.send_and_archive,
@@ -161,8 +168,49 @@ class _HomeListScreenState extends State<HomeListScreen> {
   }
 
   Future addData() async {
-    final mill = Mill(lineSatu: _listData);
-    await MillDatabase.instance.create(mill);
+    final mill = Mill(
+      bf07: _listData[0].line1,
+      fn07: _listData[1].line1,
+      bf08: _listData[2].line1,
+      fn08: _listData[3].line1,
+      bf09: _listData[4].line1,
+      fn09: _listData[5].line1,
+      bf10: _listData[6].line1,
+      fn10: _listData[7].line1,
+      ng01: _listData[8].line1,
+      ng02: _listData[9].line1,
+      ng03: _listData[10].line1,
+      ng04: _listData[11].line1,
+      wf01: _listData[12].line1,
+      wf02: _listData[13].line1,
+      wf03: _listData[14].line1,
+      wf04: _listData[15].line1,
+      bc01: _listData[16].line1,
+      bc02: _listData[17].line1,
+      bf02: _listData[18].line1,
+      fn02: _listData[19].line1,
+      bf03: _listData[20].line1,
+      fn03: _listData[21].line1,
+      bf04: _listData[22].line1,
+      fn04: _listData[23].line1,
+      bf05: _listData[24].line1,
+      fn05: _listData[25].line1,
+      bf06: _listData[26].line1,
+      fn06: _listData[27].line1,
+      sc01: _listData[28].line1,
+      sc02: _listData[29].line1,
+      sc03: _listData[30].line1,
+      be01: _listData[31].line1,
+      bm01: _listData[32].line1,
+      lq01: _listData[33].line1,
+      lq02: _listData[34].line1,
+      sr01: _listData[35].line1,
+      bf01: _listData[36].line1,
+      fn01: _listData[37].line1,
+      rf01: _listData[38].line1,
+    );
+
+    await DatabaseMill.instance.create(mill);
   }
 
   Widget iconSlide(DataMill data, BuildContext context) {

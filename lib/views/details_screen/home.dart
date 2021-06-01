@@ -61,7 +61,9 @@ class DetailsPage extends StatelessWidget {
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
                     ),
-                    RemarksTextField(),
+                    RemarksTextField(
+                      data: data,
+                    ),
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Text(
@@ -69,7 +71,9 @@ class DetailsPage extends StatelessWidget {
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
                     ),
-                    RemarksTextField(),
+                    RemarksTextField(
+                      data: data,
+                    ),
                   ],
                 ),
               ),

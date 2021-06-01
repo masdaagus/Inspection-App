@@ -12,30 +12,38 @@ class DataMill {
     this.code,
     this.equipments,
     this.checkpoints,
-    this.line1,
-    this.line2,
+    this.checklist_1,
+    this.checklist_2,
+    this.description_1,
+    this.description_2,
+    this.line,
   });
 
-  String code;
-  String equipments;
-  String checkpoints;
-  bool line1;
-  bool line2;
+  final String code;
+  final String equipments;
+  final String checkpoints;
+  bool checklist_1;
+  bool checklist_2;
+  String description_1;
+  String description_2;
+  String line;
 
   factory DataMill.fromJson(Map<String, dynamic> json) => DataMill(
         code: json["code"],
         equipments: json["equipments"],
         checkpoints: json["checkpoints"],
-        line1: json["statusLine1"],
-        line2: json["statusLine2"],
+        checklist_1: json["checklis_1"],
+        checklist_2: json["checklis_2"],
+        description_1: json["description_1;"],
+        description_2: json["description_2;"],
       );
-
-  // get statusLine1 => null;
 
   Map<String, dynamic> toJson() => {
         "code": code,
         "equipments": equipments,
         "checkpoints": checkpoints,
+        "description_1": description_1,
+        "description_2": description_2,
       };
 }
 

@@ -22,10 +22,7 @@ class Bismillah extends StatelessWidget {
                     Mill mill = snapshot.data[index];
                     return ListTile(
                         title: Text(mill.id.toString()),
-                        subtitle: Text("BF-07 =  " +
-                            mill.bf07.toString() +
-                            " & " +
-                            mill.fn07.toString()));
+                        subtitle: Text("BF-07 =  " + mill.bf07.toString()));
                   },
                 );
               }

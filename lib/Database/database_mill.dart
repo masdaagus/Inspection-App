@@ -74,15 +74,16 @@ class DatabaseMill {
     batch.commit();
   }
 
-  Future<Mill> create(Mill mill) async {
+  Future<void> create(Mill mill) async {
     final db = await instance.database;
     Batch batch = db.batch();
     batch.insert(tableCheck, mill.toJson());
 
     // final id = await batch.insert(tableCheck, mill.toJson());
     // return mill.copy(id: id);
-    var result = await batch.commit();
-    print(result);
+    batch.commit(noResult: true);
+    // var result = batch.commit();
+    // print(result);
   }
 
   Future<Mill> readMill(int id) async {

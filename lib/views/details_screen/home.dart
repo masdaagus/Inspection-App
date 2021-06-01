@@ -1,9 +1,6 @@
 import 'package:Inspection/template/data.dart';
-import 'package:Inspection/views/models/data_model.dart';
-import 'package:Inspection/views/details_screen/components/pick_line.dart';
 import 'package:Inspection/views/details_screen/components/remarks_text.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class DetailsPage extends StatelessWidget {
   DetailsPage({
@@ -16,7 +13,6 @@ class DetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<DataModel>(context, listen: false);
     print("Update Detail page");
     // IsiData masda = data.data[0];
     return Material(
@@ -48,54 +44,32 @@ class DetailsPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Consumer<DataModel>(
-                          builder: (context, model, _) => Text(
-                            "Remarks :  ${model.lineBerapa}",
-                            style: TextStyle(
-                                fontSize: 26, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            PickButton(
-                                tittle: '1',
-                                onpress: () {
-                                  provider.line1();
-                                  print("press line 1");
-                                },
-                                width: 60,
-                                height: 30),
-                            SizedBox(width: 6),
-                            PickButton(
-                                tittle: '2',
-                                onpress: () {
-                                  provider.line2();
-                                  print("press line 2");
-                                },
-                                width: 60,
-                                height: 30)
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 12),
-                    RemarksTextField(),
-                    SizedBox(height: 18),
                     Center(
-                        child: PickButton(
-                      tittle: 'Save',
-                      onpress: () {
-                        print("press save button");
-                        print(provider.lineBerapa);
-                      },
-                      width: MediaQuery.of(context).size.width * .6,
-                      height: 40,
-                      fontsize: 18,
-                    )),
+                      child: Container(
+                        child: Text(
+                          "Remarks",
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 22),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        "Line #1",
+                        style: TextStyle(fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                    RemarksTextField(),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        "Line #2",
+                        style: TextStyle(fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                    RemarksTextField(),
                   ],
                 ),
               ),

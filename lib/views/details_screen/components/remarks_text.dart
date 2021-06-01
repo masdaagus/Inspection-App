@@ -11,7 +11,7 @@ class _RemarksTextFieldState extends State<RemarksTextField> {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: remakrsController,
-      maxLines: 10,
+      maxLines: 8,
       decoration: InputDecoration(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
       ),

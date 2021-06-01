@@ -47,7 +47,6 @@ class IsiMill {
   ];
 
   static final String id = '_id';
-  // static final String date = '_id';
   static final String bf07 = 'BF07';
   static final String fn07 = 'FN07';
   static final String bf08 = 'BF08';

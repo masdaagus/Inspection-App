@@ -1,275 +1,431 @@
 [
     {
-        "code"       : "BF-07",
-        "equipments" : "Bag Filter",
+        "code": "BF-07",
+        "equipments": "Bag Filter",
         "checkpoints": "Hopper, cerobong dan sistem purging",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "FN-07",
-        "equipments"  : "Fan Bag Filter",
-        "checkpoints" : "Motor temperatur dan vibrasi",
-        "statusLine1": false,
-        "statusLine2": false
-    },
-    {
-        "code"       : "BF-08",
-        "equipments" : "Bag Filter",
-        "checkpoints": "Hopper, cerobong dan sistem purging",
-        "statusLine1": false,
-        "statusLine2": false
-    },
-    {
-        "code"       : "FN-08",
-        "equipments" : "Fan Bag Filter",
+        "code": "FN-07",
+        "equipments": "Fan Bag Filter",
         "checkpoints": "Motor temperatur dan vibrasi",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "BF-09",
-        "equipments" : "Bag Filter",
+        "code": "BF-08",
+        "equipments": "Bag Filter",
         "checkpoints": "Hopper, cerobong dan sistem purging",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "FN-09",
-        "equipments" : "Fan Bag Filter",
+        "code": "FN-08",
+        "equipments": "Fan Bag Filter",
         "checkpoints": "Motor temperatur dan vibrasi",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "BF-10",
-        "equipments" : "Bag Filter",
+        "code": "BF-09",
+        "equipments": "Bag Filter",
         "checkpoints": "Hopper, cerobong dan sistem purging",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "FN-10",
-        "equipments" : "Fan Bag Filter",
+        "code": "FN-09",
+        "equipments": "Fan Bag Filter",
         "checkpoints": "Motor temperatur dan vibrasi",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "NG-01",
-        "equipments" : "Needle Gate",
+        "code": "BF-10",
+        "equipments": "Bag Filter",
+        "checkpoints": "Hopper, cerobong dan sistem purging",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
+    },
+    {
+        "code": "FN-10",
+        "equipments": "Fan Bag Filter",
+        "checkpoints": "Motor temperatur dan vibrasi",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
+    },
+    {
+        "code": "NG-01",
+        "equipments": "Needle Gate",
         "checkpoints": "Posisi Round Bar",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "NG-02",
-        "equipments" : "Needle Gate",
+        "code": "NG-02",
+        "equipments": "Needle Gate",
         "checkpoints": "Posisi Round Bar",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "NG-03",
-        "equipments" : "Needle Gate",
+        "code": "NG-03",
+        "equipments": "Needle Gate",
         "checkpoints": "Posisi Round Bar",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "NG-04",
-        "equipments" : "Needle Gate",
+        "code": "NG-04",
+        "equipments": "Needle Gate",
         "checkpoints": "Posisi Round Bar",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "WF-01",
-        "equipments" : "Weight Feeder Limestone",
+        "code": "WF-01",
+        "equipments": "Weight Feeder Limestone",
         "checkpoints": "Belt, chute, buffle, motor, dan gear box",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "WF-02",
-        "equipments" : "Weight Feeder Clinker",
+        "code": "WF-02",
+        "equipments": "Weight Feeder Clinker",
         "checkpoints": "Belt, chute, buffle, motor, dan gear box",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "WF-03",
-        "equipments" : "Weight Feeder Trass",
+        "code": "WF-03",
+        "equipments": "Weight Feeder Trass",
         "checkpoints": "Belt, chute, buffle, motor, dan gear box",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "WF-04",
-        "equipments" : "Weight Feeder Gypsum",
+        "code": "WF-04",
+        "equipments": "Weight Feeder Gypsum",
         "checkpoints": "Belt, chute, buffle, motor, dan gear box",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "BC-01",
-        "equipments" : "Belt Conveyor",
+        "code": "BC-01",
+        "equipments": "Belt Conveyor",
         "checkpoints": "Motor, belt, rubber, roller (carry & return), cleaner",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "BC-02",
-        "equipments" : "Belt Conveyor",
+        "code": "BC-02",
+        "equipments": "Belt Conveyor",
         "checkpoints": "Motor, belt, rubber, roller (carry & return), cleaner",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "BF-02",
-        "equipments" : "Bag Filter",
+        "code": "BF-02",
+        "equipments": "Bag Filter",
         "checkpoints": "Hopper, cerobong dan sistem purging",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "FN-02",
-        "equipments" : "Fan Bag Filter",
+        "code": "FN-02",
+        "equipments": "Fan Bag Filter",
         "checkpoints": "Motor temperatur dan vibrasi",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "BF-03",
-        "equipments" : "Bag Filter",
+        "code": "BF-03",
+        "equipments": "Bag Filter",
         "checkpoints": "Hopper, cerobong dan sistem purging",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "FN-03",
-        "equipments" : "Fan Bag Filter",
+        "code": "FN-03",
+        "equipments": "Fan Bag Filter",
         "checkpoints": "Motor temperatur dan vibrasi",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "BF-04",
-        "equipments" : "Bag Filter",
+        "code": "BF-04",
+        "equipments": "Bag Filter",
         "checkpoints": "Hopper, cerobong dan sistem purging",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "FN-04",
-        "equipments" : "Fan Bag Filter",
+        "code": "FN-04",
+        "equipments": "Fan Bag Filter",
         "checkpoints": "Motor temperatur dan vibrasi",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "BF-05",
-        "equipments" : "Bag Filter",
+        "code": "BF-05",
+        "equipments": "Bag Filter",
         "checkpoints": "Hopper, cerobong dan sistem purging",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "FN-05",
-        "equipments" : "Fan Bag Filter",
+        "code": "FN-05",
+        "equipments": "Fan Bag Filter",
         "checkpoints": "Motor temperatur dan vibrasi",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "BF-06",
-        "equipments" : "Bag Filter",
+        "code": "BF-06",
+        "equipments": "Bag Filter",
         "checkpoints": "Hopper, cerobong dan sistem purging",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "FN-06",
-        "equipments" : "Fan Bag Filter",
+        "code": "FN-06",
+        "equipments": "Fan Bag Filter",
         "checkpoints": "Motor temperatur dan vibrasi",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "SC-01",
-        "equipments" : "Screw Conveyor",
+        "code": "SC-01",
+        "equipments": "Screw Conveyor",
         "checkpoints": "Level Oli, motor, screw, gear box",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "SC-02",
-        "equipments" : "Screw Conveyor",
+        "code": "SC-02",
+        "equipments": "Screw Conveyor",
         "checkpoints": "Level Oli, motor, screw, gear box",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "SC-03",
-        "equipments" : "Screw Conveyor",
+        "code": "SC-03",
+        "equipments": "Screw Conveyor",
         "checkpoints": "Level Oli, motor, screw, gear box",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "BE-01",
-        "equipments" : "Bucket Elevator",
+        "code": "BE-01",
+        "equipments": "Bucket Elevator",
         "checkpoints": "Level Oli, motor, screw, gear box, noise",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "BM-01",
-        "equipments" : "Ball Mill",
+        "code": "BM-01",
+        "equipments": "Ball Mill",
         "checkpoints": "Motor gearbox (temp & vibration), Baut & Mur (tube mill main hole, coupling), Mill head trinion (inlet & outlet)",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "LQ-01",
-        "equipments" : "Oil Circulation GearBox",
+        "code": "LQ-01",
+        "equipments": "Oil Circulation GearBox",
         "checkpoints": "Laju Sirkulasi Oli, level dan temp oli",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "LQ-02",
-        "equipments" : "Oil Circulation for Bearing",
+        "code": "LQ-02",
+        "equipments": "Oil Circulation for Bearing",
         "checkpoints": "Laju Sirkulasi Oli, level dan temp oli",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "SR-01",
-        "equipments" : "Clasifier",
+        "code": "SR-01",
+        "equipments": "Clasifier",
         "checkpoints": "Motor, coupling dan V-Belt classifer, level grease",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "BF-01",
-        "equipments" : "Main Bag Filter",
+        "code": "BF-01",
+        "equipments": "Main Bag Filter",
         "checkpoints": "Hopper, cerobong dan sistem purging",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "FN-01",
-        "equipments" : "Main FanBag Filter",
+        "code": "FN-01",
+        "equipments": "Main FanBag Filter",
         "checkpoints": "Motor, Coupling, bearing dan vibrasi",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     },
     {
-        "code"       : "RF-01",
-        "equipments" : "Rotary Valve",
+        "code": "RF-01",
+        "equipments": "Rotary Valve",
         "checkpoints": "Motor dan putaran RV, leakage (kebocoran)",
-        "statusLine1": false,
-        "statusLine2": false
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": "",
+        "date_time": "",
+        "line": ""
     }
 ]

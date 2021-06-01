@@ -24,7 +24,10 @@ class DatabaseMill {
   Future _createDB(Database db, int version) async {
     final idType = 'integer primary key autoincrement';
     final boolType = 'integer not null';
-    db.execute('''
+
+    Batch batch = db.batch();
+
+    batch.execute('''
       create table $tableCheck(
         ${IsiMill.id} $idType,
          ${IsiMill.bf07} $boolType,
@@ -67,12 +70,19 @@ class DatabaseMill {
          ${IsiMill.fn01} $boolType,
          ${IsiMill.rf01} $boolType)
     ''');
+
+    batch.commit();
   }
 
   Future<Mill> create(Mill mill) async {
     final db = await instance.database;
-    final id = await db.insert(tableCheck, mill.toJson());
-    return mill.copy(id: id);
+    Batch batch = db.batch();
+    batch.insert(tableCheck, mill.toJson());
+
+    // final id = await batch.insert(tableCheck, mill.toJson());
+    // return mill.copy(id: id);
+    var result = await batch.commit();
+    print(result);
   }
 
   Future<Mill> readMill(int id) async {

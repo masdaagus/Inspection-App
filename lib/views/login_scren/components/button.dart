@@ -1,4 +1,4 @@
-import 'package:Inspection/views/choice%20screen/choise_screen.dart';
+import 'package:Inspection/views/dashbord/dashbord_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginButton extends StatelessWidget {

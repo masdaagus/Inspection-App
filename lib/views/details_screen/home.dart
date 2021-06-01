@@ -1,4 +1,4 @@
-import 'package:Inspection/data/data.dart';
+import 'package:Inspection/template/data.dart';
 import 'package:Inspection/views/models/data_model.dart';
 import 'package:Inspection/views/details_screen/components/pick_line.dart';
 import 'package:Inspection/views/details_screen/components/remarks_text.dart';

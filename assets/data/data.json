@@ -5,10 +5,10 @@
         "checkpoints": "Hopper, cerobong dan sistem purging",
         "checklis_1": false,
         "checklis_2": false,
-        "description_1": "",
-        "description_2": "",
-        "date_time": "",
-        "line": ""
+        "description_1": "Mada agus",
+        "description_2": " ",
+        "date_time": " ",
+        "line": " "
     },
     {
         "code": "FN-07",
@@ -16,8 +16,8 @@
         "checkpoints": "Motor temperatur dan vibrasi",
         "checklis_1": false,
         "checklis_2": false,
-        "description_1": "",
-        "description_2": "",
+        "description_1": " ",
+        "description_2": " ",
         "date_time": "",
         "line": ""
     },

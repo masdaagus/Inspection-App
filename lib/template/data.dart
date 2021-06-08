@@ -24,9 +24,9 @@ class DataMill {
   final String checkpoints;
   bool checklist_1;
   bool checklist_2;
-  String description_1;
-  String description_2;
-  String line;
+  final String description_1;
+  final String description_2;
+  final String line;
 
   factory DataMill.fromJson(Map<String, dynamic> json) => DataMill(
         code: json["code"],
@@ -34,8 +34,8 @@ class DataMill {
         checkpoints: json["checkpoints"],
         checklist_1: json["checklis_1"],
         checklist_2: json["checklis_2"],
-        description_1: json["description_1;"],
-        description_2: json["description_2;"],
+        description_1: json["description_1"],
+        description_2: json["description_2"],
       );
 
   Map<String, dynamic> toJson() => {

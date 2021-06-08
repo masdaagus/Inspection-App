@@ -14,12 +14,16 @@ class RemarksTextField extends StatefulWidget {
 }
 
 class _RemarksTextFieldState extends State<RemarksTextField> {
-  TextEditingController remakrsController = TextEditingController();
+  TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: remakrsController,
+    return TextField(
+      // onChanged: (value) {
+      //   widget.data.description_1 = value;
+      // },
+      onSubmitted: (String value) {},
+      controller: _controller,
       maxLines: 8,
       decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),

@@ -17,11 +17,6 @@ class HomeListScreen extends StatefulWidget {
 class _HomeListScreenState extends State<HomeListScreen> {
   List<DataMill> _listData = [];
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  // }
-
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<DataModel>(context, listen: false);
@@ -50,10 +45,10 @@ class _HomeListScreenState extends State<HomeListScreen> {
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: () {
-                  addData();
+                  // addData();
                   _listData.forEach((element) {
-                    // print("Line 1 /// ${element.code} = ${element.checklist_1}");
-                    // print("Line 2 /// ${element.code} = ${element.checklist_2}");
+                    print(
+                        "Line 1 = ${element.code} = ${element.description_1}");
                   });
                 },
                 child: Icon(

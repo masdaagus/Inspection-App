@@ -1,6 +1,6 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:Inspection/models/mill_model.dart';
+import 'package:Inspection/models/model_database/check_model.dart';
 
 class DatabaseMill {
   static final DatabaseMill instance = DatabaseMill.init();
@@ -29,86 +29,82 @@ class DatabaseMill {
 
     batch.execute('''
       create table $tableCheck(
-        ${IsiMill.id} $idType,
-         ${IsiMill.bf07} $boolType,
-         ${IsiMill.fn07} $boolType,
-         ${IsiMill.bf08} $boolType,
-         ${IsiMill.fn08} $boolType,
-         ${IsiMill.bf09} $boolType,
-         ${IsiMill.fn09} $boolType,
-         ${IsiMill.bf10} $boolType,
-         ${IsiMill.fn10} $boolType,
-         ${IsiMill.ng01} $boolType,
-         ${IsiMill.ng02} $boolType,
-         ${IsiMill.ng03} $boolType,
-         ${IsiMill.ng04} $boolType,
-         ${IsiMill.wf01} $boolType,
-         ${IsiMill.wf02} $boolType,
-         ${IsiMill.wf03} $boolType,
-         ${IsiMill.wf04} $boolType,
-         ${IsiMill.bc01} $boolType,
-         ${IsiMill.bc02} $boolType,
-         ${IsiMill.bf02} $boolType,
-         ${IsiMill.fn02} $boolType,
-         ${IsiMill.bf03} $boolType,
-         ${IsiMill.fn03} $boolType,
-         ${IsiMill.bf04} $boolType,
-         ${IsiMill.fn04} $boolType,
-         ${IsiMill.bf05} $boolType,
-         ${IsiMill.fn05} $boolType,
-         ${IsiMill.bf06} $boolType,
-         ${IsiMill.fn06} $boolType,
-         ${IsiMill.sc01} $boolType,
-         ${IsiMill.sc02} $boolType,
-         ${IsiMill.sc03} $boolType,
-         ${IsiMill.be01} $boolType,
-         ${IsiMill.bm01} $boolType,
-         ${IsiMill.lq01} $boolType,
-         ${IsiMill.lq02} $boolType,
-         ${IsiMill.sr01} $boolType,
-         ${IsiMill.bf01} $boolType,
-         ${IsiMill.fn01} $boolType,
-         ${IsiMill.rf01} $boolType)
+        ${CheckMill.id} $idType,
+         ${CheckMill.bf07} $boolType,
+         ${CheckMill.fn07} $boolType,
+         ${CheckMill.bf08} $boolType,
+         ${CheckMill.fn08} $boolType,
+         ${CheckMill.bf09} $boolType,
+         ${CheckMill.fn09} $boolType,
+         ${CheckMill.bf10} $boolType,
+         ${CheckMill.fn10} $boolType,
+         ${CheckMill.ng01} $boolType,
+         ${CheckMill.ng02} $boolType,
+         ${CheckMill.ng03} $boolType,
+         ${CheckMill.ng04} $boolType,
+         ${CheckMill.wf01} $boolType,
+         ${CheckMill.wf02} $boolType,
+         ${CheckMill.wf03} $boolType,
+         ${CheckMill.wf04} $boolType,
+         ${CheckMill.bc01} $boolType,
+         ${CheckMill.bc02} $boolType,
+         ${CheckMill.bf02} $boolType,
+         ${CheckMill.fn02} $boolType,
+         ${CheckMill.bf03} $boolType,
+         ${CheckMill.fn03} $boolType,
+         ${CheckMill.bf04} $boolType,
+         ${CheckMill.fn04} $boolType,
+         ${CheckMill.bf05} $boolType,
+         ${CheckMill.fn05} $boolType,
+         ${CheckMill.bf06} $boolType,
+         ${CheckMill.fn06} $boolType,
+         ${CheckMill.sc01} $boolType,
+         ${CheckMill.sc02} $boolType,
+         ${CheckMill.sc03} $boolType,
+         ${CheckMill.be01} $boolType,
+         ${CheckMill.bm01} $boolType,
+         ${CheckMill.lq01} $boolType,
+         ${CheckMill.lq02} $boolType,
+         ${CheckMill.sr01} $boolType,
+         ${CheckMill.bf01} $boolType,
+         ${CheckMill.fn01} $boolType,
+         ${CheckMill.rf01} $boolType)
     ''');
 
     batch.commit();
   }
 
-  Future<void> create(Mill mill) async {
+  Future<void> create({String table, Map<String, Object> mill}) async {
     final db = await instance.database;
     Batch batch = db.batch();
-    batch.insert(tableCheck, mill.toJson());
+    batch.insert(table, mill);
 
-    // final id = await batch.insert(tableCheck, mill.toJson());
-    // return mill.copy(id: id);
     batch.commit(noResult: true);
-    // var result = batch.commit();
-    // print(result);
   }
 
-  Future<Mill> readMill(int id) async {
+  Future readMill(int id) async {
     final db = await instance.database;
     final maps = await db.query(
       tableCheck,
-      columns: IsiMill.values,
-      where: '${IsiMill.id} = ?',
+      columns: CheckMill.values,
+      where: '${CheckMill.id} = ?',
       whereArgs: [id],
     );
 
     if (maps.isNotEmpty) {
-      return Mill.fromJson(maps.first);
+      return Check.fromJson(maps.first);
     } else {
       throw Exception('ID $id not found');
     }
   }
 
-  Future<List<Mill>> readAllNotes() async {
+  Future<List> readAllNotes() async {
     final db = await instance.database;
 
-    final orderBy = '${IsiMill.id}';
+    final orderBy = '${CheckMill.id}';
 
     final result = await db.query(tableCheck, orderBy: orderBy);
 
-    return result.map((json) => Mill.fromJson(json)).toList();
+    return result.map((json) => Check.fromJson(json)).toList();
   }
 }

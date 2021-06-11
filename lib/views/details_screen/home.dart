@@ -1,25 +1,34 @@
 import 'package:Inspection/template/data.dart';
-import 'package:Inspection/views/details_screen/components/remarks_text.dart';
 import 'package:flutter/material.dart';
 
-class DetailsPage extends StatelessWidget {
+class DetailsPage extends StatefulWidget {
   DetailsPage({
     Key key,
     @required this.data,
   }) : super(key: key);
-
-  // final Data data;
   final DataMill data;
+
+  @override
+  _DetailsPageState createState() => _DetailsPageState();
+}
+
+class _DetailsPageState extends State<DetailsPage> {
+  TextEditingController _controller1;
+
+  @override
+  void initState() {
+    _controller1 = TextEditingController(text: widget.data.description_1);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     print("Update Detail page");
-    // IsiData masda = data.data[0];
     return Material(
       child: Scaffold(
         appBar: AppBar(
             title: Text(
-              data.equipments,
+              widget.data.equipments,
               style: TextStyle(fontSize: 17),
             ),
             centerTitle: true,
@@ -28,7 +37,7 @@ class DetailsPage extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Center(
                       child: Text(
-                    data.code,
+                    widget.data.code,
                     style: TextStyle(fontSize: 12, color: Colors.white),
                   )))
             ]),
@@ -61,8 +70,16 @@ class DetailsPage extends StatelessWidget {
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
                     ),
-                    RemarksTextField(
-                      data: data,
+                    TextField(
+                      controller: _controller1,
+                      onChanged: (value) {
+                        widget.data.description_1 = value;
+                      },
+                      maxLines: 8,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15)),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(10.0),
@@ -71,8 +88,15 @@ class DetailsPage extends StatelessWidget {
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
                     ),
-                    RemarksTextField(
-                      data: data,
+                    TextField(
+                      onChanged: (value) {
+                        widget.data.description_2 = value;
+                      },
+                      maxLines: 8,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15)),
+                      ),
                     ),
                   ],
                 ),

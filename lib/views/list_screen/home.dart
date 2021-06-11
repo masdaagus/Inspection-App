@@ -1,8 +1,7 @@
 import 'package:Inspection/Database/database_mill.dart';
 import 'package:Inspection/template/data.dart';
-import 'package:Inspection/models/mill_model.dart';
+import 'package:Inspection/models/model_database/check_model.dart';
 import 'package:Inspection/views/details_screen/home.dart';
-import 'package:Inspection/views/penampung_database/bismilah.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
@@ -34,10 +33,10 @@ class _HomeListScreenState extends State<HomeListScreen> {
               child: GestureDetector(
                   onTap: () {
                     print("Press");
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Bismillah()),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => Bismillah()),
+                    // );
                   },
                   child: Icon(Icons.edit)),
             ),
@@ -165,8 +164,8 @@ class _HomeListScreenState extends State<HomeListScreen> {
         ));
   }
 
-  Future addData() async {
-    final mill1 = Mill(
+  Future addCheckData() async {
+    final check_1 = Check(
       bf07: _listData[0].checklist_1,
       fn07: _listData[1].checklist_1,
       bf08: _listData[2].checklist_1,
@@ -207,7 +206,7 @@ class _HomeListScreenState extends State<HomeListScreen> {
       fn01: _listData[37].checklist_1,
       rf01: _listData[38].checklist_1,
     );
-    final mill2 = Mill(
+    final check_2 = Check(
       bf07: _listData[0].checklist_2,
       fn07: _listData[1].checklist_2,
       bf08: _listData[2].checklist_2,
@@ -249,8 +248,10 @@ class _HomeListScreenState extends State<HomeListScreen> {
       rf01: _listData[38].checklist_2,
     );
 
-    await DatabaseMill.instance.create(mill1);
-    await DatabaseMill.instance.create(mill2);
+    await DatabaseMill.instance
+        .create(table: tableCheck, mill: check_1.toJson());
+    await DatabaseMill.instance
+        .create(table: tableCheck, mill: check_2.toJson());
   }
 
   Widget iconSlide(DataMill data, BuildContext context) {

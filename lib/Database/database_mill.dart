@@ -74,6 +74,7 @@ class DatabaseMill {
          ${MillFields.fn01} $boolType,
          ${MillFields.rf01} $boolType,
 
+         ${MillFields.description_bf07} $textType,
          ${MillFields.description_fn07} $textType,
          ${MillFields.description_bf08} $textType,
          ${MillFields.description_fn08} $textType,

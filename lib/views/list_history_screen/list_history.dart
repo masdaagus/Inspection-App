@@ -42,6 +42,7 @@ class ListHistory extends StatelessWidget {
                               style: TextStyle(
                                   color: Colors.black45, fontSize: 11)),
                           tileColor: Colors.grey[300],
+                          subtitle: Text(mill.description_bf08),
                           dense: true,
                         ),
                         Divider(height: 1, color: Colors.black),

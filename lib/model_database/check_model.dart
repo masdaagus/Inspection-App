@@ -6,6 +6,7 @@ class MillFields {
   static final List<String> values = [
     id,
     time,
+    line,
     bf07,
     fn07,
     bf08,
@@ -91,6 +92,7 @@ class MillFields {
   static final String fn01 = 'FN01';
   static final String rf01 = 'RF01';
 
+  static final String description_bf07 = 'Description_BF07';
   static final String description_fn07 = 'Description_FN07';
   static final String description_bf08 = 'Description_BF08';
   static final String description_fn08 = 'Description_FN08';
@@ -175,6 +177,8 @@ class Check {
   final bool bf01;
   final bool fn01;
   final bool rf01;
+
+  final String description_bf07;
   final String description_fn07;
   final String description_bf08;
   final String description_fn08;
@@ -257,6 +261,7 @@ class Check {
     @required this.bf01,
     @required this.fn01,
     @required this.rf01,
+    @required this.description_bf07,
     @required this.description_fn07,
     @required this.description_bf08,
     @required this.description_fn08,
@@ -340,6 +345,7 @@ class Check {
         bf01: json[MillFields.bf01] == 1,
         fn01: json[MillFields.fn01] == 1,
         rf01: json[MillFields.rf01] == 1,
+        description_bf07: json[MillFields.description_bf07] as String,
         description_fn07: json[MillFields.description_fn07] as String,
         description_bf08: json[MillFields.description_bf08] as String,
         description_fn08: json[MillFields.description_fn08] as String,
@@ -423,6 +429,7 @@ class Check {
         MillFields.bf01: bf01 ? 1 : 0,
         MillFields.fn01: fn01 ? 1 : 0,
         MillFields.rf01: rf01 ? 1 : 0,
+        MillFields.description_bf07: description_bf07,
         MillFields.description_fn07: description_fn07,
         MillFields.description_bf08: description_bf08,
         MillFields.description_fn08: description_fn08,

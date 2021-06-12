@@ -1,6 +1,6 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:Inspection/models/model_database/check_model.dart';
+import 'package:Inspection/model_database/check_model.dart';
 
 class DatabaseMill {
   static final DatabaseMill instance = DatabaseMill.init();
@@ -24,51 +24,94 @@ class DatabaseMill {
   Future _createDB(Database db, int version) async {
     final idType = 'integer primary key autoincrement';
     final boolType = 'integer not null';
+    final textType = 'text not null';
 
     Batch batch = db.batch();
 
     batch.execute('''
       create table $tableCheck(
-        ${CheckMill.id} $idType,
-         ${CheckMill.bf07} $boolType,
-         ${CheckMill.fn07} $boolType,
-         ${CheckMill.bf08} $boolType,
-         ${CheckMill.fn08} $boolType,
-         ${CheckMill.bf09} $boolType,
-         ${CheckMill.fn09} $boolType,
-         ${CheckMill.bf10} $boolType,
-         ${CheckMill.fn10} $boolType,
-         ${CheckMill.ng01} $boolType,
-         ${CheckMill.ng02} $boolType,
-         ${CheckMill.ng03} $boolType,
-         ${CheckMill.ng04} $boolType,
-         ${CheckMill.wf01} $boolType,
-         ${CheckMill.wf02} $boolType,
-         ${CheckMill.wf03} $boolType,
-         ${CheckMill.wf04} $boolType,
-         ${CheckMill.bc01} $boolType,
-         ${CheckMill.bc02} $boolType,
-         ${CheckMill.bf02} $boolType,
-         ${CheckMill.fn02} $boolType,
-         ${CheckMill.bf03} $boolType,
-         ${CheckMill.fn03} $boolType,
-         ${CheckMill.bf04} $boolType,
-         ${CheckMill.fn04} $boolType,
-         ${CheckMill.bf05} $boolType,
-         ${CheckMill.fn05} $boolType,
-         ${CheckMill.bf06} $boolType,
-         ${CheckMill.fn06} $boolType,
-         ${CheckMill.sc01} $boolType,
-         ${CheckMill.sc02} $boolType,
-         ${CheckMill.sc03} $boolType,
-         ${CheckMill.be01} $boolType,
-         ${CheckMill.bm01} $boolType,
-         ${CheckMill.lq01} $boolType,
-         ${CheckMill.lq02} $boolType,
-         ${CheckMill.sr01} $boolType,
-         ${CheckMill.bf01} $boolType,
-         ${CheckMill.fn01} $boolType,
-         ${CheckMill.rf01} $boolType)
+         ${MillFields.id} $idType,
+         ${MillFields.line} $boolType,
+         ${MillFields.time} $textType,
+
+         ${MillFields.bf07} $boolType,
+         ${MillFields.fn07} $boolType,
+         ${MillFields.bf08} $boolType,
+         ${MillFields.fn08} $boolType,
+         ${MillFields.bf09} $boolType,
+         ${MillFields.fn09} $boolType,
+         ${MillFields.bf10} $boolType,
+         ${MillFields.fn10} $boolType,
+         ${MillFields.ng01} $boolType,
+         ${MillFields.ng02} $boolType,
+         ${MillFields.ng03} $boolType,
+         ${MillFields.ng04} $boolType,
+         ${MillFields.wf01} $boolType,
+         ${MillFields.wf02} $boolType,
+         ${MillFields.wf03} $boolType,
+         ${MillFields.wf04} $boolType,
+         ${MillFields.bc01} $boolType,
+         ${MillFields.bc02} $boolType,
+         ${MillFields.bf02} $boolType,
+         ${MillFields.fn02} $boolType,
+         ${MillFields.bf03} $boolType,
+         ${MillFields.fn03} $boolType,
+         ${MillFields.bf04} $boolType,
+         ${MillFields.fn04} $boolType,
+         ${MillFields.bf05} $boolType,
+         ${MillFields.fn05} $boolType,
+         ${MillFields.bf06} $boolType,
+         ${MillFields.fn06} $boolType,
+         ${MillFields.sc01} $boolType,
+         ${MillFields.sc02} $boolType,
+         ${MillFields.sc03} $boolType,
+         ${MillFields.be01} $boolType,
+         ${MillFields.bm01} $boolType,
+         ${MillFields.lq01} $boolType,
+         ${MillFields.lq02} $boolType,
+         ${MillFields.sr01} $boolType,
+         ${MillFields.bf01} $boolType,
+         ${MillFields.fn01} $boolType,
+         ${MillFields.rf01} $boolType,
+
+         ${MillFields.description_fn07} $textType,
+         ${MillFields.description_bf08} $textType,
+         ${MillFields.description_fn08} $textType,
+         ${MillFields.description_bf09} $textType,
+         ${MillFields.description_fn09} $textType,
+         ${MillFields.description_bf10} $textType,
+         ${MillFields.description_fn10} $textType,
+         ${MillFields.description_ng01} $textType,
+         ${MillFields.description_ng02} $textType,
+         ${MillFields.description_ng03} $textType,
+         ${MillFields.description_ng04} $textType,
+         ${MillFields.description_wf01} $textType,
+         ${MillFields.description_wf02} $textType,
+         ${MillFields.description_wf03} $textType,
+         ${MillFields.description_wf04} $textType,
+         ${MillFields.description_bc01} $textType,
+         ${MillFields.description_bc02} $textType,
+         ${MillFields.description_bf02} $textType,
+         ${MillFields.description_fn02} $textType,
+         ${MillFields.description_bf03} $textType,
+         ${MillFields.description_fn03} $textType,
+         ${MillFields.description_bf04} $textType,
+         ${MillFields.description_fn04} $textType,
+         ${MillFields.description_bf05} $textType,
+         ${MillFields.description_fn05} $textType,
+         ${MillFields.description_bf06} $textType,
+         ${MillFields.description_fn06} $textType,
+         ${MillFields.description_sc01} $textType,
+         ${MillFields.description_sc02} $textType,
+         ${MillFields.description_sc03} $textType,
+         ${MillFields.description_be01} $textType,
+         ${MillFields.description_bm01} $textType,
+         ${MillFields.description_lq01} $textType,
+         ${MillFields.description_lq02} $textType,
+         ${MillFields.description_sr01} $textType,
+         ${MillFields.description_bf01} $textType,
+         ${MillFields.description_fn01} $textType,
+         ${MillFields.description_rf01} $textType)
     ''');
 
     batch.commit();
@@ -86,8 +129,8 @@ class DatabaseMill {
     final db = await instance.database;
     final maps = await db.query(
       tableCheck,
-      columns: CheckMill.values,
-      where: '${CheckMill.id} = ?',
+      columns: MillFields.values,
+      where: '${MillFields.id} = ?',
       whereArgs: [id],
     );
 
@@ -101,7 +144,7 @@ class DatabaseMill {
   Future<List> readAllNotes() async {
     final db = await instance.database;
 
-    final orderBy = '${CheckMill.id}';
+    final orderBy = '${MillFields.time} ASC';
 
     final result = await db.query(tableCheck, orderBy: orderBy);
 

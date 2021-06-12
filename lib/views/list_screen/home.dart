@@ -1,7 +1,8 @@
 import 'package:Inspection/Database/database_mill.dart';
 import 'package:Inspection/template/data.dart';
-import 'package:Inspection/models/model_database/check_model.dart';
+import 'package:Inspection/model_database/check_model.dart';
 import 'package:Inspection/views/details_screen/home.dart';
+import 'package:Inspection/views/list_history_screen/list_history.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
@@ -33,10 +34,10 @@ class _HomeListScreenState extends State<HomeListScreen> {
               child: GestureDetector(
                   onTap: () {
                     print("Press");
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => Bismillah()),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ListHistory()),
+                    );
                   },
                   child: Icon(Icons.edit)),
             ),
@@ -44,11 +45,13 @@ class _HomeListScreenState extends State<HomeListScreen> {
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: () {
-                  // addData();
-                  _listData.forEach((element) {
-                    print(
-                        "Line 1 = ${element.code} = ${element.description_1}");
-                  });
+                  addCheckData();
+                  // _listData.forEach(
+                  //   (element) {
+                  //     print(
+                  //         "Line 1 = ${element.code} = ${element.description_1}");
+                  //   },
+                  // );
                 },
                 child: Icon(
                   Icons.send_and_archive,
@@ -166,6 +169,8 @@ class _HomeListScreenState extends State<HomeListScreen> {
 
   Future addCheckData() async {
     final check_1 = Check(
+      line: 1,
+      createTime: DateTime.now(),
       bf07: _listData[0].checklist_1,
       fn07: _listData[1].checklist_1,
       bf08: _listData[2].checklist_1,
@@ -205,8 +210,48 @@ class _HomeListScreenState extends State<HomeListScreen> {
       bf01: _listData[36].checklist_1,
       fn01: _listData[37].checklist_1,
       rf01: _listData[38].checklist_1,
+      description_fn07: _listData[1].description_1,
+      description_bf08: _listData[2].description_1,
+      description_fn08: _listData[3].description_1,
+      description_bf09: _listData[4].description_1,
+      description_fn09: _listData[5].description_1,
+      description_bf10: _listData[6].description_1,
+      description_fn10: _listData[7].description_1,
+      description_ng01: _listData[8].description_1,
+      description_ng02: _listData[9].description_1,
+      description_ng03: _listData[10].description_1,
+      description_ng04: _listData[11].description_1,
+      description_wf01: _listData[12].description_1,
+      description_wf02: _listData[13].description_1,
+      description_wf03: _listData[14].description_1,
+      description_wf04: _listData[15].description_1,
+      description_bc01: _listData[16].description_1,
+      description_bc02: _listData[17].description_1,
+      description_bf02: _listData[18].description_1,
+      description_fn02: _listData[19].description_1,
+      description_bf03: _listData[20].description_1,
+      description_fn03: _listData[21].description_1,
+      description_bf04: _listData[22].description_1,
+      description_fn04: _listData[23].description_1,
+      description_bf05: _listData[24].description_1,
+      description_fn05: _listData[25].description_1,
+      description_bf06: _listData[26].description_1,
+      description_fn06: _listData[27].description_1,
+      description_sc01: _listData[28].description_1,
+      description_sc02: _listData[29].description_1,
+      description_sc03: _listData[30].description_1,
+      description_be01: _listData[31].description_1,
+      description_bm01: _listData[32].description_1,
+      description_lq01: _listData[33].description_1,
+      description_lq02: _listData[34].description_1,
+      description_sr01: _listData[35].description_1,
+      description_bf01: _listData[36].description_1,
+      description_fn01: _listData[37].description_1,
+      description_rf01: _listData[38].description_1,
     );
     final check_2 = Check(
+      line: 2,
+      createTime: DateTime.now(),
       bf07: _listData[0].checklist_2,
       fn07: _listData[1].checklist_2,
       bf08: _listData[2].checklist_2,
@@ -246,6 +291,44 @@ class _HomeListScreenState extends State<HomeListScreen> {
       bf01: _listData[36].checklist_2,
       fn01: _listData[37].checklist_2,
       rf01: _listData[38].checklist_2,
+      description_fn07: _listData[1].description_2,
+      description_bf08: _listData[2].description_2,
+      description_fn08: _listData[3].description_2,
+      description_bf09: _listData[4].description_2,
+      description_fn09: _listData[5].description_2,
+      description_bf10: _listData[6].description_2,
+      description_fn10: _listData[7].description_2,
+      description_ng01: _listData[8].description_2,
+      description_ng02: _listData[9].description_2,
+      description_ng03: _listData[10].description_2,
+      description_ng04: _listData[11].description_2,
+      description_wf01: _listData[12].description_2,
+      description_wf02: _listData[13].description_2,
+      description_wf03: _listData[14].description_2,
+      description_wf04: _listData[15].description_2,
+      description_bc01: _listData[16].description_2,
+      description_bc02: _listData[17].description_2,
+      description_bf02: _listData[18].description_2,
+      description_fn02: _listData[19].description_2,
+      description_bf03: _listData[20].description_2,
+      description_fn03: _listData[21].description_2,
+      description_bf04: _listData[22].description_2,
+      description_fn04: _listData[23].description_2,
+      description_bf05: _listData[24].description_2,
+      description_fn05: _listData[25].description_2,
+      description_bf06: _listData[26].description_2,
+      description_fn06: _listData[27].description_2,
+      description_sc01: _listData[28].description_2,
+      description_sc02: _listData[29].description_2,
+      description_sc03: _listData[30].description_2,
+      description_be01: _listData[31].description_2,
+      description_bm01: _listData[32].description_2,
+      description_lq01: _listData[33].description_2,
+      description_lq02: _listData[34].description_2,
+      description_sr01: _listData[35].description_2,
+      description_bf01: _listData[36].description_2,
+      description_fn01: _listData[37].description_2,
+      description_rf01: _listData[38].description_2,
     );
 
     await DatabaseMill.instance

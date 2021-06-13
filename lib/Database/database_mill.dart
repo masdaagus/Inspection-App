@@ -1,3 +1,4 @@
+import 'package:Inspection/model_database/merge_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:Inspection/model_database/check_model.dart';
@@ -26,13 +27,11 @@ class DatabaseMill {
     final boolType = 'integer not null';
     final textType = 'text not null';
 
-    Batch batch = db.batch();
-
-    batch.execute('''
+    db.execute('''
       create table $tableCheck(
-         ${MillFields.id} $idType,
-         ${MillFields.line} $boolType,
-         ${MillFields.time} $textType,
+          ${MillFields.id} $idType,
+          ${MillFields.line} $boolType,
+          ${MillFields.time} $textType,
 
          ${MillFields.bf07} $boolType,
          ${MillFields.fn07} $boolType,
@@ -115,15 +114,21 @@ class DatabaseMill {
          ${MillFields.description_rf01} $textType)
     ''');
 
-    batch.commit();
+    db.execute('''
+      create table $tableMerge(
+        ${MergeFields.id} $idType,
+        ${MergeFields.time} $textType,
+        ${MergeFields.line1} $boolType,
+        ${MergeFields.line2} $boolType) VALUES(?, ?, ${MillFields.id}, ${MillFields.id})
+    ''');
   }
 
   Future<void> create({String table, Map<String, Object> mill}) async {
     final db = await instance.database;
-    Batch batch = db.batch();
-    batch.insert(table, mill);
 
-    batch.commit(noResult: true);
+    db.insert(table, mill);
+
+    print("Okayyyy");
   }
 
   Future readMill(int id) async {
@@ -150,5 +155,15 @@ class DatabaseMill {
     final result = await db.query(tableCheck, orderBy: orderBy);
 
     return result.map((json) => Check.fromJson(json)).toList();
+  }
+
+  Future<List> readAllMill() async {
+    final db = await instance.database;
+
+    final orderBy = '${MergeFields.time} ASC';
+
+    final result = await db.query(tableMerge, orderBy: orderBy);
+
+    return result.map((json) => Merge.fromJson(json)).toList();
   }
 }

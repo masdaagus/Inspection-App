@@ -1,4 +1,5 @@
 import 'package:Inspection/Database/database_mill.dart';
+import 'package:Inspection/model_database/merge_model.dart';
 import 'package:Inspection/template/data.dart';
 import 'package:Inspection/model_database/check_model.dart';
 import 'package:Inspection/views/details_screen/home.dart';
@@ -16,6 +17,11 @@ class HomeListScreen extends StatefulWidget {
 
 class _HomeListScreenState extends State<HomeListScreen> {
   List<DataMill> _listData = [];
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,19 +45,13 @@ class _HomeListScreenState extends State<HomeListScreen> {
                       MaterialPageRoute(builder: (context) => ListHistory()),
                     );
                   },
-                  child: Icon(Icons.edit)),
+                  child: Icon(Icons.check)),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
-                onTap: () {
+                onTap: () async {
                   addCheckData();
-                  // _listData.forEach(
-                  //   (element) {
-                  //     print(
-                  //         "Line 1 = ${element.code} = ${element.description_1}");
-                  //   },
-                  // );
                 },
                 child: Icon(
                   Icons.send_and_archive,
@@ -337,7 +337,21 @@ class _HomeListScreenState extends State<HomeListScreen> {
         .create(table: tableCheck, mill: check_1.toJson());
     await DatabaseMill.instance
         .create(table: tableCheck, mill: check_2.toJson());
+
+    // final merge = Merge(
+    //   createTime: DateTime.now(),
+    //   line1: check_1.id,
+    //   line2: check_2.id,
+    // );
+    // await DatabaseMill.instance.create(table: tableMerge, mill: merge.toJson());
   }
+
+  // Future mergeData() async {
+  //   final merge = Merge(
+  //     createTime: DateTime.now(),
+  //   );
+  //   await DatabaseMill.instance.create(table: tableMerge, mill: merge.toJson());
+  // }
 
   Widget iconSlide(DataMill data, BuildContext context) {
     return IconSlideAction(

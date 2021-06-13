@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 final String tableCheck = 'TableCheck';
+final String tableMerge = 'TableMerge';
 
 class MillFields {
   static final List<String> values = [
@@ -45,7 +46,46 @@ class MillFields {
     sr01,
     bf01,
     fn01,
-    rf01
+    rf01,
+    description_bf07,
+    description_fn07,
+    description_bf08,
+    description_fn08,
+    description_bf09,
+    description_fn09,
+    description_bf10,
+    description_fn10,
+    description_ng01,
+    description_ng02,
+    description_ng03,
+    description_ng04,
+    description_wf01,
+    description_wf02,
+    description_wf03,
+    description_wf04,
+    description_bc01,
+    description_bc02,
+    description_bf02,
+    description_fn02,
+    description_bf03,
+    description_fn03,
+    description_bf04,
+    description_fn04,
+    description_bf05,
+    description_fn05,
+    description_bf06,
+    description_fn06,
+    description_sc01,
+    description_sc02,
+    description_sc03,
+    description_be01,
+    description_bm01,
+    description_lq01,
+    description_lq02,
+    description_sr01,
+    description_bf01,
+    description_fn01,
+    description_rf01,
   ];
 
   static final String id = '_id';

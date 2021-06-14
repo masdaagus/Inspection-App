@@ -1,5 +1,5 @@
-import 'package:Inspection/views/list_history_screen/list_history.dart';
-import 'package:Inspection/views/list_screen/home.dart';
+import 'package:Inspection/views/page_history_screen/list_history.dart';
+import 'package:Inspection/views/input_screen/input.dart';
 import 'package:flutter/material.dart';
 
 class HomeChoice extends StatefulWidget {

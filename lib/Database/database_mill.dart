@@ -1,7 +1,8 @@
-import 'package:Inspection/model_database/merge_model.dart';
+// import 'package:Inspection/model_database/check_model.dart';
+import 'package:Inspection/model_database/mill_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:Inspection/model_database/check_model.dart';
+// import 'package:Inspection/model_database/check_model.dart';
 
 class DatabaseMill {
   static final DatabaseMill instance = DatabaseMill.init();
@@ -28,98 +29,169 @@ class DatabaseMill {
     final textType = 'text not null';
 
     db.execute('''
-      create table $tableCheck(
-          ${MillFields.id} $idType,
-          ${MillFields.line} $boolType,
-          ${MillFields.time} $textType,
+      create table $tableMill(
+       ${MillFields.id} $idType,
+       ${MillFields.time} $textType,
+          
+         ${MillFields.bf07l1} $boolType,
+         ${MillFields.fn07l1} $boolType,
+         ${MillFields.bf08l1} $boolType,
+         ${MillFields.fn08l1} $boolType,
+         ${MillFields.bf09l1} $boolType,
+         ${MillFields.fn09l1} $boolType,
+         ${MillFields.bf10l1} $boolType,
+         ${MillFields.fn10l1} $boolType,
+         ${MillFields.ng01l1} $boolType,
+         ${MillFields.ng02l1} $boolType,
+         ${MillFields.ng03l1} $boolType,
+         ${MillFields.ng04l1} $boolType,
+         ${MillFields.wf01l1} $boolType,
+         ${MillFields.wf02l1} $boolType,
+         ${MillFields.wf03l1} $boolType,
+         ${MillFields.wf04l1} $boolType,
+         ${MillFields.bc01l1} $boolType,
+         ${MillFields.bc02l1} $boolType,
+         ${MillFields.bf02l1} $boolType,
+         ${MillFields.fn02l1} $boolType,
+         ${MillFields.bf03l1} $boolType,
+         ${MillFields.fn03l1} $boolType,
+         ${MillFields.bf04l1} $boolType,
+         ${MillFields.fn04l1} $boolType,
+         ${MillFields.bf05l1} $boolType,
+         ${MillFields.fn05l1} $boolType,
+         ${MillFields.bf06l1} $boolType,
+         ${MillFields.fn06l1} $boolType,
+         ${MillFields.sc01l1} $boolType,
+         ${MillFields.sc02l1} $boolType,
+         ${MillFields.sc03l1} $boolType,
+         ${MillFields.be01l1} $boolType,
+         ${MillFields.bm01l1} $boolType,
+         ${MillFields.lq01l1} $boolType,
+         ${MillFields.lq02l1} $boolType,
+         ${MillFields.sr01l1} $boolType,
+         ${MillFields.bf01l1} $boolType,
+         ${MillFields.fn01l1} $boolType,
+         ${MillFields.rf01l1} $boolType,
 
-         ${MillFields.bf07} $boolType,
-         ${MillFields.fn07} $boolType,
-         ${MillFields.bf08} $boolType,
-         ${MillFields.fn08} $boolType,
-         ${MillFields.bf09} $boolType,
-         ${MillFields.fn09} $boolType,
-         ${MillFields.bf10} $boolType,
-         ${MillFields.fn10} $boolType,
-         ${MillFields.ng01} $boolType,
-         ${MillFields.ng02} $boolType,
-         ${MillFields.ng03} $boolType,
-         ${MillFields.ng04} $boolType,
-         ${MillFields.wf01} $boolType,
-         ${MillFields.wf02} $boolType,
-         ${MillFields.wf03} $boolType,
-         ${MillFields.wf04} $boolType,
-         ${MillFields.bc01} $boolType,
-         ${MillFields.bc02} $boolType,
-         ${MillFields.bf02} $boolType,
-         ${MillFields.fn02} $boolType,
-         ${MillFields.bf03} $boolType,
-         ${MillFields.fn03} $boolType,
-         ${MillFields.bf04} $boolType,
-         ${MillFields.fn04} $boolType,
-         ${MillFields.bf05} $boolType,
-         ${MillFields.fn05} $boolType,
-         ${MillFields.bf06} $boolType,
-         ${MillFields.fn06} $boolType,
-         ${MillFields.sc01} $boolType,
-         ${MillFields.sc02} $boolType,
-         ${MillFields.sc03} $boolType,
-         ${MillFields.be01} $boolType,
-         ${MillFields.bm01} $boolType,
-         ${MillFields.lq01} $boolType,
-         ${MillFields.lq02} $boolType,
-         ${MillFields.sr01} $boolType,
-         ${MillFields.bf01} $boolType,
-         ${MillFields.fn01} $boolType,
-         ${MillFields.rf01} $boolType,
+          ${MillFields.bf07l2} $boolType,
+          ${MillFields.fn07l2} $boolType,
+          ${MillFields.bf08l2} $boolType,
+          ${MillFields.fn08l2} $boolType,
+          ${MillFields.bf09l2} $boolType,
+          ${MillFields.fn09l2} $boolType,
+          ${MillFields.bf10l2} $boolType,
+          ${MillFields.fn10l2} $boolType,
+          ${MillFields.ng01l2} $boolType,
+          ${MillFields.ng02l2} $boolType,
+          ${MillFields.ng03l2} $boolType,
+          ${MillFields.ng04l2} $boolType,
+          ${MillFields.wf01l2} $boolType,
+          ${MillFields.wf02l2} $boolType,
+          ${MillFields.wf03l2} $boolType,
+          ${MillFields.wf04l2} $boolType,
+          ${MillFields.bc01l2} $boolType,
+          ${MillFields.bc02l2} $boolType,
+          ${MillFields.bf02l2} $boolType,
+          ${MillFields.fn02l2} $boolType,
+          ${MillFields.bf03l2} $boolType,
+          ${MillFields.fn03l2} $boolType,
+          ${MillFields.bf04l2} $boolType,
+          ${MillFields.fn04l2} $boolType,
+          ${MillFields.bf05l2} $boolType,
+          ${MillFields.fn05l2} $boolType,
+          ${MillFields.bf06l2} $boolType,
+          ${MillFields.fn06l2} $boolType,
+          ${MillFields.sc01l2} $boolType,
+          ${MillFields.sc02l2} $boolType,
+          ${MillFields.sc03l2} $boolType,
+          ${MillFields.be01l2} $boolType,
+          ${MillFields.bm01l2} $boolType,
+          ${MillFields.lq01l2} $boolType,
+          ${MillFields.lq02l2} $boolType,
+          ${MillFields.sr01l2} $boolType,
+          ${MillFields.bf01l2} $boolType,
+          ${MillFields.fn01l2} $boolType,
+          ${MillFields.rf01l2} $boolType,
+  
+           ${MillFields.desbf07l1} $textType,
+           ${MillFields.desfn07l1} $textType,
+           ${MillFields.desbf08l1} $textType,
+           ${MillFields.desfn08l1} $textType,
+           ${MillFields.desbf09l1} $textType,
+           ${MillFields.desfn09l1} $textType,
+           ${MillFields.desbf10l1} $textType,
+           ${MillFields.desfn10l1} $textType,
+           ${MillFields.desng01l1} $textType,
+           ${MillFields.desng02l1} $textType,
+           ${MillFields.desng03l1} $textType,
+           ${MillFields.desng04l1} $textType,
+           ${MillFields.deswf01l1} $textType,
+           ${MillFields.deswf02l1} $textType,
+           ${MillFields.deswf03l1} $textType,
+           ${MillFields.deswf04l1} $textType,
+           ${MillFields.desbc01l1} $textType,
+           ${MillFields.desbc02l1} $textType,
+           ${MillFields.desbf02l1} $textType,
+           ${MillFields.desfn02l1} $textType,
+           ${MillFields.desbf03l1} $textType,
+           ${MillFields.desfn03l1} $textType,
+           ${MillFields.desbf04l1} $textType,
+           ${MillFields.desfn04l1} $textType,
+           ${MillFields.desbf05l1} $textType,
+           ${MillFields.desfn05l1} $textType,
+           ${MillFields.desbf06l1} $textType,
+           ${MillFields.desfn06l1} $textType,
+           ${MillFields.dessc01l1} $textType,
+           ${MillFields.dessc02l1} $textType,
+           ${MillFields.dessc03l1} $textType,
+           ${MillFields.desbe01l1} $textType,
+           ${MillFields.desbm01l1} $textType,
+           ${MillFields.deslq01l1} $textType,
+           ${MillFields.deslq02l1} $textType,
+           ${MillFields.dessr01l1} $textType,
+           ${MillFields.desbf01l1} $textType,
+           ${MillFields.desfn01l1} $textType,
+           ${MillFields.desrf01l1} $textType,
 
-         ${MillFields.description_bf07} $textType,
-         ${MillFields.description_fn07} $textType,
-         ${MillFields.description_bf08} $textType,
-         ${MillFields.description_fn08} $textType,
-         ${MillFields.description_bf09} $textType,
-         ${MillFields.description_fn09} $textType,
-         ${MillFields.description_bf10} $textType,
-         ${MillFields.description_fn10} $textType,
-         ${MillFields.description_ng01} $textType,
-         ${MillFields.description_ng02} $textType,
-         ${MillFields.description_ng03} $textType,
-         ${MillFields.description_ng04} $textType,
-         ${MillFields.description_wf01} $textType,
-         ${MillFields.description_wf02} $textType,
-         ${MillFields.description_wf03} $textType,
-         ${MillFields.description_wf04} $textType,
-         ${MillFields.description_bc01} $textType,
-         ${MillFields.description_bc02} $textType,
-         ${MillFields.description_bf02} $textType,
-         ${MillFields.description_fn02} $textType,
-         ${MillFields.description_bf03} $textType,
-         ${MillFields.description_fn03} $textType,
-         ${MillFields.description_bf04} $textType,
-         ${MillFields.description_fn04} $textType,
-         ${MillFields.description_bf05} $textType,
-         ${MillFields.description_fn05} $textType,
-         ${MillFields.description_bf06} $textType,
-         ${MillFields.description_fn06} $textType,
-         ${MillFields.description_sc01} $textType,
-         ${MillFields.description_sc02} $textType,
-         ${MillFields.description_sc03} $textType,
-         ${MillFields.description_be01} $textType,
-         ${MillFields.description_bm01} $textType,
-         ${MillFields.description_lq01} $textType,
-         ${MillFields.description_lq02} $textType,
-         ${MillFields.description_sr01} $textType,
-         ${MillFields.description_bf01} $textType,
-         ${MillFields.description_fn01} $textType,
-         ${MillFields.description_rf01} $textType)
-    ''');
-
-    db.execute('''
-      create table $tableMerge(
-        ${MergeFields.id} $idType,
-        ${MergeFields.time} $textType,
-        ${MergeFields.line1} $boolType,
-        ${MergeFields.line2} $boolType) VALUES(?, ?, ${MillFields.id}, ${MillFields.id})
+            ${MillFields.desbf07l2} $textType,    
+            ${MillFields.desfn07l2} $textType,    
+            ${MillFields.desbf08l2} $textType,    
+            ${MillFields.desfn08l2} $textType,    
+            ${MillFields.desbf09l2} $textType,    
+            ${MillFields.desfn09l2} $textType,    
+            ${MillFields.desbf10l2} $textType,    
+            ${MillFields.desfn10l2} $textType,    
+            ${MillFields.desng01l2} $textType,    
+            ${MillFields.desng02l2} $textType,    
+            ${MillFields.desng03l2} $textType,    
+            ${MillFields.desng04l2} $textType,    
+            ${MillFields.deswf01l2} $textType,    
+            ${MillFields.deswf02l2} $textType,    
+            ${MillFields.deswf03l2} $textType,    
+            ${MillFields.deswf04l2} $textType,    
+            ${MillFields.desbc01l2} $textType,    
+            ${MillFields.desbc02l2} $textType,    
+            ${MillFields.desbf02l2} $textType,    
+            ${MillFields.desfn02l2} $textType,    
+            ${MillFields.desbf03l2} $textType,    
+            ${MillFields.desfn03l2} $textType,    
+            ${MillFields.desbf04l2} $textType,    
+            ${MillFields.desfn04l2} $textType,    
+            ${MillFields.desbf05l2} $textType,    
+            ${MillFields.desfn05l2} $textType,    
+            ${MillFields.desbf06l2} $textType,    
+            ${MillFields.desfn06l2} $textType,    
+            ${MillFields.dessc01l2} $textType,    
+            ${MillFields.dessc02l2} $textType,    
+            ${MillFields.dessc03l2} $textType,    
+            ${MillFields.desbe01l2} $textType,    
+            ${MillFields.desbm01l2} $textType,    
+            ${MillFields.deslq01l2} $textType,    
+            ${MillFields.deslq02l2} $textType,    
+            ${MillFields.dessr01l2} $textType,    
+            ${MillFields.desbf01l2} $textType,    
+            ${MillFields.desfn01l2} $textType,    
+            ${MillFields.desrf01l2} $textType)
     ''');
   }
 
@@ -127,21 +199,19 @@ class DatabaseMill {
     final db = await instance.database;
 
     db.insert(table, mill);
-
-    print("Okayyyy");
   }
 
   Future readMill(int id) async {
     final db = await instance.database;
     final maps = await db.query(
-      tableCheck,
+      tableMill,
       columns: MillFields.values,
       where: '${MillFields.id} = ?',
       whereArgs: [id],
     );
 
     if (maps.isNotEmpty) {
-      return Check.fromJson(maps.first);
+      return Mill.fromJson(maps.first);
     } else {
       throw Exception('ID $id not found');
     }
@@ -152,18 +222,8 @@ class DatabaseMill {
 
     final orderBy = '${MillFields.time} ASC';
 
-    final result = await db.query(tableCheck, orderBy: orderBy);
+    final result = await db.query(tableMill, orderBy: orderBy);
 
-    return result.map((json) => Check.fromJson(json)).toList();
-  }
-
-  Future<List> readAllMill() async {
-    final db = await instance.database;
-
-    final orderBy = '${MergeFields.time} ASC';
-
-    final result = await db.query(tableMerge, orderBy: orderBy);
-
-    return result.map((json) => Merge.fromJson(json)).toList();
+    return result.map((json) => Mill.fromJson(json)).toList();
   }
 }

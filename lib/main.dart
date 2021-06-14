@@ -1,7 +1,7 @@
-import 'package:Inspection/views/models/data_model.dart';
 import 'package:Inspection/views/login_scren/login.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'models/data_model.dart';
 
 void main() {
   runApp(MultiProvider(

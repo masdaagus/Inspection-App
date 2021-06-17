@@ -1,3 +1,4 @@
+import 'package:Inspection/views/const/const.dart';
 import 'package:flutter/material.dart';
 import 'components/button.dart';
 import 'components/image&text.dart';
@@ -7,20 +8,13 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: bagroundColor,
       body: GestureDetector(
         onTap: () {
           FocusScope.of(context).requestFocus(new FocusNode());
         },
         child: Container(
-          // decoration: BoxDecoration(
-          //     gradient: LinearGradient(
-          //         begin: Alignment.topCenter,
-          //         end: Alignment.bottomCenter,
-          //         colors: [
-          //       Color(0xff2b2d42).withOpacity(.55),
-          //       Color(0xff183C4A).withOpacity(.65)
-          //     ])),
-          padding: EdgeInsets.symmetric(vertical: 1, horizontal: 12),
+          padding: EdgeInsets.symmetric(horizontal: 12),
           child: ListView(
             children: [
               Column(

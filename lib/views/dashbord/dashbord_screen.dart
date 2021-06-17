@@ -1,3 +1,4 @@
+import 'package:Inspection/views/const/const.dart';
 import 'package:Inspection/views/page_history_screen/list_history.dart';
 import 'package:Inspection/views/input_screen/input.dart';
 import 'package:flutter/material.dart';
@@ -11,10 +12,11 @@ class _HomeChoiceState extends State<HomeChoice> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: bagroundColor,
       appBar: AppBar(
+        backgroundColor: bagroundColor,
         centerTitle: true,
         elevation: 0,
-        leading: Icon(Icons.menu),
         title: Text("Dashbord"),
         actions: <Widget>[
           Padding(
@@ -91,18 +93,10 @@ class DashbordCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            offset: Offset(0, 17),
-            blurRadius: 23,
-            spreadRadius: -13,
-            color: Color(0xFFE6E6E6),
-          ),
-        ],
-        gradient: LinearGradient(
-            colors: [Color(0xffB1B5C8), Color(0xffD7D9E3)],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter),
+        gradient: LinearGradient(colors: [
+          Color(0xffD7D9E3).withOpacity(.4),
+          Color(0xffB1B5C8).withOpacity(.43),
+        ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
         borderRadius: BorderRadius.circular(13),
       ),
       child: Material(
@@ -121,7 +115,10 @@ class DashbordCard extends StatelessWidget {
               ),
               Text(
                 tittle,
-                style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                    color: Color(0xff003049)),
               )
             ],
           ),

@@ -2,9 +2,11 @@ import 'package:Inspection/Database/database_mill.dart';
 import 'package:Inspection/model_database/mill_model.dart';
 import 'package:Inspection/models/data_model.dart';
 import 'package:Inspection/template/data.dart';
+import 'package:Inspection/views/const/const.dart';
 import 'package:Inspection/views/input_detail_screen/input_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class HomeListScreen extends StatefulWidget {
@@ -15,157 +17,238 @@ class HomeListScreen extends StatefulWidget {
 class _HomeListScreenState extends State<HomeListScreen> {
   List<DataMill> _listData = [];
 
-  @override
-  void initState() {
-    super.initState();
-  }
+  DateTime now = DateTime.now();
+  DateFormat f = new DateFormat('dd-MM-yyyy');
+  int jam12 = 0;
 
   @override
   Widget build(BuildContext context) {
+    print("update screen");
     final provider = Provider.of<DataModel>(context, listen: false);
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "INSPECTION MILL",
-            style: TextStyle(fontSize: 17),
-          ),
-          centerTitle: true,
-          actions: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GestureDetector(
-                  onTap: () {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (builder) => ListHistoryMerge()));
-                  },
-                  child: Icon(Icons.check)),
+      backgroundColor: bagroundColor,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: bagroundColor,
+        centerTitle: true,
+        title: Text(
+          "INSPECTION MILL",
+          style: TextStyle(fontSize: 17),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GestureDetector(
+              onTap: () async {
+                // addCheckData();
+              },
+              child: Icon(Icons.send_and_archive),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GestureDetector(
-                onTap: () async {
-                  addCheckData();
-                },
-                child: Icon(
-                  Icons.send_and_archive,
+          )
+        ],
+      ),
+      body: Material(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                margin: edge10,
+                padding: edge10,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: bagroundId,
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomRight),
+                    borderRadius: BorderRadius.circular(10)),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.person, size: 40),
+                            SizedBox(width: 2),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Masda agus",
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                SizedBox(height: 2),
+                                Text(
+                                  "83748798",
+                                  style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.grey[600]),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text("Shift 3",
+                                style: TextStyle(
+                                    fontSize: 10, fontWeight: FontWeight.w500)),
+                            Text(f.format(now),
+                                style: TextStyle(
+                                    fontSize: 10, fontWeight: FontWeight.w500)),
+                          ],
+                        ),
+                        SizedBox(width: 3),
+                        IconButton(
+                            icon: Icon(Icons.calendar_today),
+                            onPressed: () {
+                              showDatePicker(
+                                  context: context,
+                                  initialDate: now,
+                                  firstDate: DateTime(2000),
+                                  lastDate: DateTime(2022),
+                                  builder: (context, child) {
+                                    return Theme(
+                                      data: ThemeData.dark(),
+                                      child: child,
+                                    );
+                                  }).then((value) {
+                                if (value != null) {
+                                  print(value);
+                                  setState(() {
+                                    now = value;
+                                  });
+                                }
+                              });
+                            })
+                        // Icon(Icons.calendar_today, size: 28),
+                      ],
+                    )
+                  ],
                 ),
               ),
-            )
-          ],
-        ),
-        body: Material(
-          child: Container(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  FutureBuilder(
-                    future: fetchData(context),
-                    builder: (context, snapshot) {
-                      // Memasukkan hasil data ke dalam _listData
-                      _listData = snapshot.data;
+              FutureBuilder(
+                future: fetchData(context),
+                builder: (context, snapshot) {
+                  // Memasukkan hasil data ke dalam _listData
+                  _listData = snapshot.data;
 
-                      if (snapshot.data == null) {
-                        return Container(
-                            child: Center(child: Text("Loading...")));
-                      } else {
-                        return ListView.builder(
-                            physics: NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: snapshot.data.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              DataMill data = snapshot.data[index];
+                  if (snapshot.data == null) {
+                    return Container(child: Center(child: Text("Loading...")));
+                  } else {
+                    return ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: snapshot.data.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          DataMill data = snapshot.data[index];
 
-                              return Column(
-                                children: [
-                                  Slidable(
-                                    secondaryActions: <Widget>[
-                                      iconSlide(data, context),
-                                    ],
-                                    actionExtentRatio: .20,
-                                    actionPane: SlidableDrawerActionPane(),
-                                    child: ListTile(
-                                      contentPadding:
-                                          EdgeInsets.symmetric(horizontal: 7),
-                                      title: Text(
-                                        data.equipments,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600),
-                                      ),
-                                      subtitle: Text(
-                                        data.checkpoints,
-                                      ),
-                                      tileColor: Colors.grey[300],
-                                      leading: Text(
-                                        "\t4#6\n${data.code}",
-                                        style: TextStyle(
-                                            color: Colors.black45,
-                                            fontSize: 11),
-                                      ),
-                                      trailing: Container(
-                                        width: 96,
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            // CheckBox Line 1
-                                            Transform.scale(
-                                                scale: .8,
-                                                child: Consumer<DataModel>(
-                                                  builder:
-                                                      (context, model, _) =>
-                                                          Checkbox(
-                                                    value: data.checklist_1,
-                                                    onChanged: (value) {
-                                                      provider.tesbox(data
-                                                          .checklist_1 = value);
-                                                      print(data.code +
-                                                          ' - ' +
-                                                          data.checklist_1
-                                                              .toString());
-                                                    },
-                                                  ),
-                                                )),
-                                            // CheckBox Line 2
-                                            Transform.scale(
-                                              scale: .8,
+                          return Column(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Color(0xffced4da)),
+                                child: Slidable(
+                                  secondaryActions: <Widget>[
+                                    iconSlide(data, context),
+                                  ],
+                                  actionExtentRatio: .20,
+                                  actionPane: SlidableDrawerActionPane(),
+                                  child: ListTile(
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
+                                    title: Text(
+                                      data.equipments,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    subtitle: Text(
+                                      data.checkpoints,
+                                    ),
+                                    leading: Text(
+                                      "\t4#6\n${data.code}",
+                                      style: TextStyle(
+                                          color: Colors.black45, fontSize: 11),
+                                    ),
+                                    trailing: Container(
+                                      width: 100,
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          // CheckBox Line 1
+                                          Transform.scale(
+                                              scale: .9,
                                               child: Consumer<DataModel>(
                                                 builder: (context, model, _) =>
                                                     Checkbox(
-                                                  value: data.checklist_2,
+                                                  value: data.checklist_1,
                                                   onChanged: (value) {
                                                     provider.tesbox(data
-                                                        .checklist_2 = value);
-                                                    print('Line - 2');
+                                                        .checklist_1 = value);
+                                                    print(data.code +
+                                                        ' - ' +
+                                                        data.checklist_1
+                                                            .toString());
                                                   },
                                                 ),
+                                              )),
+                                          // CheckBox Line 2
+                                          Transform.scale(
+                                            scale: .9,
+                                            child: Consumer<DataModel>(
+                                              builder: (context, model, _) =>
+                                                  Checkbox(
+                                                value: data.checklist_2,
+                                                onChanged: (value) {
+                                                  provider.tesbox(
+                                                      data.checklist_2 = value);
+                                                  print('Line - 2');
+                                                },
                                               ),
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
-                                      dense: true,
                                     ),
+                                    dense: true,
                                   ),
-                                  Divider(height: 1, color: Colors.black),
-                                ],
-                              );
-                            });
-                      }
-                    },
-                  ),
-                  SizedBox(height: 5),
-                ],
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 15, right: 15),
+                                child: Divider(
+                                    height: .5, color: Color(0xff001f30)),
+                              ),
+                            ],
+                          );
+                        });
+                  }
+                },
               ),
-            ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   Future addCheckData() async {
     final inputToDatasbe = Mill(
-      createTime: DateTime.now(),
+      createTime: now,
 
       // Line 1
       bf07l1: _listData[0].checklist_1,

@@ -1,5 +1,6 @@
 import 'package:Inspection/Database/database_mill.dart';
 import 'package:Inspection/model_database/mill_model.dart';
+import 'package:Inspection/views/const/const.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -32,7 +33,7 @@ class _DetailHistoryState extends State<DetailHistory> {
 
   @override
   Widget build(BuildContext context) {
-    final DateFormat format = new DateFormat('dd-MM-yyyy HH:mm');
+    final DateFormat formatDate = new DateFormat('dd-MM-yyyy HH:mm');
     final String bagfilter = 'Bag Filter';
     final String fncf = 'Motor temperatur dan vibrasi';
     final String bfcf = 'Hopper, cerobong dan sistem purging';
@@ -60,7 +61,7 @@ class _DetailHistoryState extends State<DetailHistory> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          format.format(data.createTime),
+          formatDate.format(data.createTime),
           style: TextStyle(fontSize: 13),
         ),
         centerTitle: true,
@@ -73,15 +74,16 @@ class _DetailHistoryState extends State<DetailHistory> {
                 scrollDirection: Axis.vertical,
                 child: SafeArea(
                   child: DataTable(
+                    columnSpacing: 28,
                     columns: [
-                      DataColumn(label: Text("No")),
-                      DataColumn(label: Text("Code")),
-                      DataColumn(label: Text("Equipments")),
-                      DataColumn(label: Text("CHECKPOINTS")),
-                      DataColumn(label: Text("Line 1")),
-                      DataColumn(label: Text("Line 2")),
-                      DataColumn(label: Text("Remarks 1")),
-                      DataColumn(label: Text("Remarks 2")),
+                      DataColumn(label: Text("No", style: kTextstyle)),
+                      DataColumn(label: Text("Code", style: kTextstyle)),
+                      DataColumn(label: Text("Equipments", style: kTextstyle)),
+                      DataColumn(label: Text("CHECKPOINTS", style: kTextstyle)),
+                      DataColumn(label: Text("Line 1", style: kTextstyle)),
+                      DataColumn(label: Text("Line 2", style: kTextstyle)),
+                      DataColumn(label: Text("Remarks 1", style: kTextstyle)),
+                      DataColumn(label: Text("Remarks 2", style: kTextstyle)),
                     ],
                     rows: [
                       DataRow(cells: [

@@ -16,10 +16,8 @@ class HomeListScreen extends StatefulWidget {
 
 class _HomeListScreenState extends State<HomeListScreen> {
   List<DataMill> _listData = [];
-
   DateTime now = DateTime.now();
   DateFormat f = new DateFormat('dd-MM-yyyy');
-  int jam12 = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +39,7 @@ class _HomeListScreenState extends State<HomeListScreen> {
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
               onTap: () async {
-                // addCheckData();
+                _alertDialog();
               },
               child: Icon(Icons.send_and_archive),
             ),
@@ -244,6 +242,48 @@ class _HomeListScreenState extends State<HomeListScreen> {
         ),
       ),
     );
+  }
+
+  void _showSnackBar(String text, String ans) {
+    final snackBar = SnackBar(
+        duration: Duration(milliseconds: 1000),
+        backgroundColor:
+            ans.compareTo("Yes") == 0 ? bagroundColor : bagroundColor,
+        content: Text(text));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  Future<void> _alertDialog() async {
+    switch (await showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Text('Send Inspection ?'),
+            title: Text('Inspection'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  addCheckData();
+                  Navigator.pop(context, "Yes");
+                },
+                child: const Text('Yes'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context, "No");
+                },
+                child: const Text('No'),
+              ),
+            ],
+          );
+        })) {
+      case "Yes":
+        _showSnackBar("Inspection Berhasil", "Yes");
+        break;
+      case "No":
+        _showSnackBar("Inspection Dibatalkan", "No");
+        break;
+    }
   }
 
   Future addCheckData() async {

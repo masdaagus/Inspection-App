@@ -1,7 +1,6 @@
 import 'package:Inspection/Database/database_mill.dart';
 import 'package:Inspection/model_database/mill_model.dart';
 import 'package:Inspection/views/const/const.dart';
-import 'package:Inspection/views/screens/detail_history/detail_history.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 

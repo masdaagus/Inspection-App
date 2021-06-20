@@ -2,6 +2,7 @@ import 'package:Inspection/views/const/const.dart';
 import 'package:Inspection/views/screens/input/input.dart';
 
 import 'package:Inspection/views/screens/page_history/list_history.dart';
+import 'package:Inspection/views/screens/pdf_invoice/pdf_page.dart';
 import 'package:flutter/material.dart';
 
 class Dashbaord extends StatefulWidget {
@@ -70,7 +71,12 @@ class _DashboardState extends State<Dashbaord> {
                 DashbordCard(
                   tittle: "My Sheet",
                   image: "assets/images/icons8-bookmark-64.png",
-                  press: () {},
+                  press: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => PdfScreen()),
+                    );
+                  },
                 ),
               ]),
         ),

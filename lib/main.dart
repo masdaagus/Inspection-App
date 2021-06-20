@@ -1,7 +1,9 @@
-import 'package:Inspection/views/login_scren/login.dart';
+import 'models/data_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'models/data_model.dart';
+import 'views/screens/dashbord/dashbord.dart';
+import 'views/screens/input/input.dart';
+import 'views/screens/login_scren/login.dart';
 
 void main() {
   runApp(MultiProvider(
@@ -22,6 +24,10 @@ class MyApp extends StatelessWidget {
       title: 'Inspection Form Field',
       theme: ThemeData(),
       home: HomePage(),
+      routes: {
+        InputScreen.routName: (ctx) => InputScreen(),
+        Dashbaord.routeName: (ctx) => Dashbaord(),
+      },
     );
   }
 }

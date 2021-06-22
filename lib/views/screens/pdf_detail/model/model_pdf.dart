@@ -11,14 +11,16 @@ class Invoice {
 }
 
 class InvoiceItem {
+  final int no;
   final String code;
   final String equipments;
   final String checkpoints;
-  final bool line1;
-  final bool line2;
+  bool line1;
+  bool line2;
   final String remarksline1;
   final String remarksline2;
-  const InvoiceItem({
+  InvoiceItem({
+    @required this.no,
     @required this.code,
     @required this.equipments,
     @required this.checkpoints,

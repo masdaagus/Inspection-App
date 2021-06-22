@@ -6,11 +6,14 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pdf/widgets.dart';
 
+import '../model/model_pdf.dart';
 import 'detail_api.dart';
 
 class PdfPageApi {
-  static Future<File> generate(Invoice invoice1, Invoice invoice2) async {
+  static Future<File> generate(Invoice invoice1, {Invoice invoice}) async {
     final pdf = Document();
+    // final masdasvg =
+    //     await rootBundle.loadString("assets/svg/icons8-checkmark.svg");
 
     pdf.addPage(MultiPage(
         pageFormat: PdfPageFormat.legal,
@@ -21,12 +24,12 @@ class PdfPageApi {
               buildTableMill1(invoice1),
             ]));
 
-    pdf.addPage(MultiPage(
-        pageFormat: PdfPageFormat.legal,
-        orientation: PageOrientation.landscape,
-        build: (context) => [
-              buildTableMill1(invoice1),
-            ]));
+    // pdf.addPage(MultiPage(
+    //     pageFormat: PdfPageFormat.legal,
+    //     orientation: PageOrientation.landscape,
+    //     build: (context) => [
+    //           buildTableMill1(invoice),
+    //         ]));
 
     return PdfDetailApi.saveDocument(name: "${invoice1.date}.pdf", pdf: pdf);
   }
@@ -70,6 +73,7 @@ class PdfPageApi {
 
   static Widget buildTableMill1(Invoice invoice1) {
     final headers = [
+      'No',
       'Code',
       'Equipments',
       'Checkpoints',
@@ -81,16 +85,31 @@ class PdfPageApi {
 
     final data = invoice1.items.map((item) {
       return [
+        item.no,
         item.code,
         item.equipments,
         item.checkpoints,
-        item.line1,
-        item.line2,
+        item.line1 ? "O" : "X",
+        item.line2 ? "O" : "X",
         item.remarksline1,
         item.remarksline2
       ];
     }).toList();
 
-    return Table.fromTextArray(headers: headers, data: data);
+    return Table.fromTextArray(
+      headers: headers,
+      data: data,
+      cellAlignments: {
+        0: pw.Alignment.center,
+        4: pw.Alignment.center,
+        5: pw.Alignment.center,
+      },
+      cellHeight: .8 * PdfPageFormat.cm,
+      headerStyle: pw.TextStyle(fontWeight: FontWeight.bold),
+      headerDecoration: pw.BoxDecoration(color: PdfColors.grey300),
+      headerAlignments: {
+        1: pw.Alignment.topLeft,
+      },
+    );
   }
 }

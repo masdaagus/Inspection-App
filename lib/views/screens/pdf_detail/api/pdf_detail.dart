@@ -10,7 +10,7 @@ import '../model/model_pdf.dart';
 import 'detail_api.dart';
 
 class PdfPageApi {
-  static Future<File> generate(Invoice invoice1, {Invoice invoice}) async {
+  static Future<File> generate(Invoice invoice) async {
     final pdf = Document();
     // final masdasvg =
     //     await rootBundle.loadString("assets/svg/icons8-checkmark.svg");
@@ -19,19 +19,13 @@ class PdfPageApi {
         pageFormat: PdfPageFormat.legal,
         orientation: PageOrientation.landscape,
         build: (context) => [
-              buildLogo(),
+              buildLogo(invoice),
               SizedBox(height: 0.8 * PdfPageFormat.cm),
-              buildTableMill1(invoice1),
+              buildTableMill1(invoice),
             ]));
 
-    // pdf.addPage(MultiPage(
-    //     pageFormat: PdfPageFormat.legal,
-    //     orientation: PageOrientation.landscape,
-    //     build: (context) => [
-    //           buildTableMill1(invoice),
-    //         ]));
-
-    return PdfDetailApi.saveDocument(name: "${invoice1.date}.pdf", pdf: pdf);
+    return PdfDetailApi.saveDocument(
+        name: "Inspection_${invoice.date}.pdf", pdf: pdf);
   }
 
   static Widget buildTittel() =>
@@ -45,7 +39,7 @@ class PdfPageApi {
         SizedBox(height: 0.8 * PdfPageFormat.cm),
       ]);
 
-  static Widget buildLogo() {
+  static Widget buildLogo(Invoice invoice) {
     return Row(
       mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
       crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -61,7 +55,7 @@ class PdfPageApi {
           Text("ID\t\t\t\t\t\t\t\t:\t\t 26458364",
               style: pw.TextStyle(fontWeight: FontWeight.bold)),
           SizedBox(height: 0.05 * PdfPageFormat.cm),
-          Text("Date\t\t\t\t:\t\t 22 Januari 2020",
+          Text("Date\t\t\t\t:\t\t ${invoice.date}",
               style: pw.TextStyle(fontWeight: FontWeight.bold)),
           SizedBox(height: 0.05 * PdfPageFormat.cm),
           Text("Page\t\t\t:\t\t 1 of 3",
@@ -71,7 +65,7 @@ class PdfPageApi {
     );
   }
 
-  static Widget buildTableMill1(Invoice invoice1) {
+  static Widget buildTableMill1(Invoice invoice) {
     final headers = [
       'No',
       'Code',
@@ -83,7 +77,7 @@ class PdfPageApi {
       'Remarks 2'
     ];
 
-    final data = invoice1.items.map((item) {
+    final data = invoice.items.map((item) {
       return [
         item.no,
         item.code,

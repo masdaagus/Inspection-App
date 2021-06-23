@@ -83,7 +83,7 @@ class _InputDetailScreenState extends State<InputDetailScreen> {
                         onChanged: (value) {
                           widget.data.description_1 = value;
                         },
-                        maxLines: 8,
+                        maxLines: 6,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15)),
@@ -101,7 +101,7 @@ class _InputDetailScreenState extends State<InputDetailScreen> {
                         onChanged: (value) {
                           widget.data.description_2 = value;
                         },
-                        maxLines: 8,
+                        maxLines: 6,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15)),

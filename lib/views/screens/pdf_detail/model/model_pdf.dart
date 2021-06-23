@@ -15,11 +15,11 @@ class InvoiceItem {
   final String code;
   final String equipments;
   final String checkpoints;
-  bool line1;
-  bool line2;
+  final bool line1;
+  final bool line2;
   final String remarksline1;
   final String remarksline2;
-  InvoiceItem({
+  const InvoiceItem({
     @required this.no,
     @required this.code,
     @required this.equipments,

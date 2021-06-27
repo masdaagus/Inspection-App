@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 
 final String tableMill = 'TableMill';
 
+final String tableUser = 'TableUser';
+
 class MillFields {
   static final List<String> values = [
     id,

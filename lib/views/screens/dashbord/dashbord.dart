@@ -12,6 +12,11 @@ class Dashbaord extends StatefulWidget {
 
 class _DashboardState extends State<Dashbaord> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -36,10 +41,11 @@ class _DashboardState extends State<Dashbaord> {
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [
-            Color(0xff30638e).withOpacity(.1),
-            Color(0xff003d5b).withOpacity(.1),
-          ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+            gradient: LinearGradient(colors: [
+              Color(0xff30638e).withOpacity(.1),
+              Color(0xff003d5b).withOpacity(.1),
+            ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+          ),
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
           child: GridView.count(
               crossAxisCount: 2,
@@ -48,13 +54,13 @@ class _DashboardState extends State<Dashbaord> {
               children: <Widget>[
                 DashbordCard(
                     tittle: "Inspection",
-                    image: "assets/images/icons8-pen-64.png",
+                    image: "assets/icons/icons8-pen-64.png",
                     press: () async {
                       Navigator.pushNamed(context, InputScreen.routName);
                     }),
                 DashbordCard(
                   tittle: "History",
-                  image: "assets/images/icons8-order-history-64.png",
+                  image: "assets/icons/icons8-order-history-64.png",
                   press: () {
                     Navigator.push(
                       context,
@@ -64,12 +70,12 @@ class _DashboardState extends State<Dashbaord> {
                 ),
                 DashbordCard(
                   tittle: "Sampling",
-                  image: "assets/images/icons8-weight-kg-64.png",
+                  image: "assets/icons/icons8-auction-64.png",
                   press: () {},
                 ),
                 DashbordCard(
                   tittle: "My Sheet",
-                  image: "assets/images/icons8-bookmark-64.png",
+                  image: "assets/icons/icons8-bookmark-page-64.png",
                   press: () {},
                 ),
               ]),

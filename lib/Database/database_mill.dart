@@ -10,6 +10,10 @@ class DatabaseMill {
   DatabaseMill.init();
   static Database _database;
 
+  static final String columnId = '_id';
+  static final String username = 'username';
+  static final String password = 'password';
+
   Future<Database> get database async {
     if (_database != null) return _database;
     _database = await _initDB('mill.db');
@@ -28,11 +32,23 @@ class DatabaseMill {
     final boolType = 'integer not null';
     final textType = 'text not null';
 
+    await db.execute(''' 
+        create table $tableUser(
+          $columnId $idType,
+          $username $textType,
+          $password $textType) 
+    ''');
+
+    await db.rawInsert(
+        'INSERT INTO $tableUser ($username, $password) VALUES ("masda", "agus")');
+
+    print("Table has created");
+
     db.execute('''
       create table $tableMill(
        ${MillFields.id} $idType,
        ${MillFields.time} $textType,
-          
+
          ${MillFields.bf07l1} $boolType,
          ${MillFields.fn07l1} $boolType,
          ${MillFields.bf08l1} $boolType,
@@ -112,7 +128,7 @@ class DatabaseMill {
           ${MillFields.bf01l2} $boolType,
           ${MillFields.fn01l2} $boolType,
           ${MillFields.rf01l2} $boolType,
-  
+
            ${MillFields.desbf07l1} $textType,
            ${MillFields.desfn07l1} $textType,
            ${MillFields.desbf08l1} $textType,
@@ -153,44 +169,44 @@ class DatabaseMill {
            ${MillFields.desfn01l1} $textType,
            ${MillFields.desrf01l1} $textType,
 
-            ${MillFields.desbf07l2} $textType,    
-            ${MillFields.desfn07l2} $textType,    
-            ${MillFields.desbf08l2} $textType,    
-            ${MillFields.desfn08l2} $textType,    
-            ${MillFields.desbf09l2} $textType,    
-            ${MillFields.desfn09l2} $textType,    
-            ${MillFields.desbf10l2} $textType,    
-            ${MillFields.desfn10l2} $textType,    
-            ${MillFields.desng01l2} $textType,    
-            ${MillFields.desng02l2} $textType,    
-            ${MillFields.desng03l2} $textType,    
-            ${MillFields.desng04l2} $textType,    
-            ${MillFields.deswf01l2} $textType,    
-            ${MillFields.deswf02l2} $textType,    
-            ${MillFields.deswf03l2} $textType,    
-            ${MillFields.deswf04l2} $textType,    
-            ${MillFields.desbc01l2} $textType,    
-            ${MillFields.desbc02l2} $textType,    
-            ${MillFields.desbf02l2} $textType,    
-            ${MillFields.desfn02l2} $textType,    
-            ${MillFields.desbf03l2} $textType,    
-            ${MillFields.desfn03l2} $textType,    
-            ${MillFields.desbf04l2} $textType,    
-            ${MillFields.desfn04l2} $textType,    
-            ${MillFields.desbf05l2} $textType,    
-            ${MillFields.desfn05l2} $textType,    
-            ${MillFields.desbf06l2} $textType,    
-            ${MillFields.desfn06l2} $textType,    
-            ${MillFields.dessc01l2} $textType,    
-            ${MillFields.dessc02l2} $textType,    
-            ${MillFields.dessc03l2} $textType,    
-            ${MillFields.desbe01l2} $textType,    
-            ${MillFields.desbm01l2} $textType,    
-            ${MillFields.deslq01l2} $textType,    
-            ${MillFields.deslq02l2} $textType,    
-            ${MillFields.dessr01l2} $textType,    
-            ${MillFields.desbf01l2} $textType,    
-            ${MillFields.desfn01l2} $textType,    
+            ${MillFields.desbf07l2} $textType,
+            ${MillFields.desfn07l2} $textType,
+            ${MillFields.desbf08l2} $textType,
+            ${MillFields.desfn08l2} $textType,
+            ${MillFields.desbf09l2} $textType,
+            ${MillFields.desfn09l2} $textType,
+            ${MillFields.desbf10l2} $textType,
+            ${MillFields.desfn10l2} $textType,
+            ${MillFields.desng01l2} $textType,
+            ${MillFields.desng02l2} $textType,
+            ${MillFields.desng03l2} $textType,
+            ${MillFields.desng04l2} $textType,
+            ${MillFields.deswf01l2} $textType,
+            ${MillFields.deswf02l2} $textType,
+            ${MillFields.deswf03l2} $textType,
+            ${MillFields.deswf04l2} $textType,
+            ${MillFields.desbc01l2} $textType,
+            ${MillFields.desbc02l2} $textType,
+            ${MillFields.desbf02l2} $textType,
+            ${MillFields.desfn02l2} $textType,
+            ${MillFields.desbf03l2} $textType,
+            ${MillFields.desfn03l2} $textType,
+            ${MillFields.desbf04l2} $textType,
+            ${MillFields.desfn04l2} $textType,
+            ${MillFields.desbf05l2} $textType,
+            ${MillFields.desfn05l2} $textType,
+            ${MillFields.desbf06l2} $textType,
+            ${MillFields.desfn06l2} $textType,
+            ${MillFields.dessc01l2} $textType,
+            ${MillFields.dessc02l2} $textType,
+            ${MillFields.dessc03l2} $textType,
+            ${MillFields.desbe01l2} $textType,
+            ${MillFields.desbm01l2} $textType,
+            ${MillFields.deslq01l2} $textType,
+            ${MillFields.deslq02l2} $textType,
+            ${MillFields.dessr01l2} $textType,
+            ${MillFields.desbf01l2} $textType,
+            ${MillFields.desfn01l2} $textType,
             ${MillFields.desrf01l2} $textType)
     ''');
   }

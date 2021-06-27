@@ -279,9 +279,6 @@ class _InputScreenState extends State<InputScreen> {
       case "Yes":
         _showSnackBar("Inspection Berhasil", "Yes");
         break;
-      case "No":
-        _showSnackBar("Inspection Dibatalkan", "No");
-        break;
     }
   }
 

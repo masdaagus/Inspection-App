@@ -1,18 +1,22 @@
 import 'models/data_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'views/provider/auth.dart';
 import 'views/screens/dashbord/dashbord.dart';
 import 'views/screens/input/input.dart';
-import 'views/screens/login_scren/login.dart';
+import 'login/login_database.dart';
 
 void main() {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<DataModel>(
         create: (_) => DataModel(),
+      ),
+      ChangeNotifierProvider<Auth>(
+        create: (ctx) => Auth(),
       )
     ],
-    child: MyApp(),
+    builder: (context, child) => MyApp(),
   ));
 }
 
@@ -35,6 +39,6 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return LoginScreen();
+    return LoginPage();
   }
 }

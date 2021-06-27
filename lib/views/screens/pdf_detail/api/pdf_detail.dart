@@ -28,17 +28,6 @@ class PdfPageApi {
         name: "Inspection_${invoice.date}.pdf", pdf: pdf);
   }
 
-  static Widget buildTittel() =>
-      Column(crossAxisAlignment: pw.CrossAxisAlignment.start, children: [
-        Text(
-          'INVOICE',
-          style: pw.TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        ),
-        SizedBox(height: 0.8 * PdfPageFormat.cm),
-        Text("Masda agus"),
-        SizedBox(height: 0.8 * PdfPageFormat.cm),
-      ]);
-
   static Widget buildLogo(Invoice invoice) {
     return Row(
       mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
@@ -49,10 +38,10 @@ class PdfPageApi {
         Text("Field Inspection Sheet Cement Mill",
             style: pw.TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
         pw.Column(crossAxisAlignment: pw.CrossAxisAlignment.start, children: [
-          Text("Name\t\t:\t\t Wahyu Tromol",
+          Text("Name\t\t:\t\t ${invoice.name}",
               style: pw.TextStyle(fontWeight: FontWeight.bold)),
           SizedBox(height: 0.10 * PdfPageFormat.cm),
-          Text("ID\t\t\t\t\t\t\t\t:\t\t 26458364",
+          Text("ID\t\t\t\t\t\t\t\t:\t\t ${invoice.id}",
               style: pw.TextStyle(fontWeight: FontWeight.bold)),
           SizedBox(height: 0.05 * PdfPageFormat.cm),
           Text("Date\t\t\t\t:\t\t ${invoice.date}",

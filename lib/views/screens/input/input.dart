@@ -1,5 +1,6 @@
 import 'package:Inspection/Database/database_mill.dart';
 import 'package:Inspection/model_database/mill_model.dart';
+import 'package:Inspection/model_database/users.dart';
 import 'package:Inspection/models/data_model.dart';
 import 'package:Inspection/template/data.dart';
 import 'package:Inspection/views/const/const.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class InputScreen extends StatefulWidget {
   static const routName = '/input-screen';
@@ -19,6 +21,22 @@ class _InputScreenState extends State<InputScreen> {
   List<DataMill> _listData = [];
   DateTime now = DateTime.now();
   DateFormat f = new DateFormat('dd-MM-yyyy');
+  String userName;
+  String userId;
+
+  Future refresh() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      userName = preferences.getString("user");
+      userId = preferences.getString("pass");
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    refresh();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,14 +94,14 @@ class _InputScreenState extends State<InputScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Masda agus",
+                                  "${userName}",
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w600),
                                 ),
                                 SizedBox(height: 2),
                                 Text(
-                                  "83748798",
+                                  "${userId}",
                                   style: TextStyle(
                                       fontSize: 10,
                                       fontWeight: FontWeight.w500,

@@ -12,9 +12,6 @@ class LoginRequest {
     var res = await dbClient.rawQuery(
         "SELECT * FROM $tableUser WHERE username = '$_name' and password = '$_password'");
 
-    // var res = await dbClient.query(tableUser,
-    //     where: 'username = $_name AND password = $_password');
-
     if (res.length > 0) {
       print(res);
       return new User.fromMap(res.first);

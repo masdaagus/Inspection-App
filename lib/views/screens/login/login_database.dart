@@ -1,10 +1,8 @@
+import 'package:Inspection/login%20service/response/login_respon.dart';
 import 'package:Inspection/model_database/users.dart';
-
 import 'package:Inspection/views/screens/dashbord/dashbord.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'services/response/login_respon.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -56,8 +54,10 @@ class _LoginPageState extends State<LoginPage> implements LoginCallBack {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
       value = preferences.getInt("value");
+      String masda = preferences.getString("user");
 
       _loginStatus = value == 1 ? LoginStatus.signIn : LoginStatus.notSignIn;
+      print("Value from getPref:  ${masda}");
     });
   }
 
@@ -78,6 +78,7 @@ class _LoginPageState extends State<LoginPage> implements LoginCallBack {
 
   @override
   Widget build(BuildContext context) {
+    print("build Context");
     switch (_loginStatus) {
       case LoginStatus.notSignIn:
         Widget loginBtn = new FlatButton(
@@ -102,7 +103,7 @@ class _LoginPageState extends State<LoginPage> implements LoginCallBack {
                   new Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: new TextFormField(
-                      onSaved: (val) => _password = val,
+                      onSaved: (val) => _password = val.toString(),
                       decoration: new InputDecoration(labelText: "Password"),
                     ),
                   )
@@ -137,7 +138,7 @@ class _LoginPageState extends State<LoginPage> implements LoginCallBack {
       preferences.setInt("value", value);
       preferences.setString("user", user);
       preferences.setString("pass", pass);
-      preferences.commit();
+      // preferences.commit();
     });
   }
 
@@ -153,6 +154,7 @@ class _LoginPageState extends State<LoginPage> implements LoginCallBack {
   void onLoginSuccess(User user) async {
     if (user != null) {
       savePref(1, user.name, user.password);
+      print('${user.name} + ${user.password}');
       _loginStatus = LoginStatus.signIn;
     } else {
       _showSnackBar("Login Gagal, Silahkan Periksa Login Anda");

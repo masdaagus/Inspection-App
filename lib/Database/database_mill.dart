@@ -40,9 +40,23 @@ class DatabaseMill {
     ''');
 
     await db.rawInsert(
-        'INSERT INTO $tableUser ($username, $password) VALUES ("masda", "agus")');
-
-    print("Table has created");
+        'INSERT INTO $tableUser ($username, $password) VALUES ("Masda agus", "08126074")');
+    await db.rawInsert(
+        'INSERT INTO $tableUser ($username, $password) VALUES ("M TAUFIK INDRA", "03301768")');
+    await db.rawInsert(
+        'INSERT INTO $tableUser ($username, $password) VALUES ("ALFIAN SYAHPUTRA", "03301786")');
+    await db.rawInsert(
+        'INSERT INTO $tableUser ($username, $password) VALUES ("FRENGKI HASIOLAN SIBARA", "03301787")');
+    await db.rawInsert(
+        'INSERT INTO $tableUser ($username, $password) VALUES ("FIKRIYANTO", "03302081")');
+    await db.rawInsert(
+        'INSERT INTO $tableUser ($username, $password) VALUES ("AJI SYAHPUTRA", "03302089")');
+    await db.rawInsert(
+        'INSERT INTO $tableUser ($username, $password) VALUES ("ADE MULYADI", "03302304")');
+    await db.rawInsert(
+        'INSERT INTO $tableUser ($username, $password) VALUES ("PUJA MULIYA", "03302305")');
+    await db.rawInsert(
+        'INSERT INTO $tableUser ($username, $password) VALUES ("TYO CRYSTIAN", "03302486")');
 
     db.execute('''
       create table $tableMill(

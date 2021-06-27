@@ -6,33 +6,73 @@ import 'package:Inspection/views/screens/pdf_detail/api/pdf_detail.dart';
 import 'package:Inspection/views/screens/pdf_detail/model/model_pdf.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class ListHistory extends StatelessWidget {
+class ListHistory extends StatefulWidget {
+  @override
+  _ListHistoryState createState() => _ListHistoryState();
+}
+
+class _ListHistoryState extends State<ListHistory> {
   final f = new DateFormat('dd MMMM yyyy');
 
   final String bagfilter = 'Bag Filter';
+
   final String fncf = 'Motor temperatur dan vibrasi';
+
   final String bfcf = 'Hopper, cerobong dan sistem purging';
+
   final String neddle = 'Needle Gate';
+
   final String neddlecf = 'Posisi Round Bar';
+
   final String wf = 'Weight Feeder';
+
   final String wfcf = 'Belt, chute, buffle, motor, dan gear box';
+
   final String bc = 'Belt Conveyor';
+
   final String bccf = "Motor, belt, rubber, roller (carry & return), cleaner";
+
   final String sc = 'Screw Conveyor';
+
   final String sccf = 'Level Oli, motor, screw, gear box';
+
   final String be = 'Bucket Elevator';
+
   final String becf = 'Level Oli, motor, screw, gear box, noise';
+
   final String bm = 'Ball Mill';
+
   final String bmcf =
       'Motor gearbox (temp & vibration), \nBaut & Mur (tube mill main hole, coupling), \nMill head trinion (inlet & outlet)';
 
   final String lq = 'Oil Circulation GearBox';
+
   final String lqcf = 'Laju Sirkulasi Oli, level dan temp oli';
+
   final String sr = 'Clasifier';
+
   final String srcf = 'Motor, coupling dan V-Belt classifer, level grease';
+
   final String rf = 'Rotary Valve';
+
   final String rfcf = 'Motor dan putaran RV, leakage (kebocoran)';
+
+  String userName;
+  String userId;
+
+  Future refresh() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    userName = preferences.getString("user");
+    userId = preferences.getString("pass");
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    refresh();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +106,8 @@ class ListHistory extends StatelessWidget {
                         ListTile(
                           onTap: () async {
                             final invoice = Invoice(
+                                id: userId,
+                                name: userName,
                                 date: f.format(mill.createTime),
                                 items: [
                                   InvoiceItem(

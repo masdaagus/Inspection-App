@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'views/provider/auth.dart';
 import 'views/screens/dashbord/dashbord.dart';
 import 'views/screens/input/input.dart';
-import 'login/login_database.dart';
+import 'views/screens/login/login_database.dart';
 
 void main() {
   runApp(MultiProvider(

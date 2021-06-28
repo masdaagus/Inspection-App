@@ -28,7 +28,6 @@ dependencies:
   flutter_slidable: ^0.5.7
   provider: ^4.3.0
   sqflite: ^2.0.0+3
-  dependencies:
   pdf: ^3.0.1
   path_provider: ^2.0.1
   open_file: ^3.1.0

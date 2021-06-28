@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'views/provider/auth.dart';
 import 'views/screens/dashbord/dashbord.dart';
 import 'views/screens/input/input.dart';
+import 'views/screens/login/login.dart';
 import 'views/screens/login/login_database.dart';
 
 void main() {
@@ -39,6 +40,6 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return LoginPage();
+    return LoginScreen();
   }
 }

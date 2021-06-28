@@ -1,5 +1,6 @@
-import 'package:Inspection/login%20service/response/login_respon.dart';
 import 'package:Inspection/model_database/users.dart';
+import 'package:Inspection/service/login%20service/response/login_respon.dart';
+
 import 'package:Inspection/views/screens/dashbord/dashbord.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -132,7 +133,7 @@ class _LoginPageState extends State<LoginPage> implements LoginCallBack {
     }
   }
 
-  savePref(int value, String user, String pass) async {
+  savePref(int, String user, String pass) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
       preferences.setInt("value", value);

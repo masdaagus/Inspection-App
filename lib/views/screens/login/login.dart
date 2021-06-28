@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> implements LoginCallBack {
 
   LoginResponse _response;
 
-  _LoginPageState() {
+  _LoginScreenState() {
     _response = new LoginResponse(this);
   }
 
@@ -78,9 +78,11 @@ class _LoginScreenState extends State<LoginScreen> implements LoginCallBack {
 
   @override
   Widget build(BuildContext context) {
+    print("update screen");
     switch (_loginStatus) {
       case LoginStatus.notSignIn:
         return Scaffold(
+          key: scaffoldKey,
           backgroundColor: Palette.backgroundColor,
           body: GestureDetector(
             onTap: () {
@@ -274,9 +276,7 @@ class _LoginScreenState extends State<LoginScreen> implements LoginCallBack {
                   left: 0,
                   right: 0,
                   child: GestureDetector(
-                    onTap: () {
-                      print(_password);
-                    },
+                    onTap: _submit,
                     child: Center(
                       child: Container(
                         height: 90,

@@ -1,6 +1,5 @@
 import 'package:Inspection/Database/database_mill.dart';
 import 'package:Inspection/model_database/mill_model.dart';
-import 'package:Inspection/model_database/users.dart';
 import 'package:Inspection/models/data_model.dart';
 import 'package:Inspection/template/data.dart';
 import 'package:Inspection/views/const/const.dart';
@@ -94,14 +93,14 @@ class _InputScreenState extends State<InputScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "${userName}",
+                                  "$userName",
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w600),
                                 ),
                                 SizedBox(height: 2),
                                 Text(
-                                  "${userId}",
+                                  "$userId",
                                   style: TextStyle(
                                       fontSize: 10,
                                       fontWeight: FontWeight.w500,

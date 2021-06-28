@@ -1,8 +1,10 @@
 import 'package:Inspection/views/const/const.dart';
 import 'package:Inspection/views/screens/input/input.dart';
+import 'package:Inspection/views/screens/login/login.dart';
 
 import 'package:Inspection/views/screens/page_history/list_history.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Dashbaord extends StatefulWidget {
   static const routeName = '/dashboard-screen';
@@ -11,6 +13,13 @@ class Dashbaord extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashbaord> {
+  signOut() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      preferences.setInt("value", null);
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -33,7 +42,16 @@ class _DashboardState extends State<Dashbaord> {
               decoration: BoxDecoration(
                   color: Colors.white24,
                   borderRadius: BorderRadius.circular(10)),
-              child: Center(child: Text("0")),
+              child: Center(
+                  child: IconButton(
+                icon: Icon(Icons.login),
+                onPressed: () async {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => LoginScreen(),
+                  ));
+                  signOut();
+                },
+              )),
             ),
           )
         ],

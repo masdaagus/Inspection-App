@@ -40,6 +40,7 @@ class _buildResultState extends State<buildResult> {
 
   @override
   void initState() {
+    super.initState();
     _dropdownMenuItems = buildDropdownMenuItem(_materials);
     _selectedMaterial = _dropdownMenuItems[0].value;
     _droplineMenuItems = buildDroplineMenuItem(_lines);
@@ -47,7 +48,7 @@ class _buildResultState extends State<buildResult> {
   }
 
   List<DropdownMenuItem<MaterialCemen>> buildDropdownMenuItem(List materials) {
-    List<DropdownMenuItem<MaterialCemen>> items = List();
+    List<DropdownMenuItem<MaterialCemen>> items = [];
     for (MaterialCemen material in materials) {
       items.add(DropdownMenuItem(
         value: material,
@@ -58,7 +59,7 @@ class _buildResultState extends State<buildResult> {
   }
 
   List<DropdownMenuItem<LineMill>> buildDroplineMenuItem(List lines) {
-    List<DropdownMenuItem<LineMill>> items = List();
+    List<DropdownMenuItem<LineMill>> items = [];
     for (LineMill line in lines) {
       items.add(DropdownMenuItem(
         value: line,
@@ -85,10 +86,9 @@ class _buildResultState extends State<buildResult> {
       double mas1 = double.tryParse(feed.text);
       double mas2 = double.tryParse(percent.text);
 
-      return _setPoint = mas1 * mas2 / 100;
-
-      print(_setPoint);
+      _setPoint = mas1 * mas2 / 100;
     });
+    return _setPoint;
   }
 
   double avarage() {
@@ -96,21 +96,24 @@ class _buildResultState extends State<buildResult> {
       double t1 = double.tryParse(timer1.text);
       double t2 = double.tryParse(timer2.text);
       double t3 = double.tryParse(timer3.text);
-      return _avarage = (t1 + t2 + t3) / 3;
+      _avarage = (t1 + t2 + t3) / 3;
     });
+    return _avarage;
   }
 
   double aktualWf() {
     setState(() {
       double berat = double.tryParse(weight.text);
-      return _aktualWf = (1 / _avarage) * 3600 * berat / 1000;
+      _aktualWf = (1 / _avarage) * 3600 * berat / 1000;
     });
+    return _aktualWf;
   }
 
   double error() {
     setState(() {
       _error = (_aktualWf - _setPoint) / _setPoint * 100;
     });
+    return _error;
   }
 
   @override

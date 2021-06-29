@@ -24,22 +24,22 @@ class _InputScreenState extends State<InputScreen> {
   DateTime now = DateTime.now();
   String shift;
 
-  String bismillah() {
-    DateTime bshift1 = DateTime(now.year, now.month, now.day, 8);
-    DateTime ashift1 = DateTime(now.year, now.month, now.day, 00);
-    DateTime bshift2 = DateTime(now.year, now.month, now.day, 16);
-    DateTime ashift2 = DateTime(now.year, now.month, now.day, 8);
-    DateTime bshift3 = DateTime(now.year, now.month, now.day, 00);
-    DateTime ashift3 = DateTime(now.year, now.month, now.day, 16);
+  String semoga() {
+    DateTime jam4 = DateTime(now.year, now.month, now.day, 16);
+    DateTime jam8 = DateTime(now.year, now.month, now.day, 8);
+    DateTime jam12 = DateTime(now.year, now.month, now.day, 23, 58);
 
-    if (now.isBefore(bshift1) && now.isAfter(ashift1)) {
-      shift = 'Shift 1';
-    } else if (now.isBefore(bshift2) && now.isAfter(ashift2)) {
-      shift = 'Shift 2';
-    } else if (now.isBefore(bshift3) && now.isAfter(ashift3)) {
-      shift = 'Shift 3';
+    if (now.compareTo(jam4) > 0 && now.compareTo(jam12) < 0) {
+      shift = '3';
+      print("shift 3");
+    } else if (now.compareTo(jam8) > 0 && now.compareTo(jam4) < 0) {
+      shift = '2';
+      print("shift 2");
+    } else if (now.compareTo(jam12) > 0 && now.compareTo(jam8) < 0) {
+      shift = '1';
+      print("shift 1");
     }
-    return null;
+    return shift;
   }
 
   Future refresh() async {
@@ -53,13 +53,13 @@ class _InputScreenState extends State<InputScreen> {
   @override
   void initState() {
     super.initState();
+    semoga();
     refresh();
-    bismillah();
   }
 
   @override
   Widget build(BuildContext context) {
-    print("Sekarang =  ${f.format(now)}");
+    print(now);
     final provider = Provider.of<DataModel>(context, listen: false);
 
     return Scaffold(
@@ -138,10 +138,10 @@ class _InputScreenState extends State<InputScreen> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Text(shift,
+                            Text("Shift $shift" ?? 'Shift ?',
                                 style: TextStyle(
                                     fontSize: 10, fontWeight: FontWeight.w500)),
-                            Text(f.format(now),
+                            Text("${f.format(now)}",
                                 style: TextStyle(
                                     fontSize: 10, fontWeight: FontWeight.w500)),
                           ],
@@ -181,95 +181,104 @@ class _InputScreenState extends State<InputScreen> {
                   // Memasukkan hasil data ke dalam _listData
                   _listData = snapshot.data;
 
-                  return ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: snapshot.data.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        DataMill data = snapshot.data[index];
+                  return snapshot.data == null
+                      ? Center(
+                          child: Text("Loading....."),
+                        )
+                      : ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: snapshot.data.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            DataMill data = snapshot.data[index];
 
-                        return Column(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  gradient: LinearGradient(
-                                      colors: [
-                                        Color(0xff30638e).withOpacity(.10),
-                                        Color(0xff003d5b).withOpacity(.15),
-                                      ],
-                                      begin: Alignment.topRight,
-                                      end: Alignment.bottomRight)),
-                              child: Slidable(
-                                secondaryActions: <Widget>[
-                                  iconSlide(data, context),
-                                ],
-                                actionExtentRatio: .20,
-                                actionPane: SlidableDrawerActionPane(),
-                                child: ListTile(
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      horizontal: 10),
-                                  title: Text(
-                                    data.equipments,
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.w600),
-                                  ),
-                                  subtitle: Text(
-                                    data.checkpoints,
-                                  ),
-                                  leading: Text(
-                                    "\t4#6\n${data.code}",
-                                    style: TextStyle(
-                                        color: Colors.black45, fontSize: 11),
-                                  ),
-                                  trailing: Container(
-                                    width: 100,
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        // CheckBox Line 1
-                                        Transform.scale(
-                                            scale: .9,
-                                            child: Consumer<DataModel>(
-                                              builder: (context, model, _) =>
-                                                  Checkbox(
-                                                value: data.checklist_1,
-                                                onChanged: (value) {
-                                                  provider.tesbox(
-                                                      data.checklist_1 = value);
-                                                },
+                            return Column(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      gradient: LinearGradient(
+                                          colors: [
+                                            Color(0xff30638e).withOpacity(.10),
+                                            Color(0xff003d5b).withOpacity(.15),
+                                          ],
+                                          begin: Alignment.topRight,
+                                          end: Alignment.bottomRight)),
+                                  child: Slidable(
+                                    secondaryActions: <Widget>[
+                                      iconSlide(data, context),
+                                    ],
+                                    actionExtentRatio: .20,
+                                    actionPane: SlidableDrawerActionPane(),
+                                    child: ListTile(
+                                      contentPadding:
+                                          const EdgeInsets.symmetric(
+                                              horizontal: 10),
+                                      title: Text(
+                                        "${data.equipments}",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 14),
+                                      ),
+                                      subtitle: Text(
+                                        "${data.checkpoints}",
+                                        style: TextStyle(fontSize: 12),
+                                      ),
+                                      leading: Text(
+                                        "\t4#6\n${data.code}",
+                                        style: TextStyle(
+                                            color: Colors.black45,
+                                            fontSize: 12),
+                                      ),
+                                      trailing: Container(
+                                        width: 100,
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            // CheckBox Line 1
+                                            Transform.scale(
+                                                scale: .9,
+                                                child: Consumer<DataModel>(
+                                                  builder:
+                                                      (context, model, _) =>
+                                                          Checkbox(
+                                                    value: data.checklist_1,
+                                                    onChanged: (value) {
+                                                      provider.tesbox(data
+                                                          .checklist_1 = value);
+                                                    },
+                                                  ),
+                                                )),
+                                            // CheckBox Line 2
+                                            Transform.scale(
+                                              scale: .9,
+                                              child: Consumer<DataModel>(
+                                                builder: (context, model, _) =>
+                                                    Checkbox(
+                                                  value: data.checklist_2,
+                                                  onChanged: (value) {
+                                                    provider.tesbox(data
+                                                        .checklist_2 = value);
+                                                  },
+                                                ),
                                               ),
-                                            )),
-                                        // CheckBox Line 2
-                                        Transform.scale(
-                                          scale: .9,
-                                          child: Consumer<DataModel>(
-                                            builder: (context, model, _) =>
-                                                Checkbox(
-                                              value: data.checklist_2,
-                                              onChanged: (value) {
-                                                provider.tesbox(
-                                                    data.checklist_2 = value);
-                                              },
                                             ),
-                                          ),
+                                          ],
                                         ),
-                                      ],
+                                      ),
+                                      dense: true,
                                     ),
                                   ),
-                                  dense: true,
                                 ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 15, right: 15),
-                              child:
-                                  Divider(height: .5, color: Color(0xff001f30)),
-                            ),
-                          ],
-                        );
-                      });
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 15, right: 15),
+                                  child: Divider(
+                                      height: .5, color: Color(0xff001f30)),
+                                ),
+                              ],
+                            );
+                          });
                 },
               ),
             ],
@@ -321,6 +330,9 @@ class _InputScreenState extends State<InputScreen> {
 
   Future addCheckData() async {
     final inputToDatasbe = Mill(
+      userName: userName,
+      idUser: userId,
+      shift: shift,
       createTime: now,
 
       // Line 1
@@ -506,17 +518,5 @@ class _InputScreenState extends State<InputScreen> {
                     )));
       },
     );
-  }
-}
-
-class Shift {
-  String shift;
-  Shift(this.shift);
-  static List<Shift> getShift() {
-    return <Shift>[
-      Shift('Shift 1'),
-      Shift('Shift 2'),
-      Shift('Shift 3'),
-    ];
   }
 }

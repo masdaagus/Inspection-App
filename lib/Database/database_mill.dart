@@ -61,6 +61,9 @@ class DatabaseMill {
     db.execute('''
       create table $tableMill(
        ${MillFields.id} $idType,
+       ${MillFields.userName} $textType,
+       ${MillFields.idUser} $textType,
+       ${MillFields.shift} $textType,
        ${MillFields.time} $textType,
 
          ${MillFields.bf07l1} $boolType,

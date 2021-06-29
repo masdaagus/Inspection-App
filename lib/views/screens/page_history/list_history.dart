@@ -1,4 +1,5 @@
 import 'package:Inspection/Database/database_mill.dart';
+import 'package:Inspection/config/palette.dart';
 import 'package:Inspection/model_database/mill_model.dart';
 import 'package:Inspection/views/const/const.dart';
 import 'package:Inspection/views/screens/pdf_detail/api/detail_api.dart';
@@ -77,7 +78,7 @@ class _ListHistoryState extends State<ListHistory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: bagroundColor,
+      backgroundColor: Palette.backgroundColor,
       appBar: AppBar(
         backgroundColor: bagroundColor,
         title: Text("List History"),
@@ -104,10 +105,34 @@ class _ListHistoryState extends State<ListHistory> {
                     return Column(
                       children: [
                         ListTile(
+                          contentPadding: EdgeInsets.symmetric(horizontal: 25),
+                          title: Text(
+                              "${f.format(mill.createTime)} - Shift ${mill.shift}",
+                              style: TextStyle(fontWeight: FontWeight.w600)),
+                          // leading: Text(mill.id.toString(),
+                          //     style: TextStyle(
+                          //         color: Colors.black45, fontSize: 11)),
+                          tileColor: Colors.grey[300],
+                          trailing: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text("$userName",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600)),
+                              Text("$userId",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600)),
+                            ],
+                          ),
+                          dense: true,
                           onTap: () async {
                             final invoice = Invoice(
-                                id: userId,
-                                name: userName,
+                                id: mill.idUser,
+                                name: mill.userName,
+                                shift: mill.shift,
                                 date: f.format(mill.createTime),
                                 items: [
                                   InvoiceItem(
@@ -465,14 +490,6 @@ class _ListHistoryState extends State<ListHistory> {
                             final pdfFile = await PdfPageApi.generate(invoice);
                             PdfDetailApi.openFile(pdfFile);
                           },
-                          contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                          title: Text(f.format(mill.createTime),
-                              style: TextStyle(fontWeight: FontWeight.w600)),
-                          leading: Text(mill.id.toString(),
-                              style: TextStyle(
-                                  color: Colors.black45, fontSize: 11)),
-                          tileColor: Colors.grey[300],
-                          dense: true,
                         ),
                         Divider(height: 1, color: Colors.black),
                       ],

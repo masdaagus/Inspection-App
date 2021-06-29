@@ -49,6 +49,9 @@ class PdfPageApi {
           SizedBox(height: 0.05 * PdfPageFormat.cm),
           Text("Page\t\t\t:\t\t 1 of 3",
               style: pw.TextStyle(fontWeight: FontWeight.bold)),
+          SizedBox(height: 0.05 * PdfPageFormat.cm),
+          Text("Shift\t\t\t\t:\t\t\t${invoice.shift}",
+              style: pw.TextStyle(fontWeight: FontWeight.bold)),
         ])
       ],
     );

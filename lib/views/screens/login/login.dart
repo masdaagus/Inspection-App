@@ -20,7 +20,6 @@ enum LoginStatus { notSignIn, signIn }
 class _LoginScreenState extends State<LoginScreen> implements LoginCallBack {
   LoginStatus _loginStatus = LoginStatus.notSignIn;
 
-  bool _isLoading = false;
   final formKey = new GlobalKey<FormState>();
   final scaffoldKey = new GlobalKey<ScaffoldState>();
 
@@ -37,7 +36,6 @@ class _LoginScreenState extends State<LoginScreen> implements LoginCallBack {
 
     if (form.validate()) {
       setState(() {
-        _isLoading = true;
         form.save();
         _response.doLogin(_username, _password);
       });
@@ -77,6 +75,7 @@ class _LoginScreenState extends State<LoginScreen> implements LoginCallBack {
   }
 
   @override
+  // ignore: missing_return
   Widget build(BuildContext context) {
     print("update screen");
     switch (_loginStatus) {
@@ -103,7 +102,8 @@ class _LoginScreenState extends State<LoginScreen> implements LoginCallBack {
                     ),
                     child: Container(
                       padding: EdgeInsets.only(top: 120, left: 20),
-                      color: Color(0xff3b5999).withOpacity(.85),
+                      decoration: BoxDecoration(
+                          color: Colors.grey[800].withOpacity(.83)),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -112,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> implements LoginCallBack {
                                 text: "Welcom to",
                                 style: TextStyle(
                                   fontSize: 25,
-                                  letterSpacing: 2,
+                                  letterSpacing: 1,
                                   color: Colors.yellow[700],
                                 ),
                                 children: [
@@ -120,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> implements LoginCallBack {
                                     text: " Cemindo",
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 25,
+                                      fontSize: 29,
                                       color: Colors.yellow[700],
                                     ),
                                   )
@@ -163,16 +163,11 @@ class _LoginScreenState extends State<LoginScreen> implements LoginCallBack {
                             Text(
                               "LOGIN",
                               style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.bold,
-                                  color: Palette.activeColor),
+                                  color: Colors.grey[800],
+                                  letterSpacing: 2),
                             ),
-                            Container(
-                              margin: EdgeInsets.only(top: 2),
-                              height: 2,
-                              color: Colors.orange,
-                              width: 48,
-                            )
                           ],
                         ),
                         Container(
@@ -186,6 +181,8 @@ class _LoginScreenState extends State<LoginScreen> implements LoginCallBack {
                                   child: TextFormField(
                                     onSaved: (val) => _username = val,
                                     keyboardType: TextInputType.name,
+                                    textCapitalization:
+                                        TextCapitalization.characters,
                                     decoration: InputDecoration(
                                       prefixIcon: Icon(
                                         Icons.email,
@@ -295,7 +292,10 @@ class _LoginScreenState extends State<LoginScreen> implements LoginCallBack {
                         child: Container(
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
-                                colors: [Colors.orange[200], Colors.red[400]],
+                                colors: [
+                                  Color(0xff30638e).withOpacity(.2),
+                                  Color(0xff003d5b).withOpacity(.2),
+                                ],
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight),
                             borderRadius: BorderRadius.circular(30),
@@ -311,8 +311,8 @@ class _LoginScreenState extends State<LoginScreen> implements LoginCallBack {
                             decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                     colors: [
-                                      Colors.orange[200],
-                                      Colors.red[400]
+                                      Color(0xff30638e).withOpacity(.2),
+                                      Color(0xff003d5b).withOpacity(.2),
                                     ],
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight),
@@ -359,9 +359,6 @@ class _LoginScreenState extends State<LoginScreen> implements LoginCallBack {
   @override
   void onLoginError(String error) {
     _showSnackBar(error);
-    setState(() {
-      _isLoading = false;
-    });
   }
 
   @override
@@ -372,9 +369,6 @@ class _LoginScreenState extends State<LoginScreen> implements LoginCallBack {
       _loginStatus = LoginStatus.signIn;
     } else {
       _showSnackBar("Login Gagal, Silahkan Periksa Login Anda");
-      setState(() {
-        _isLoading = false;
-      });
     }
   }
 }

@@ -3,12 +3,14 @@ import 'package:flutter/foundation.dart';
 class Invoice {
   final String name;
   final String id;
+  final String shift;
   final String date;
   final List<InvoiceItem> items;
 
   const Invoice({
     @required this.name,
     @required this.id,
+    @required this.shift,
     @required this.date,
     @required this.items,
   });

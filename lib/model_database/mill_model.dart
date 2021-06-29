@@ -7,6 +7,9 @@ final String tableUser = 'TableUser';
 class MillFields {
   static final List<String> values = [
     id,
+    userName,
+    idUser,
+    shift,
     time,
 
     // Line 1
@@ -172,6 +175,9 @@ class MillFields {
   ];
 
   static final String id = '_id';
+  static final String userName = 'userName';
+  static final String idUser = 'IDUSER';
+  static final String shift = 'SHIFT';
   static final String time = 'time';
 
   static final String bf07l1 = 'BF07_L1';
@@ -337,7 +343,11 @@ class MillFields {
 
 class Mill {
   final int id;
+  final String userName;
+  final String idUser;
+  final String shift;
   final DateTime createTime;
+
   // Line 1
   final bool bf07l1;
   final bool fn07l1;
@@ -501,6 +511,9 @@ class Mill {
 
   const Mill({
     this.id,
+    @required this.userName,
+    @required this.idUser,
+    @required this.shift,
     @required this.createTime,
     // Line 1
     @required this.bf07l1,
@@ -666,6 +679,9 @@ class Mill {
 
   static Mill fromJson(Map<String, Object> json) => Mill(
         id: json[MillFields.id] as int,
+        userName: json[MillFields.userName] as String,
+        idUser: json[MillFields.idUser] as String,
+        shift: json[MillFields.shift] as String,
         createTime: DateTime.parse(json[MillFields.time] as String),
         // Line 1
         bf07l1: json[MillFields.bf07l1] == 1,
@@ -834,6 +850,9 @@ class Mill {
 
   Map<String, Object> toJson() => {
         MillFields.id: id,
+        MillFields.userName: userName,
+        MillFields.idUser: idUser,
+        MillFields.shift: shift,
         MillFields.time: createTime.toIso8601String(),
 
         // Line 1

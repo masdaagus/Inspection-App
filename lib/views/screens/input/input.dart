@@ -18,10 +18,29 @@ class InputScreen extends StatefulWidget {
 
 class _InputScreenState extends State<InputScreen> {
   List<DataMill> _listData = [];
-  DateTime now = DateTime.now();
   DateFormat f = new DateFormat('dd-MM-yyyy');
   String userName;
   String userId;
+  DateTime now = DateTime.now();
+  String shift;
+
+  String bismillah() {
+    DateTime bshift1 = DateTime(now.year, now.month, now.day, 8);
+    DateTime ashift1 = DateTime(now.year, now.month, now.day, 00);
+    DateTime bshift2 = DateTime(now.year, now.month, now.day, 16);
+    DateTime ashift2 = DateTime(now.year, now.month, now.day, 8);
+    DateTime bshift3 = DateTime(now.year, now.month, now.day, 00);
+    DateTime ashift3 = DateTime(now.year, now.month, now.day, 16);
+
+    if (now.isBefore(bshift1) && now.isAfter(ashift1)) {
+      shift = 'Shift 1';
+    } else if (now.isBefore(bshift2) && now.isAfter(ashift2)) {
+      shift = 'Shift 2';
+    } else if (now.isBefore(bshift3) && now.isAfter(ashift3)) {
+      shift = 'Shift 3';
+    }
+    return null;
+  }
 
   Future refresh() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -35,11 +54,12 @@ class _InputScreenState extends State<InputScreen> {
   void initState() {
     super.initState();
     refresh();
+    bismillah();
   }
 
   @override
   Widget build(BuildContext context) {
-    print("update screen");
+    print("Sekarang =  ${f.format(now)}");
     final provider = Provider.of<DataModel>(context, listen: false);
 
     return Scaffold(
@@ -118,7 +138,7 @@ class _InputScreenState extends State<InputScreen> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Text("Shift 3",
+                            Text(shift,
                                 style: TextStyle(
                                     fontSize: 10, fontWeight: FontWeight.w500)),
                             Text(f.format(now),
@@ -486,5 +506,17 @@ class _InputScreenState extends State<InputScreen> {
                     )));
       },
     );
+  }
+}
+
+class Shift {
+  String shift;
+  Shift(this.shift);
+  static List<Shift> getShift() {
+    return <Shift>[
+      Shift('Shift 1'),
+      Shift('Shift 2'),
+      Shift('Shift 3'),
+    ];
   }
 }

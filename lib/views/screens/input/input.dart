@@ -63,14 +63,23 @@ class _InputScreenState extends State<InputScreen> {
     final provider = Provider.of<DataModel>(context, listen: false);
 
     return Scaffold(
-      backgroundColor: bagroundColor,
+      backgroundColor: Colors.white70,
       appBar: AppBar(
-        elevation: 7,
-        backgroundColor: bagroundColor,
+        // elevation: 7,
+        backgroundColor: Colors.white70,
         centerTitle: true,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.grey[800]),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         title: Text(
           "INSPECTION MILL",
-          style: TextStyle(fontSize: 17),
+          style: TextStyle(
+              fontSize: 17,
+              color: Colors.grey[800],
+              fontWeight: FontWeight.bold),
         ),
         actions: [
           Padding(
@@ -79,7 +88,7 @@ class _InputScreenState extends State<InputScreen> {
               onTap: () async {
                 _alertDialog();
               },
-              child: Icon(Icons.send_and_archive),
+              child: Icon(Icons.send_and_archive, color: Colors.grey[800]),
             ),
           )
         ],
@@ -89,13 +98,21 @@ class _InputScreenState extends State<InputScreen> {
           child: Column(
             children: [
               Container(
-                margin: edge10,
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                 padding: edge10,
                 width: double.infinity,
                 decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black.withOpacity(0.33),
+                          blurRadius: 8,
+                          spreadRadius: 3),
+                    ],
+                    // color: Colors.white70,
                     gradient: LinearGradient(colors: [
-                      Color(0xff30638e).withOpacity(.3),
-                      Color(0xff003d5b).withOpacity(.3),
+                      Color(0xffced4da),
+                      Colors.white70,
                     ], begin: Alignment.topRight, end: Alignment.bottomRight),
                     borderRadius: BorderRadius.circular(10)),
                 child: Row(
@@ -107,7 +124,8 @@ class _InputScreenState extends State<InputScreen> {
                       children: [
                         Row(
                           children: [
-                            Icon(Icons.person, size: 40),
+                            Icon(Icons.person,
+                                size: 40, color: Colors.grey[800]),
                             SizedBox(width: 2),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,7 +134,8 @@ class _InputScreenState extends State<InputScreen> {
                                   "$userName",
                                   style: TextStyle(
                                       fontSize: 14,
-                                      fontWeight: FontWeight.w600),
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.grey[800]),
                                 ),
                                 SizedBox(height: 2),
                                 Text(
@@ -124,7 +143,7 @@ class _InputScreenState extends State<InputScreen> {
                                   style: TextStyle(
                                       fontSize: 10,
                                       fontWeight: FontWeight.w500,
-                                      color: Colors.grey[600]),
+                                      color: Colors.grey[800]),
                                 ),
                               ],
                             ),
@@ -138,12 +157,18 @@ class _InputScreenState extends State<InputScreen> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Text("Shift $shift" ?? 'Shift ?',
+                            Text("Shift $shift" ?? '',
                                 style: TextStyle(
-                                    fontSize: 10, fontWeight: FontWeight.w500)),
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.grey[800],
+                                )),
                             Text("${f.format(now)}",
                                 style: TextStyle(
-                                    fontSize: 10, fontWeight: FontWeight.w500)),
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.grey[800],
+                                )),
                           ],
                         ),
                         SizedBox(width: 3),
@@ -196,14 +221,15 @@ class _InputScreenState extends State<InputScreen> {
                               children: [
                                 Container(
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      gradient: LinearGradient(
-                                          colors: [
-                                            Color(0xff30638e).withOpacity(.10),
-                                            Color(0xff003d5b).withOpacity(.15),
-                                          ],
-                                          begin: Alignment.topRight,
-                                          end: Alignment.bottomRight)),
+                                    borderRadius: BorderRadius.circular(15),
+                                    gradient: LinearGradient(
+                                        colors: [
+                                          Color(0xff8e9aaf).withOpacity(.2),
+                                          Color(0xffced4da),
+                                        ],
+                                        begin: Alignment.topRight,
+                                        end: Alignment.bottomRight),
+                                  ),
                                   child: Slidable(
                                     secondaryActions: <Widget>[
                                       iconSlide(data, context),
@@ -217,18 +243,22 @@ class _InputScreenState extends State<InputScreen> {
                                       title: Text(
                                         "${data.equipments}",
                                         style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 14),
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 13,
+                                          color: Colors.grey[800],
+                                        ),
                                       ),
                                       subtitle: Text(
                                         "${data.checkpoints}",
-                                        style: TextStyle(fontSize: 12),
+                                        style: TextStyle(
+                                            color: Colors.grey[800],
+                                            fontSize: 12),
                                       ),
                                       leading: Text(
                                         "\t4#6\n${data.code}",
                                         style: TextStyle(
                                             color: Colors.black45,
-                                            fontSize: 12),
+                                            fontSize: 11),
                                       ),
                                       trailing: Container(
                                         width: 100,
@@ -292,7 +322,7 @@ class _InputScreenState extends State<InputScreen> {
     final snackBar = SnackBar(
         duration: Duration(milliseconds: 1300),
         backgroundColor:
-            ans.compareTo("Yes") == 0 ? bagroundColor : bagroundColor,
+            ans.compareTo("Yes") == 0 ? Colors.grey[800] : Colors.red,
         content: Text(text));
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
@@ -332,7 +362,7 @@ class _InputScreenState extends State<InputScreen> {
     final inputToDatasbe = Mill(
       userName: userName,
       idUser: userId,
-      shift: shift,
+      shift: shift ?? '1',
       createTime: now,
 
       // Line 1

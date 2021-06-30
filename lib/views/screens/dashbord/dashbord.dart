@@ -1,5 +1,4 @@
 import 'package:Inspection/config/palette.dart';
-import 'package:Inspection/views/const/const.dart';
 import 'package:Inspection/views/screens/input/input.dart';
 import 'package:Inspection/views/screens/login/login.dart';
 import 'package:Inspection/views/screens/page_history/list_history.dart';

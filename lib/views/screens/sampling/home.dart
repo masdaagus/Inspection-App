@@ -70,6 +70,7 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
+// ignore: camel_case_types
 class _titleUp extends StatelessWidget {
   const _titleUp({
     Key key,

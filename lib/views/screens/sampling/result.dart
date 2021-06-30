@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 
 import 'model.dart';
 
+// ignore: camel_case_types
 class buildResult extends StatefulWidget {
   const buildResult({
     Key key,
@@ -27,6 +28,7 @@ double _error = 0;
 final formater = NumberFormat("##.##");
 DateTime now = DateTime.now();
 
+// ignore: camel_case_types
 class _buildResultState extends State<buildResult> {
   // This is for pick the date and the materials
 

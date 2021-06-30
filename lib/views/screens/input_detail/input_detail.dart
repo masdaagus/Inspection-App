@@ -1,5 +1,4 @@
 import 'package:Inspection/template/data.dart';
-import 'package:Inspection/views/const/const.dart';
 import 'package:flutter/material.dart';
 
 class InputDetailScreen extends StatefulWidget {
@@ -32,10 +31,10 @@ class _InputDetailScreenState extends State<InputDetailScreen> {
     return Material(
       child: Scaffold(
           appBar: AppBar(
-            backgroundColor: bagroundColor,
+            backgroundColor: Colors.white70,
             title: Text(
               widget.data.equipments,
-              style: TextStyle(fontSize: 17),
+              style: TextStyle(fontSize: 18, color: Colors.grey[800]),
             ),
             actions: [
               Padding(
@@ -43,11 +42,21 @@ class _InputDetailScreenState extends State<InputDetailScreen> {
                   child: Center(
                       child: Text(
                     widget.data.code,
-                    style: TextStyle(fontSize: 12, color: Colors.white),
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.grey[800],
+                      fontWeight: FontWeight.bold,
+                    ),
                   )))
             ],
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back, color: Colors.grey[800]),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
             centerTitle: true,
-            elevation: 0,
+            // elevation: 0,
           ),
           body: GestureDetector(
             onTap: () {
@@ -66,11 +75,14 @@ class _InputDetailScreenState extends State<InputDetailScreen> {
                           child: Text(
                             "Remarks",
                             style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w700),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.grey[800],
+                            ),
                           ),
                         ),
                       ),
-                      SizedBox(height: 22),
+                      SizedBox(height: 18),
                       Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Text(

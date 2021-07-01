@@ -32,7 +32,6 @@ dependencies:
   path_provider: ^2.0.1
   open_file: ^3.1.0
   http: ^0.13.3
-  flutter_login: any
   shared_preferences: ^0.5.4
   
 
@@ -47,13 +46,13 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_native_splash: ^1.2.0
+#   flutter_native_splash: ^1.2.0
 
-flutter_native_splash:
-  color: "#ffffff"
-  image: assets/images/splash_logo.png
-  android: true
-  ios: true
+# flutter_native_splash:
+#   color: "#ffffff"
+#   image: assets/images/splash_logo.png
+#   android: true
+#   ios: true
     
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -157,7 +157,7 @@ class _InputScreenState extends State<InputScreen> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Text("Shift $shift" ?? '',
+                            Text("Shift $shift" ?? '1',
                                 style: TextStyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w700,

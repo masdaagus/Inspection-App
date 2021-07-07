@@ -31,13 +31,10 @@ class _InputScreenState extends State<InputScreen> {
 
     if (now.compareTo(jam4) > 0 && now.compareTo(jam12) < 0) {
       shift = '3';
-      print("shift 3");
     } else if (now.compareTo(jam8) > 0 && now.compareTo(jam4) < 0) {
       shift = '2';
-      print("shift 2");
     } else if (now.compareTo(jam12) > 0 && now.compareTo(jam8) < 0) {
       shift = '1';
-      print("shift 1");
     }
     return shift;
   }
@@ -52,16 +49,19 @@ class _InputScreenState extends State<InputScreen> {
 
   @override
   void initState() {
-    super.initState();
     semoga();
     refresh();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     print(now);
     final provider = Provider.of<DataModel>(context, listen: false);
-
+    if (shift == null) {
+      shift = '1';
+    }
+    print(shift);
     return Scaffold(
       backgroundColor: Colors.white70,
       appBar: AppBar(
@@ -157,7 +157,7 @@ class _InputScreenState extends State<InputScreen> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Text("Shift $shift" ?? '1',
+                            Text("Shift $shift",
                                 style: TextStyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w700,

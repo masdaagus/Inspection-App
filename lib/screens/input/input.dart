@@ -1,9 +1,8 @@
 import 'package:Inspection/Database/database_mill.dart';
-import 'package:Inspection/model_database/mill_model.dart';
+import 'package:Inspection/models/mill_model.dart';
 import 'package:Inspection/models/data_model.dart';
-import 'package:Inspection/template/data.dart';
-import 'package:Inspection/views/const/const.dart';
-import 'package:Inspection/views/screens/input_detail/input_detail.dart';
+import 'package:Inspection/models/data.dart';
+import 'package:Inspection/screens/input_detail/input_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
@@ -100,7 +99,7 @@ class _InputScreenState extends State<InputScreen> {
               Container(
                 margin:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                padding: edge10,
+                padding: const EdgeInsets.all(10),
                 width: double.infinity,
                 decoration: BoxDecoration(
                     boxShadow: [

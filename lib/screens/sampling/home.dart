@@ -1,5 +1,5 @@
-import 'package:Inspection/views/screens/sampling/result.dart';
-import 'package:Inspection/views/screens/sampling/stopwatch.dart';
+import 'package:Inspection/screens/sampling/result.dart';
+import 'package:Inspection/screens/sampling/stopwatch.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

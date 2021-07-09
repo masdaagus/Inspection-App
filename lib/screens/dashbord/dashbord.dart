@@ -1,8 +1,8 @@
 import 'package:Inspection/config/palette.dart';
-import 'package:Inspection/views/screens/input/input.dart';
-import 'package:Inspection/views/screens/login/login.dart';
-import 'package:Inspection/views/screens/page_history/list_history.dart';
-import 'package:Inspection/views/screens/sampling/home.dart';
+import 'package:Inspection/screens/input/input.dart';
+import 'package:Inspection/screens/login/login.dart';
+import 'package:Inspection/screens/page_history/list_history.dart';
+import 'package:Inspection/screens/sampling/home.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

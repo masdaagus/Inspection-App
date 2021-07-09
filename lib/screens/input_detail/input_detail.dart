@@ -1,4 +1,4 @@
-import 'package:Inspection/template/data.dart';
+import 'package:Inspection/models/data.dart';
 import 'package:flutter/material.dart';
 
 class InputDetailScreen extends StatefulWidget {

@@ -1,8 +1,6 @@
-// import 'package:Inspection/model_database/check_model.dart';
-import 'package:Inspection/model_database/mill_model.dart';
+import 'package:Inspection/models/mill_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-// import 'package:Inspection/model_database/check_model.dart';
 
 class DatabaseMill {
   static final DatabaseMill instance = DatabaseMill.init();

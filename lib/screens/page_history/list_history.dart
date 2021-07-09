@@ -1,9 +1,9 @@
 import 'package:Inspection/Database/database_mill.dart';
 import 'package:Inspection/config/palette.dart';
-import 'package:Inspection/model_database/mill_model.dart';
-import 'package:Inspection/views/screens/pdf_detail/api/detail_api.dart';
-import 'package:Inspection/views/screens/pdf_detail/api/pdf_detail.dart';
-import 'package:Inspection/views/screens/pdf_detail/model/model_pdf.dart';
+import 'package:Inspection/models/mill_model.dart';
+import 'package:Inspection/screens/pdf_detail/api/detail_api.dart';
+import 'package:Inspection/screens/pdf_detail/api/pdf_detail.dart';
+import 'package:Inspection/screens/pdf_detail/model/model_pdf.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';

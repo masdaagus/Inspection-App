@@ -1,4 +1,4 @@
-import 'package:Inspection/models/mill_model.dart';
+import 'package:Inspection/Mill/models/mill_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -38,7 +38,7 @@ class DatabaseMill {
     ''');
 
     await db.rawInsert(
-        'INSERT INTO $tableUser ($username, $password) VALUES ("Masda agus", "08126074")');
+        'INSERT INTO $tableUser ($username, $password) VALUES ("MASDA AGUS", "08126074")');
     await db.rawInsert(
         'INSERT INTO $tableUser ($username, $password) VALUES ("M TAUFIK INDRA", "03301768")');
     await db.rawInsert(

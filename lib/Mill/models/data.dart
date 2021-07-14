@@ -48,7 +48,7 @@ class DataMill {
 }
 
 Future<List<DataMill>> fetchData(BuildContext context) async {
-  final jsonString =
-      await DefaultAssetBundle.of(context).loadString("assets/data/data.json");
+  final jsonString = await DefaultAssetBundle.of(context)
+      .loadString("assets/data/data_mill.json");
   return detailsDataFromJson(jsonString);
 }

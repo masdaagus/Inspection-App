@@ -1,5 +1,5 @@
-import 'package:Inspection/models/users.dart';
 import 'package:Inspection/service/login%20service/request/login_request.dart';
+import 'package:Inspection/service/models/users.dart';
 
 abstract class LoginCallBack {
   void onLoginSuccess(User user);

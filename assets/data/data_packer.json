@@ -1,0 +1,350 @@
+[
+    {
+        "code": "\t\t61#\nSG-01",
+        "equipments": "Manual Sliding Gate Silo",
+        "checkpoints": "Mudah dibuka Open/Close",
+        "checklis_1": false,
+        "checklis_2": false,
+        "checklis_3": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t61#\nPG-01",
+        "equipments": "Proporting Gate Silo",
+        "checkpoints": "Mudah dibuka/tidak macet, kebocoran pada gate",
+        "checklis_1": false,
+        "checklis_2": false,
+        "checklis_3": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t61#\nAS-01",
+        "equipments": "Air Slide Silo",
+        "checkpoints": "Motor (cassing dan bearing), Filter udara, Air slide (cassing, chamber udara)",
+        "checklis_1": false,
+        "checklis_2": false,
+        "checklis_3": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t61#\nAS-02",
+        "equipments": "Air Slide Silo",
+        "checkpoints": "Motor (cassing dan bearing), Filter udara, Air slide (cassing, chamber udara)",
+        "checklis_1": false,
+        "checklis_2": false,
+        "checklis_3": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "59B\nBL#",
+        "equipments": "Root Blower Air Slide",
+        "checkpoints": "Motor (cassing dan bearing), V-Belt, kebersihan alat",
+        "checklis_1": false,
+        "checklis_2": false,
+        "checklis_3": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t61#\nBE-01",
+        "equipments": "Bucket Elevator Silo",
+        "checkpoints": "Motor, Gearbox, pelumasan, sensor (drift, level, speed), Noise (Kebisingan)",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t61#\nAS-03",
+        "equipments": "Air Slide After Bucket",
+        "checkpoints": "Motor (cassing dan bearing), Filter udara, Air slide (cassing, chamber udara)",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t61#\nPG-02",
+        "equipments": "Pneumatic Gate to Bulk",
+        "checkpoints": "Mudah dibuka/tidak macet, kebocoran pada sliding",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t61#\nPG-03",
+        "equipments": "Pneumatic Gate to Packer",
+        "checkpoints": "Mudah dibuka/tidak macet, kebocoran pada sliding",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "61B\nBF#",
+        "equipments": "Bag Filter Bin Bulk",
+        "checkpoints": "Purging, Pressure Gauge, Kondisi Hopper, Valve tidak macet, stack udara bersih",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t61#\nVS-01",
+        "equipments": "Vibrating Screen Packer",
+        "checkpoints": "Motor, ekspansion joint, chute outlet tidak blocking",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t66#\nBE-01",
+        "equipments": "Bucket Elevator Packer",
+        "checkpoints": "Motor, Gearbox, pelumasan, sensor (drift, level, speed), Noise (Kebisingan)",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t66#\nSC-01",
+        "equipments": "Screw Conveyor Top Roto",
+        "checkpoints": "Motor, Gearbox, pelumasan, sensor speed, Noise (Kebisingan)",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "61B\n3B#",
+        "equipments": "Bin Bulk",
+        "checkpoints": "Aeration Unit (Blower), level indikator, cassing tidak bocor",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "61B\nAS#",
+        "equipments": "Air Slide Bulk",
+        "checkpoints": "Motor (cassing dan bearing), Filter udara, Air slide (cassing, chamber udara)",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "61B\nLA#",
+        "equipments": "Bulk Chute Vacum",
+        "checkpoints": "Bag Filter, ekspansion joint, seling dan hoist, Leakage (Kebocoran)",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t61#\n3B-01",
+        "equipments": "Bin Packer",
+        "checkpoints": "Rotary Discharge, sliding gate, level indikator, cassing tidak bocor",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t66#\nBF-01",
+        "equipments": "Bag Filter Packer (Bag House)",
+        "checkpoints": "Purging, Pressure Gauge, Kondisi Hopper, stack udara bersih",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t66#\nRF-01",
+        "equipments": "Rotary Discharge BF",
+        "checkpoints": "Motor, Leakage (Kebocoran), speed sensor",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t66#\nSC-03",
+        "equipments": "Screw Conveyor Under BF",
+        "checkpoints": "Motor, Gearbox, pelumasan, sensor speed, Noise",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t66#\nSC-04",
+        "equipments": "Screw Conveyor",
+        "checkpoints": "Motor, Gearbox, pelumasan, sensor speed, Noise",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t61#\nAS-04",
+        "equipments": "Air Slide Packer",
+        "checkpoints": "Motor (cassing dan bearing), filter udara, Air slide(cassing, chamber, udara)",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t66#\nFN-01",
+        "equipments": "Fan Bag Filter",
+        "checkpoints": "Motor, copling, bearing, noise",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t66#\nPM-01",
+        "equipments": "Rotary Packer",
+        "checkpoints": "Pressure udara, kehandalan dan kebersihan Spout, Scrapper, kondisi hopper",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t66#\nBC-01",
+        "equipments": "Belt Conveyor from Roto",
+        "checkpoints": "Temperatur, kebershihan motor, kondisi Belt dan kondisi under BC",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t66#\nBN-01",
+        "equipments": "Bag Cleaner",
+        "checkpoints": "Motor dan Filter, kebersihan inside box dan cassing, kondisi hopper",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t66#\nBW-01",
+        "equipments": "Check Weight Belt Conveyor",
+        "checkpoints": "Motor, Kebersihan belt dan pulley, kebersihan sensor bag dan panel",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t66#\nRB-01",
+        "equipments": "Belt Pengarah",
+        "checkpoints": "Motor, kondisi belt dan roller",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "66B\nIP#",
+        "equipments": "Bag Jet Printer (Barcode)",
+        "checkpoints": "Kerja sensor, haril print, kebersihan head printer, kebersihan mesin printer",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t66#\nSC-02",
+        "equipments": "Screw Conveyor Under Roto",
+        "checkpoints": "Motor, Gearbox, pelumasan, sensor speed, Noise (Kebisingan)",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t66#\nBC-02",
+        "equipments": "Belt Conveyor",
+        "checkpoints": "Motor, Gearbox, roller, Saftey device, kondisi belt, kebersihan alat",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t66#\nBD-01",
+        "equipments": "Belt Devider",
+        "checkpoints": "Motor, kondisi belt dan roller, kondisi sliding bag",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t69#\nBC-01",
+        "equipments": "Traveling Belt Conveyor",
+        "checkpoints": "Motor, Chain, pelumasan, sensor limit, kondisi belt",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t69#\nBC-02",
+        "equipments": "Loading Machine",
+        "checkpoints": "Kondisi belt, kable seling dan hoist, kondisi roller dan sliding plate",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t69#\nBC-03",
+        "equipments": "Traveling Belt Conveyor",
+        "checkpoints": "Motor, Chain, pelumasan, sensor limit, kondisi belt",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "\t\t69#\nBC-04",
+        "equipments": "Loading Machine",
+        "checkpoints": "Kondisi belt, kable seling dan hoist, kondisi roller dan sliding plate",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "660\nTK#",
+        "equipments": "Compressor",
+        "checkpoints": "Motor, indikasi panel (Pressure dan Temo), Pressure Tank",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    },
+    {
+        "code": "660\nDR#",
+        "equipments": "Drayer",
+        "checkpoints": "Temp, gauge, drainase, fan coller",
+        "checklis_1": false,
+        "checklis_2": false,
+        "description_1": "",
+        "description_2": ""
+    }
+
+]

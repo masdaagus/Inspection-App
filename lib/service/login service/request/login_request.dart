@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:Inspection/Database/database_mill.dart';
-import 'package:Inspection/models/mill_model.dart';
-import 'package:Inspection/models/users.dart';
+import 'package:Inspection/Mill/models/mill_model.dart';
+import 'package:Inspection/service/models/users.dart';
 
 class LoginRequest {
   DatabaseMill db = new DatabaseMill.init();

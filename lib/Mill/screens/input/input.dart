@@ -1,13 +1,16 @@
 import 'package:Inspection/Database/database_mill.dart';
-import 'package:Inspection/models/mill_model.dart';
-import 'package:Inspection/models/data_model.dart';
-import 'package:Inspection/models/data.dart';
-import 'package:Inspection/screens/input_detail/input_detail.dart';
+import 'package:Inspection/Mill/screens/input_detail/input_detail.dart';
+import 'package:Inspection/Mill/models/mill_model.dart';
+import 'package:Inspection/Mill/models/data.dart';
+import 'package:Inspection/controller/controller.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'widget/header.dart';
 
 class InputScreen extends StatefulWidget {
   static const routName = '/input-screen';
@@ -55,16 +58,11 @@ class _InputScreenState extends State<InputScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(now);
-    final provider = Provider.of<DataModel>(context, listen: false);
-    if (shift == null) {
-      shift = '1';
-    }
-    print(shift);
+    final c = Get.put(Controller());
+
     return Scaffold(
       backgroundColor: Colors.white70,
       appBar: AppBar(
-        // elevation: 7,
         backgroundColor: Colors.white70,
         centerTitle: true,
         leading: IconButton(
@@ -96,108 +94,12 @@ class _InputScreenState extends State<InputScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                padding: const EdgeInsets.all(10),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.33),
-                          blurRadius: 8,
-                          spreadRadius: 3),
-                    ],
-                    // color: Colors.white70,
-                    gradient: LinearGradient(colors: [
-                      Color(0xffced4da),
-                      Colors.white70,
-                    ], begin: Alignment.topRight, end: Alignment.bottomRight),
-                    borderRadius: BorderRadius.circular(10)),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(Icons.person,
-                                size: 40, color: Colors.grey[800]),
-                            SizedBox(width: 2),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "$userName",
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.grey[800]),
-                                ),
-                                SizedBox(height: 2),
-                                Text(
-                                  "$userId",
-                                  style: TextStyle(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.grey[800]),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text("Shift $shift",
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.grey[800],
-                                )),
-                            Text("${f.format(now)}",
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.grey[800],
-                                )),
-                          ],
-                        ),
-                        SizedBox(width: 3),
-                        IconButton(
-                            icon: Icon(Icons.calendar_today),
-                            onPressed: () {
-                              showDatePicker(
-                                  context: context,
-                                  initialDate: now,
-                                  firstDate: DateTime(2000),
-                                  lastDate: DateTime(2022),
-                                  builder: (context, child) {
-                                    return Theme(
-                                      data: ThemeData.dark(),
-                                      child: child,
-                                    );
-                                  }).then((value) {
-                                if (value != null) {
-                                  print(value);
-                                  setState(() {
-                                    now = value;
-                                  });
-                                }
-                              });
-                            })
-                        // Icon(Icons.calendar_today, size: 28),
-                      ],
-                    )
-                  ],
-                ),
+              Header(
+                userName: userName,
+                userId: userId,
+                shift: shift,
+                f: f,
+                date: now,
               ),
               FutureBuilder(
                 future: fetchData(context),
@@ -266,30 +168,32 @@ class _InputScreenState extends State<InputScreen> {
                                           children: [
                                             // CheckBox Line 1
                                             Transform.scale(
-                                                scale: .9,
-                                                child: Consumer<DataModel>(
-                                                  builder:
-                                                      (context, model, _) =>
-                                                          Checkbox(
+                                              scale: .9,
+                                              child: GetBuilder<Controller>(
+                                                builder: (_) {
+                                                  return Checkbox(
                                                     value: data.checklist_1,
                                                     onChanged: (value) {
-                                                      provider.tesbox(data
+                                                      c.tesbox(data
                                                           .checklist_1 = value);
                                                     },
-                                                  ),
-                                                )),
+                                                  );
+                                                },
+                                              ),
+                                            ),
                                             // CheckBox Line 2
                                             Transform.scale(
                                               scale: .9,
-                                              child: Consumer<DataModel>(
-                                                builder: (context, model, _) =>
-                                                    Checkbox(
-                                                  value: data.checklist_2,
-                                                  onChanged: (value) {
-                                                    provider.tesbox(data
-                                                        .checklist_2 = value);
-                                                  },
-                                                ),
+                                              child: GetBuilder<Controller>(
+                                                builder: (_) {
+                                                  return Checkbox(
+                                                    value: data.checklist_2,
+                                                    onChanged: (value) {
+                                                      c.tesbox(data
+                                                          .checklist_2 = value);
+                                                    },
+                                                  );
+                                                },
                                               ),
                                             ),
                                           ],
@@ -317,44 +221,32 @@ class _InputScreenState extends State<InputScreen> {
     );
   }
 
-  void _showSnackBar(String text, String ans) {
-    final snackBar = SnackBar(
-        duration: Duration(milliseconds: 1300),
-        backgroundColor:
-            ans.compareTo("Yes") == 0 ? Colors.grey[800] : Colors.red,
-        content: Text(text));
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  }
-
   Future<void> _alertDialog() async {
-    switch (await showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            content: Text('Send Inspection ?'),
-            title: Text('Inspection'),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () {
-                  addCheckData();
-                  Navigator.pop(context, "Yes");
-                  Navigator.pop(context);
-                },
-                child: const Text('Yes'),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context, "No");
-                },
-                child: const Text('No'),
-              ),
-            ],
-          );
-        })) {
-      case "Yes":
-        _showSnackBar("Inspection Berhasil", "Yes");
-        break;
-    }
+    await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Text('Send Inspection ?'),
+          title: Text('Inspection'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                addCheckData();
+                Navigator.pop(context, "Yes");
+                Navigator.pop(context);
+              },
+              child: const Text('Yes'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context, "No");
+              },
+              child: const Text('No'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   Future addCheckData() async {

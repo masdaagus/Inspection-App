@@ -1,8 +1,9 @@
 import 'package:Inspection/config/palette.dart';
-import 'package:Inspection/models/users.dart';
+
 import 'package:Inspection/service/login%20service/response/login_respon.dart';
 
 import 'package:Inspection/screens/dashbord/dashbord.dart';
+import 'package:Inspection/service/models/users.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

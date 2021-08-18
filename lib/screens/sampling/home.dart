@@ -7,7 +7,22 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.blueGrey[800],
+        elevation: 0,
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.white60),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+        title: Text(
+          "CrossCheck",
+        ),
+        actions: <Widget>[
+          // IconButton(icon: Icon(Icons.history), onPressed: () {})
+        ],
+      ),
       body: GestureDetector(
         onTap: () {
           FocusScope.of(context).requestFocus(new FocusNode());
@@ -53,12 +68,14 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  AppBar buildAppBar() {
+  Widget buildAppBar() {
     return AppBar(
       centerTitle: true,
       backgroundColor: Colors.blueGrey[800],
       elevation: 0,
-      leading: IconButton(icon: Icon(Icons.menu), onPressed: () {}),
+      leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.grey[800]),
+          onPressed: () {}),
       title: Text(
         "CrossCheck",
         // style: TextStyle(color: Colors.black54),

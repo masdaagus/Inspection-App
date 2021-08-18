@@ -1,12 +1,13 @@
-import 'package:Inspection/Mill/screens/history/history.dart';
 import 'package:Inspection/Mill/screens/input/input.dart';
 import 'package:Inspection/Packer/screens/input/input.dart';
 import 'package:Inspection/config/palette.dart';
 import 'package:Inspection/screens/dashbord/widget/buildCard.dart';
+import 'package:Inspection/screens/history/history.dart';
 import 'package:Inspection/screens/login/login.dart';
 import 'package:Inspection/screens/sampling/home.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Dashbaord extends StatefulWidget {
@@ -20,11 +21,6 @@ class _DashboardState extends State<Dashbaord> {
     setState(() {
       preferences.setInt("value", null);
     });
-  }
-
-  @override
-  void initState() {
-    super.initState();
   }
 
   @override
@@ -64,36 +60,28 @@ class _DashboardState extends State<Dashbaord> {
                   tittle: "Mill",
                   image: "assets/icons/icons8-survey-64.png",
                   press: () async {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => InputScreen()));
+                    Get.to(() => InputMill());
                   },
                 ),
                 BuildCard(
                   tittle: "Packer",
                   image: "assets/icons/icons8-survey-64.png",
                   press: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => InputPacker()));
+                    Get.to(() => InputPacker());
                   },
                 ),
                 BuildCard(
                   tittle: "Sampling",
                   image: "assets/icons/icons8-scales-50.png",
                   press: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()),
-                    );
+                    Get.to(() => HomeScreen());
                   },
                 ),
                 BuildCard(
                   tittle: "My History",
                   image: "assets/icons/icons8-history-book-50.png",
                   press: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ListHistory()),
-                    );
+                    Get.to(() => History());
                   },
                 ),
               ]),

@@ -1,62 +1,13 @@
 import 'package:Inspection/Mill/models/mill_model.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
 
-class DatabaseMill {
-  static final DatabaseMill instance = DatabaseMill.init();
-  static final _databaseV1 = 1;
-  DatabaseMill.init();
-  static Database _database;
+final String tableMill = 'TableMill';
+Future millTable(Database db) async {
+  final idType = 'integer primary key autoincrement';
+  final boolType = 'integer not null';
+  final textType = 'text not null';
 
-  static final String columnId = '_id';
-  static final String username = 'username';
-  static final String password = 'password';
-
-  Future<Database> get database async {
-    if (_database != null) return _database;
-    _database = await _initDB('mill.db');
-
-    return _database;
-  }
-
-  Future<Database> _initDB(String filePath) async {
-    final dbPath = await getDatabasesPath();
-    final path = join(dbPath, filePath);
-    return await openDatabase(path, version: _databaseV1, onCreate: _createDB);
-  }
-
-  Future _createDB(Database db, int version) async {
-    final idType = 'integer primary key autoincrement';
-    final boolType = 'integer not null';
-    final textType = 'text not null';
-
-    await db.execute(''' 
-        create table $tableUser(
-          $columnId $idType,
-          $username $textType,
-          $password $textType) 
-    ''');
-
-    await db.rawInsert(
-        'INSERT INTO $tableUser ($username, $password) VALUES ("MASDA AGUS", "08126074")');
-    await db.rawInsert(
-        'INSERT INTO $tableUser ($username, $password) VALUES ("M TAUFIK INDRA", "03301768")');
-    await db.rawInsert(
-        'INSERT INTO $tableUser ($username, $password) VALUES ("ALFIAN SYAHPUTRA", "03301786")');
-    await db.rawInsert(
-        'INSERT INTO $tableUser ($username, $password) VALUES ("FRENGKI HASIOLAN SIBARA", "03301787")');
-    await db.rawInsert(
-        'INSERT INTO $tableUser ($username, $password) VALUES ("FIKRIYANTO", "03302081")');
-    await db.rawInsert(
-        'INSERT INTO $tableUser ($username, $password) VALUES ("AJI SYAHPUTRA", "03302089")');
-    await db.rawInsert(
-        'INSERT INTO $tableUser ($username, $password) VALUES ("ADE MULYADI", "03302304")');
-    await db.rawInsert(
-        'INSERT INTO $tableUser ($username, $password) VALUES ("PUJA MULIYA", "03302305")');
-    await db.rawInsert(
-        'INSERT INTO $tableUser ($username, $password) VALUES ("TYO CRYSTIAN", "03302486")');
-
-    db.execute('''
+  db.execute('''
       create table $tableMill(
        ${MillFields.id} $idType,
        ${MillFields.userName} $textType,
@@ -103,6 +54,7 @@ class DatabaseMill {
          ${MillFields.bf01l1} $boolType,
          ${MillFields.fn01l1} $boolType,
          ${MillFields.rf01l1} $boolType,
+         ${MillFields.pp1} $boolType,
 
           ${MillFields.bf07l2} $boolType,
           ${MillFields.fn07l2} $boolType,
@@ -143,6 +95,7 @@ class DatabaseMill {
           ${MillFields.bf01l2} $boolType,
           ${MillFields.fn01l2} $boolType,
           ${MillFields.rf01l2} $boolType,
+          ${MillFields.pp2} $boolType,
 
            ${MillFields.desbf07l1} $textType,
            ${MillFields.desfn07l1} $textType,
@@ -183,6 +136,7 @@ class DatabaseMill {
            ${MillFields.desbf01l1} $textType,
            ${MillFields.desfn01l1} $textType,
            ${MillFields.desrf01l1} $textType,
+           ${MillFields.despp1} $textType,
 
             ${MillFields.desbf07l2} $textType,
             ${MillFields.desfn07l2} $textType,
@@ -222,39 +176,23 @@ class DatabaseMill {
             ${MillFields.dessr01l2} $textType,
             ${MillFields.desbf01l2} $textType,
             ${MillFields.desfn01l2} $textType,
-            ${MillFields.desrf01l2} $textType)
+            ${MillFields.desrf01l2} $textType,
+            ${MillFields.despp2} $textType,
+
+              ${MillFields.silo1} $boolType,
+              ${MillFields.silo2} $boolType,
+              ${MillFields.silo3} $boolType,
+              ${MillFields.bf01} $boolType,
+              ${MillFields.bf02} $boolType,
+              ${MillFields.bf03} $boolType,
+              ${MillFields.hg01} $boolType,
+
+              ${MillFields.dessilo1} $textType,
+              ${MillFields.dessilo2} $textType,
+              ${MillFields.dessilo3} $textType,
+              ${MillFields.desbf01} $textType,
+              ${MillFields.desbf02} $textType,
+              ${MillFields.desbf03} $textType,
+              ${MillFields.deshg01} $textType)
     ''');
-  }
-
-  Future<void> create({String table, Map<String, Object> mill}) async {
-    final db = await instance.database;
-
-    db.insert(table, mill);
-  }
-
-  Future readMill(int id) async {
-    final db = await instance.database;
-    final maps = await db.query(
-      tableMill,
-      columns: MillFields.values,
-      where: '${MillFields.id} = ?',
-      whereArgs: [id],
-    );
-
-    if (maps.isNotEmpty) {
-      return Mill.fromJson(maps.first);
-    } else {
-      throw Exception('ID $id not found');
-    }
-  }
-
-  Future<List> readAllNotes() async {
-    final db = await instance.database;
-
-    final orderBy = '${MillFields.time} ASC';
-
-    final result = await db.query(tableMill, orderBy: orderBy);
-
-    return result.map((json) => Mill.fromJson(json)).toList();
-  }
 }

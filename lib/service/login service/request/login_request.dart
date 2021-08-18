@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:Inspection/Database/database_mill.dart';
-import 'package:Inspection/Mill/models/mill_model.dart';
+import 'package:Inspection/Database/database.dart';
 import 'package:Inspection/service/models/users.dart';
+import 'package:Inspection/Database/database_user.dart';
 
 class LoginRequest {
   DatabaseMill db = new DatabaseMill.init();
@@ -14,7 +14,7 @@ class LoginRequest {
 
     if (res.length > 0) {
       print(res);
-      return new User.fromMap(res.first);
+      return User.fromMap(res.first);
     }
 
     return null;

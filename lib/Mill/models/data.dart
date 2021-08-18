@@ -16,7 +16,6 @@ class DataMill {
     this.checklist_2,
     this.description_1,
     this.description_2,
-    this.line,
   });
 
   final String code;
@@ -26,7 +25,6 @@ class DataMill {
   bool checklist_2;
   String description_1;
   String description_2;
-  final String line;
 
   factory DataMill.fromJson(Map<String, dynamic> json) => DataMill(
         code: json["code"],
@@ -47,8 +45,14 @@ class DataMill {
       };
 }
 
-Future<List<DataMill>> fetchData(BuildContext context) async {
+Future<List<DataMill>> fetchData1(BuildContext context) async {
   final jsonString = await DefaultAssetBundle.of(context)
       .loadString("assets/data/data_mill.json");
+  return detailsDataFromJson(jsonString);
+}
+
+Future<List<DataMill>> fetchData2(BuildContext context) async {
+  final jsonString = await DefaultAssetBundle.of(context)
+      .loadString("assets/data/special_mill.json");
   return detailsDataFromJson(jsonString);
 }

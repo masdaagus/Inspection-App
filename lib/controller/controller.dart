@@ -1,17 +1,14 @@
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Controller extends GetxController {
-  DateFormat f = new DateFormat('dd-MM-yyyy');
-  String userName;
-  String userId;
-  DateTime now = DateTime.now();
+  final DateFormat f = new DateFormat('dd-MM-yyyy');
+  final DateTime now = DateTime.now();
   String shift;
 
   String shiftFormate() {
-    DateTime jam4 = DateTime(now.year, now.month, now.day, 16);
-    DateTime jam8 = DateTime(now.year, now.month, now.day, 8);
+    DateTime jam4 = DateTime(now.year, now.month, now.day, 16, 1);
+    DateTime jam8 = DateTime(now.year, now.month, now.day, 8, 1);
     DateTime jam12 = DateTime(now.year, now.month, now.day, 23, 58);
 
     if (now.compareTo(jam4) > 0 && now.compareTo(jam12) < 0) {
@@ -20,14 +17,18 @@ class Controller extends GetxController {
       shift = '2';
     } else if (now.compareTo(jam12) > 0 && now.compareTo(jam8) < 0) {
       shift = '1';
+    } else {
+      shift = '2';
     }
+
+    print(shift);
     return shift;
   }
 
-  Future getUser() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    userName = preferences.getString("user");
-    userId = preferences.getString("pass");
+  @override
+  void onInit() {
+    shiftFormate();
+    super.onInit();
   }
 
   void tesbox(bool val) {

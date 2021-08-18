@@ -1,9 +1,5 @@
 import 'package:flutter/cupertino.dart';
 
-final String tableMill = 'TableMill';
-
-final String tableUser = 'TableUser';
-
 class MillFields {
   static final List<String> values = [
     id,
@@ -52,6 +48,7 @@ class MillFields {
     bf01l1,
     fn01l1,
     rf01l1,
+    pp1,
     // Line 2
     bf07l2,
     fn07l2,
@@ -92,6 +89,7 @@ class MillFields {
     bf01l2,
     fn01l2,
     rf01l2,
+    pp2,
     // Line 1
     desbf07l1,
     desfn07l1,
@@ -132,6 +130,7 @@ class MillFields {
     desbf01l1,
     desfn01l1,
     desrf01l1,
+    despp1,
     // Line 2
     desbf07l2,
     desfn07l2,
@@ -172,6 +171,7 @@ class MillFields {
     desbf01l2,
     desfn01l2,
     desrf01l2,
+    despp2,
   ];
 
   static final String id = '_id';
@@ -219,6 +219,7 @@ class MillFields {
   static final String bf01l1 = 'BF01_L1';
   static final String fn01l1 = 'FN01_L1';
   static final String rf01l1 = 'RF01_L1';
+  static final String pp1 = 'PP01_L1';
 
   static final String bf07l2 = 'BF07_L2';
   static final String fn07l2 = 'FN07_L2';
@@ -259,6 +260,7 @@ class MillFields {
   static final String bf01l2 = 'BF01_L2';
   static final String fn01l2 = 'FN01_L2';
   static final String rf01l2 = 'RF01_L2';
+  static final String pp2 = 'PP01_L2';
 
   static final String desbf07l1 = 'Description_BF07_L1';
   static final String desfn07l1 = 'Description_FN07_L1';
@@ -299,6 +301,7 @@ class MillFields {
   static final String desbf01l1 = 'Description_BF01_L1';
   static final String desfn01l1 = 'Description_FN01_L1';
   static final String desrf01l1 = 'Description_RF01_L1';
+  static final String despp1 = 'Description_PP01_L1';
 
   static final String desbf07l2 = 'Description_BF07_L2';
   static final String desfn07l2 = 'Description_FN07_L2';
@@ -339,6 +342,24 @@ class MillFields {
   static final String desbf01l2 = 'Description_BF01_L2';
   static final String desfn01l2 = 'Description_FN01_L2';
   static final String desrf01l2 = 'Description_RF01_L2';
+  static final String despp2 = 'Description_PP01_L2';
+
+  // Special
+  static final String silo1 = 'SILO_1';
+  static final String silo2 = 'SILO_2';
+  static final String silo3 = 'SILO_3';
+  static final String bf01 = 'BF01';
+  static final String bf02 = 'BF02';
+  static final String bf03 = 'BF03';
+  static final String hg01 = 'HG01';
+
+  static final String dessilo1 = 'Description_SILO_1';
+  static final String dessilo2 = 'Description_SILO_2';
+  static final String dessilo3 = 'Description_SILO_3';
+  static final String desbf01 = 'Description_BF01';
+  static final String desbf02 = 'Description_BF02';
+  static final String desbf03 = 'Description_BF03';
+  static final String deshg01 = 'Description_HG01';
 }
 
 class Mill {
@@ -388,6 +409,7 @@ class Mill {
   final bool bf01l1;
   final bool fn01l1;
   final bool rf01l1;
+  final bool pp1;
   // Line 2
   final bool bf07l2;
   final bool fn07l2;
@@ -428,6 +450,7 @@ class Mill {
   final bool bf01l2;
   final bool fn01l2;
   final bool rf01l2;
+  final bool pp2;
   // Line 1
   final String desbf07l1;
   final String desfn07l1;
@@ -468,6 +491,7 @@ class Mill {
   final String desbf01l1;
   final String desfn01l1;
   final String desrf01l1;
+  final String despp1;
   // Line 2
   final String desbf07l2;
   final String desfn07l2;
@@ -508,6 +532,24 @@ class Mill {
   final String desbf01l2;
   final String desfn01l2;
   final String desrf01l2;
+  final String despp2;
+
+  // Special
+  final bool silo1;
+  final bool silo2;
+  final bool silo3;
+  final bool bf01;
+  final bool bf02;
+  final bool bf03;
+  final bool hg01;
+
+  final String dessilo1;
+  final String dessilo2;
+  final String dessilo3;
+  final String desbf01;
+  final String desbf02;
+  final String desbf03;
+  final String deshg01;
 
   const Mill({
     this.id,
@@ -555,6 +597,7 @@ class Mill {
     @required this.bf01l1,
     @required this.fn01l1,
     @required this.rf01l1,
+    @required this.pp1,
     // Line 2
     @required this.bf07l2,
     @required this.fn07l2,
@@ -595,6 +638,7 @@ class Mill {
     @required this.bf01l2,
     @required this.fn01l2,
     @required this.rf01l2,
+    @required this.pp2,
     // Line 1
     @required this.desbf07l1,
     @required this.desfn07l1,
@@ -635,6 +679,7 @@ class Mill {
     @required this.desbf01l1,
     @required this.desfn01l1,
     @required this.desrf01l1,
+    @required this.despp1,
     // Line 2
     @required this.desbf07l2,
     @required this.desfn07l2,
@@ -675,6 +720,24 @@ class Mill {
     @required this.desbf01l2,
     @required this.desfn01l2,
     @required this.desrf01l2,
+    @required this.despp2,
+
+    // Special
+    @required this.silo1,
+    @required this.silo2,
+    @required this.silo3,
+    @required this.bf01,
+    @required this.bf02,
+    @required this.bf03,
+    @required this.hg01,
+    // Description
+    @required this.dessilo1,
+    @required this.dessilo2,
+    @required this.dessilo3,
+    @required this.desbf01,
+    @required this.desbf02,
+    @required this.desbf03,
+    @required this.deshg01,
   });
 
   static Mill fromJson(Map<String, Object> json) => Mill(
@@ -723,6 +786,7 @@ class Mill {
         bf01l1: json[MillFields.bf01l1] == 1,
         fn01l1: json[MillFields.fn01l1] == 1,
         rf01l1: json[MillFields.rf01l1] == 1,
+        pp1: json[MillFields.pp1] == 1,
 
         // Line 2
         bf07l2: json[MillFields.bf07l2] == 1,
@@ -764,6 +828,7 @@ class Mill {
         bf01l2: json[MillFields.bf01l2] == 1,
         fn01l2: json[MillFields.fn01l2] == 1,
         rf01l2: json[MillFields.rf01l2] == 1,
+        pp2: json[MillFields.pp2] == 1,
 
         // Line 1
         desbf07l1: json[MillFields.desbf07l1] as String,
@@ -805,6 +870,7 @@ class Mill {
         desbf01l1: json[MillFields.desbf01l1] as String,
         desfn01l1: json[MillFields.desfn01l1] as String,
         desrf01l1: json[MillFields.desrf01l1] as String,
+        despp1: json[MillFields.despp1] as String,
 
         // Line 2
         desbf07l2: json[MillFields.desbf07l2] as String,
@@ -846,6 +912,24 @@ class Mill {
         desbf01l2: json[MillFields.desbf01l2] as String,
         desfn01l2: json[MillFields.desfn01l2] as String,
         desrf01l2: json[MillFields.desrf01l2] as String,
+        despp2: json[MillFields.despp2] as String,
+
+        // Special
+        silo1: json[MillFields.silo1] == 1,
+        silo2: json[MillFields.silo2] == 1,
+        silo3: json[MillFields.silo3] == 1,
+        bf01: json[MillFields.bf01] == 1,
+        bf02: json[MillFields.bf02] == 1,
+        bf03: json[MillFields.bf03] == 1,
+        hg01: json[MillFields.hg01] == 1,
+
+        dessilo1: json[MillFields.dessilo1] as String,
+        dessilo2: json[MillFields.dessilo2] as String,
+        dessilo3: json[MillFields.dessilo3] as String,
+        desbf01: json[MillFields.desbf01] as String,
+        desbf02: json[MillFields.desbf02] as String,
+        desbf03: json[MillFields.desbf03] as String,
+        deshg01: json[MillFields.deshg01] as String,
       );
 
   Map<String, Object> toJson() => {
@@ -895,6 +979,7 @@ class Mill {
         MillFields.bf01l1: bf01l1 ? 1 : 0,
         MillFields.fn01l1: fn01l1 ? 1 : 0,
         MillFields.rf01l1: rf01l1 ? 1 : 0,
+        MillFields.pp1: pp1 ? 1 : 0,
 
         // Line 2
         MillFields.bf07l2: bf07l2 ? 1 : 0,
@@ -936,6 +1021,7 @@ class Mill {
         MillFields.bf01l2: bf01l2 ? 1 : 0,
         MillFields.fn01l2: fn01l2 ? 1 : 0,
         MillFields.rf01l2: rf01l2 ? 1 : 0,
+        MillFields.pp2: pp2 ? 1 : 0,
 
         // Line 1
         MillFields.desbf07l1: desbf07l1,
@@ -977,6 +1063,7 @@ class Mill {
         MillFields.desbf01l1: desbf01l1,
         MillFields.desfn01l1: desfn01l1,
         MillFields.desrf01l1: desrf01l1,
+        MillFields.despp1: despp1,
 
         // Line 2
         MillFields.desbf07l2: desbf07l2,
@@ -1018,5 +1105,23 @@ class Mill {
         MillFields.desbf01l2: desbf01l2,
         MillFields.desfn01l2: desfn01l2,
         MillFields.desrf01l2: desrf01l2,
+        MillFields.despp2: despp2,
+
+        // Special
+        MillFields.silo1: silo1,
+        MillFields.silo2: silo2,
+        MillFields.silo3: silo3,
+        MillFields.bf01: bf01,
+        MillFields.bf02: bf02,
+        MillFields.bf03: bf03,
+        MillFields.hg01: hg01,
+
+        MillFields.dessilo1: dessilo1,
+        MillFields.dessilo2: dessilo2,
+        MillFields.dessilo3: dessilo3,
+        MillFields.desbf01: desbf01,
+        MillFields.desbf02: desbf02,
+        MillFields.desbf03: desbf03,
+        MillFields.deshg01: deshg01,
       };
 }

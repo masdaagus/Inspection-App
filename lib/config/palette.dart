@@ -1,4 +1,5 @@
 import 'package:flutter/painting.dart';
+import 'package:intl/intl.dart';
 
 class Palette {
   static const Color iconColor = Color(0xFFB6C7D1);
@@ -9,3 +10,5 @@ class Palette {
   static const Color googleColor = Color(0xFFDE4B39);
   static const Color backgroundColor = Color(0xFFECF3F9);
 }
+
+final DateFormat f = new DateFormat('dd-MM-yyyy');

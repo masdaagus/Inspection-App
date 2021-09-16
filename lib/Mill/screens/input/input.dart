@@ -37,123 +37,97 @@ class _InputMillState extends State<InputMill> {
 
   @override
   Widget build(BuildContext context) {
-    final ctrl = Get.find<Controller>();
+    print("Update Input Mill");
 
-    return Scaffold(
-      backgroundColor: Colors.white70,
-      appBar: AppBar(
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
         backgroundColor: Colors.white70,
-        centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.grey[800]),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+        appBar: AppBar(
+          backgroundColor: Colors.white70,
+          centerTitle: true,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.grey[800]),
+            onPressed: () {
+              _alertBack();
+            },
+          ),
+          title: Text(
+            "INSPECTION MILL",
+            style: TextStyle(
+                fontSize: 17,
+                color: Colors.grey[800],
+                fontWeight: FontWeight.bold),
+          ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: GestureDetector(
+                onTap: () async {
+                  _alertDialog();
+                },
+                child: Icon(Icons.send_and_archive, color: Colors.grey[800]),
+              ),
+            )
+          ],
         ),
-        title: Text(
-          "INSPECTION MILL",
-          style: TextStyle(
-              fontSize: 17,
-              color: Colors.grey[800],
-              fontWeight: FontWeight.bold),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: GestureDetector(
-              onTap: () async {
-                _alertDialog();
-              },
-              child: Icon(Icons.send_and_archive, color: Colors.grey[800]),
+        body: Material(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                GetBuilder<Controller>(
+                  builder: (header) {
+                    return Header(
+                      userName: userName,
+                      userId: userId,
+                      shift: "${header.shift}",
+                      date: header.now,
+                    );
+                  },
+                ),
+                FutureBuilder(
+                  future: fetchData1(context),
+                  builder: (context, snapshot) {
+                    _data1 = snapshot.data;
+                    return snapshot.data == null
+                        ? Container()
+                        : ListView.builder(
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: snapshot.data.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              DataMill data = snapshot.data[index];
+                              return ListItem(
+                                data: data,
+                              );
+                            },
+                          );
+                  },
+                ),
+                FutureBuilder(
+                  future: fetchData2(context),
+                  builder: (context, snapshot) {
+                    _data2 = snapshot.data;
+                    return snapshot.data == null
+                        ? Container()
+                        : ListView.builder(
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: snapshot.data.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              DataMill data = snapshot.data[index];
+                              return ListMill(
+                                data: data,
+                              );
+                            },
+                          );
+                  },
+                ),
+              ],
             ),
-          )
-        ],
-      ),
-      body: Material(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              GetBuilder<Controller>(
-                builder: (_) {
-                  return Header(
-                    userName: userName,
-                    userId: userId,
-                    f: ctrl.f,
-                    shift: "${ctrl.shift}",
-                    date: ctrl.now,
-                  );
-                },
-              ),
-              FutureBuilder(
-                future: fetchData1(context),
-                builder: (context, snapshot) {
-                  _data1 = snapshot.data;
-                  return snapshot.data == null
-                      ? Container()
-                      : ListView.builder(
-                          physics: NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: snapshot.data.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            DataMill data = snapshot.data[index];
-                            return ListItem(
-                              data: data,
-                            );
-                          },
-                        );
-                },
-              ),
-              FutureBuilder(
-                future: fetchData2(context),
-                builder: (context, snapshot) {
-                  _data2 = snapshot.data;
-                  return snapshot.data == null
-                      ? Container()
-                      : ListView.builder(
-                          physics: NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: snapshot.data.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            DataMill data = snapshot.data[index];
-                            return ListMill(
-                              data: data,
-                            );
-                          },
-                        );
-                },
-              ),
-            ],
           ),
         ),
       ),
-    );
-  }
-
-  Future<void> _alertDialog() async {
-    await showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          content: Text('Send Inspection ?'),
-          title: Text('Inspection'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                addCheckData();
-                Navigator.pop(context, "Yes");
-                Navigator.pop(context);
-              },
-              child: const Text('Yes'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context, "No");
-              },
-              child: const Text('No'),
-            ),
-          ],
-        );
-      },
     );
   }
 
@@ -353,5 +327,60 @@ class _InputMillState extends State<InputMill> {
 
     await DatabaseMill.instance
         .create(table: tableMill, object: inputToDatasbe.toJson());
+  }
+
+  Future<void> _alertDialog() async {
+    await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Text('Send Inspection ?'),
+          title: Text('Inspection'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                addCheckData();
+                Navigator.pop(context, "Yes");
+                Navigator.pop(context);
+              },
+              child: const Text('Yes'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context, "No");
+              },
+              child: const Text('No'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _alertBack() async {
+    await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Text('Keluar Halaman ?'),
+          title: Text('Inspection'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context, "Yes");
+                Navigator.pop(context);
+              },
+              child: const Text('Yes'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context, "No");
+              },
+              child: const Text('No'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

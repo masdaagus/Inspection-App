@@ -491,10 +491,10 @@ class _buildResultState extends State<buildResult> {
               items: _droplineMenuItems,
               onChanged: onChangeDroplineItem,
               value: _selectedLine,
-              // underline: Container(
-              //   color: Colors.transparent,
-              // ),
-              // iconSize: 0,
+              underline: Container(
+                color: Colors.transparent,
+              ),
+              iconSize: 0,
             ),
             DropdownButton(
               style: TextStyle(fontSize: 12, color: Colors.black),

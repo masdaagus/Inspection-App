@@ -1,0 +1,51 @@
+[
+    {
+        "code": "Silo 1",
+        "equipments": "Valve & Pipa Transport",
+        "checkpoints": "Open/close valve dan kondisi pipa",
+        "checklis_1": false,
+        "description_1": ""
+    },
+    {
+        "code": "Silo 2",
+        "equipments": "Valve & Pipa Transport",
+        "checkpoints": "Open/close valve dan kondisi pipa",
+        "checklis_1": false,
+        "description_1": ""
+    },
+    {
+        "code": "Silo 3",
+        "equipments": "Valve & Pipa Transport",
+        "checkpoints": "Open/close valve dan kondisi pipa",
+        "checklis_1": false,
+        "description_1": ""
+    },
+    {
+        "code": "BF-01",
+        "equipments": "Bag Filter",
+        "checkpoints": "Hopper, cerobong, flap valve ,sistem purging dan pressure udara",
+        "checklis_1": false,
+        "description_1": ""
+    },
+    {
+        "code": "BF-02",
+        "equipments": "Bag Filter",
+        "checkpoints": "Hopper, cerobong, flap valve ,sistem purging dan pressure udara",
+        "checklis_1": false,
+        "description_1": ""
+    },
+    {
+        "code": "BF-03",
+        "equipments": "Bag Filter",
+        "checkpoints": "Hopper, cerobong, flap valve ,sistem purging dan pressure udara",
+        "checklis_1": false,
+        "description_1": ""
+    },
+    {
+        "code": "HG-01",
+        "equipments": "Hot Gas Generator",
+        "checkpoints": "Level solar, kebocoran solar pada tank & pipa, temp dan kebocoran cassing/body hotgas, kebersihan",
+        "checklis_1": false,
+        "description_1": ""
+    }
+]

@@ -110,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> implements LoginCallBack {
                         children: [
                           RichText(
                             text: TextSpan(
-                                text: "Welcom to",
+                                text: "Welcome to",
                                 style: TextStyle(
                                   fontSize: 25,
                                   letterSpacing: 1,

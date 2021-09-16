@@ -41,88 +41,90 @@ class _InputPackerState extends State<InputPacker> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white70,
-        title: Text(
-          "Inspection Packer",
-          style: TextStyle(
-              fontSize: 17,
-              color: Colors.grey[800],
-              fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.grey[800]),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: GestureDetector(
-              onTap: () async {
-                _alertPacker();
-              },
-              child: Icon(Icons.send_and_archive, color: Colors.grey[800]),
-            ),
-          )
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            GetBuilder<Controller>(
-              builder: (_) {
-                return Header(
-                  userName: userName,
-                  userId: userId,
-                  f: ctrl.f,
-                  shift: "${ctrl.shift}",
-                  date: ctrl.now,
-                );
-              },
-            ),
-            FutureBuilder(
-              future: fetchData1(context),
-              builder: (context, snapshot) {
-                _data1 = snapshot.data;
-                return snapshot.data == null
-                    ? Container()
-                    : ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: snapshot.data.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          DataPacker data = snapshot.data[index];
-                          return ListPacker(
-                            data: data,
-                          );
-                        },
-                      );
-              },
-            ),
-            FutureBuilder(
-              future: fetchData2(context),
-              builder: (context, snapshot) {
-                _data2 = snapshot.data;
-                return snapshot.data == null
-                    ? Container()
-                    : ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: snapshot.data.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          DataPacker data = snapshot.data[index];
-                          return ListItem(
-                            data: data,
-                          );
-                        },
-                      );
-              },
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white70,
+          title: Text(
+            "Inspection Packer",
+            style: TextStyle(
+                fontSize: 17,
+                color: Colors.grey[800],
+                fontWeight: FontWeight.bold),
+          ),
+          centerTitle: true,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.grey[800]),
+            onPressed: () {
+              _alertBack();
+            },
+          ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: GestureDetector(
+                onTap: () async {
+                  _alertPacker();
+                },
+                child: Icon(Icons.send_and_archive, color: Colors.grey[800]),
+              ),
             )
           ],
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              GetBuilder<Controller>(
+                builder: (header) {
+                  return Header(
+                    userName: userName,
+                    userId: userId,
+                    shift: "${header.shift}",
+                    date: header.now,
+                  );
+                },
+              ),
+              FutureBuilder(
+                future: fetchData1(context),
+                builder: (context, snapshot) {
+                  _data1 = snapshot.data;
+                  return snapshot.data == null
+                      ? Container()
+                      : ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: snapshot.data.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            DataPacker data = snapshot.data[index];
+                            return ListPacker(
+                              data: data,
+                            );
+                          },
+                        );
+                },
+              ),
+              FutureBuilder(
+                future: fetchData2(context),
+                builder: (context, snapshot) {
+                  _data2 = snapshot.data;
+                  return snapshot.data == null
+                      ? Container()
+                      : ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: snapshot.data.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            DataPacker data = snapshot.data[index];
+                            return ListItem(
+                              data: data,
+                            );
+                          },
+                        );
+                },
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -327,6 +329,33 @@ class _InputPackerState extends State<InputPacker> {
             TextButton(
               onPressed: () {
                 addData();
+                Navigator.pop(context, "Yes");
+                Navigator.pop(context);
+              },
+              child: const Text('Yes'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context, "No");
+              },
+              child: const Text('No'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _alertBack() async {
+    await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Text('Keluar Halaman ?'),
+          title: Text('Inspection'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
                 Navigator.pop(context, "Yes");
                 Navigator.pop(context);
               },

@@ -1,0 +1,57 @@
+[
+    {
+        "code": "\t\t61#\nSG-01",
+        "equipments": "Manual Sliding Gate Silo",
+        "checkpoints": "Mudah dibuka Open/Close",
+        "checklis_1": false,
+        "checklis_2": false,
+        "checklis_3": false,
+        "description_1": "",
+        "description_2": "",
+        "description_3": ""
+    },
+    {
+        "code": "\t\t61#\nPG-01",
+        "equipments": "Proporting Gate Silo",
+        "checkpoints": "Mudah dibuka/tidak macet, kebocoran pada gate",
+        "checklis_1": false,
+        "checklis_2": false,
+        "checklis_3": false,
+        "description_1": "",
+        "description_2": "",
+        "description_3": ""
+    },
+    {
+        "code": "\t\t61#\nAS-01",
+        "equipments": "Air Slide Silo",
+        "checkpoints": "Motor (cassing dan bearing), Filter udara, Air slide (cassing, chamber udara)",
+        "checklis_1": false,
+        "checklis_2": false,
+        "checklis_3": false,
+        "description_1": "",
+        "description_2": "",
+        "description_3": ""
+    },
+    {
+        "code": "\t\t61#\nAS-02",
+        "equipments": "Air Slide Silo",
+        "checkpoints": "Motor (cassing dan bearing), Filter udara, Air slide (cassing, chamber udara)",
+        "checklis_1": false,
+        "checklis_2": false,
+        "checklis_3": false,
+        "description_1": "",
+        "description_2": "",
+        "description_3": ""
+    },
+    {
+        "code": "59B\nBL#",
+        "equipments": "Root Blower Air Slide",
+        "checkpoints": "Motor (cassing dan bearing), V-Belt, kebersihan alat",
+        "checklis_1": false,
+        "checklis_2": false,
+        "checklis_3": false,
+        "description_1": "",
+        "description_2": "",
+        "description_3": ""
+    }
+]

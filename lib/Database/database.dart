@@ -55,7 +55,7 @@ class DatabaseMill {
   Future<List> readAllPacker() async {
     final db = await instance.database;
 
-    final orderBy = '${PackerFields.time} ASC';
+    final orderBy = '${PackerFields.time} DESC';
 
     final result = await db.query(tablePacker, orderBy: orderBy);
 

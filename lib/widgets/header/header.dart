@@ -27,9 +27,9 @@ class Header extends StatelessWidget {
 // class _HeaderState extends State<Header> {
 //   @override
   Widget build(BuildContext context) {
+    print("header");
     final ctrl = Get.find<Controller>();
 
-    print("Update Header");
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
       padding: const EdgeInsets.all(10),
@@ -87,7 +87,7 @@ class Header extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text("Shift $shift",
+                  Text("Shift ${ctrl.shift}",
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.w700,
@@ -117,11 +117,10 @@ class Header extends StatelessWidget {
                           );
                         }).then((value) {
                       if (value != null) {
-                        // ctrl.now = value;
+                        ctrl.now = value;
                       }
                     });
                   })
-              // Icon(Icons.calendar_today, size: 28),
             ],
           )
         ],

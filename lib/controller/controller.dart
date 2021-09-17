@@ -5,9 +5,8 @@ class Controller extends GetxController {
   String _shift;
 
   String get shift => _shift;
-  // DateTime get now => now;
 
-  String shiftFormate() {
+  Future<String> shiftFormate() async {
     DateTime jam4 = DateTime(now.year, now.month, now.day, 16);
     DateTime jam8 = DateTime(now.year, now.month, now.day, 8);
     DateTime jam12 = DateTime(now.year, now.month, now.day, 23, 58);
@@ -18,14 +17,16 @@ class Controller extends GetxController {
       _shift = '2';
     } else if (now.compareTo(jam12) > 0 && now.compareTo(jam8) < 0) {
       _shift = '1';
+    } else {
+      _shift = '1';
     }
-    print(_shift);
+    print("shift = $_shift");
     return _shift;
   }
 
   @override
-  void onInit() {
-    shiftFormate();
+  void onInit() async {
+    await shiftFormate();
     super.onInit();
   }
 

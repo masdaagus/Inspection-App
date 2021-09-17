@@ -12,8 +12,6 @@ class ListItem extends StatelessWidget {
 
   final data;
 
-  final ctrl = Get.find<Controller>();
-
   @override
   Widget build(BuildContext context) {
     return Slidable(
@@ -78,7 +76,7 @@ class ListItem extends StatelessWidget {
                           return Checkbox(
                             value: data.checklist_1,
                             onChanged: (value) {
-                              ctrl.tesbox(data.checklist_1 = value);
+                              c.tesbox(data.checklist_1 = value);
                             },
                           );
                         },
@@ -93,7 +91,7 @@ class ListItem extends StatelessWidget {
                           return Checkbox(
                             value: data.checklist_2,
                             onChanged: (value) {
-                              ctrl.tesbox(data.checklist_2 = value);
+                              c.tesbox(data.checklist_2 = value);
                             },
                           );
                         },

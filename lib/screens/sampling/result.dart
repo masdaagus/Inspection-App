@@ -501,7 +501,7 @@ class _buildResultState extends State<buildResult> {
               items: _dropdownMenuItems,
               onChanged: onChangeDropdownItem,
               value: _selectedMaterial,
-            )
+            ),
           ],
         )
       ],

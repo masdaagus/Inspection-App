@@ -80,7 +80,7 @@ class _InputMillState extends State<InputMill> {
                     return Header(
                       userName: userName,
                       userId: userId,
-                      shift: "${header.shift}",
+                      shift: header.shift,
                       date: header.now,
                     );
                   },

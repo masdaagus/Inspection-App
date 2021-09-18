@@ -5,7 +5,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 
 class ListItem extends StatelessWidget {
-  ListItem({
+  const ListItem({
     Key key,
     @required this.data,
   }) : super(key: key);

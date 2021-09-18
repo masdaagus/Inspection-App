@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:Inspection/Database/database.dart';
 import 'package:Inspection/Database/database_mill.dart';
 import 'package:Inspection/Mill/models/mill_model.dart';
@@ -9,6 +11,7 @@ import 'package:Inspection/widgets/input/list_item_mill.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 class InputMill extends StatefulWidget {
   @override
@@ -33,6 +36,24 @@ class _InputMillState extends State<InputMill> {
   void initState() {
     getUser();
     super.initState();
+  }
+
+  void addData() {
+    final ctrl = Get.find<Controller>();
+    Uri url = Uri.parse(
+        "https://inspection-f215c-default-rtdb.asia-southeast1.firebasedatabase.app/mill.json");
+
+    http.post(
+      url,
+      body: json.encode(
+        {
+          "userName": '',
+          "idUser": userId,
+          "shift": ctrl.shift ?? '1',
+          "createTime": ctrl.now.toString(),
+        },
+      ),
+    );
   }
 
   @override
@@ -67,6 +88,23 @@ class _InputMillState extends State<InputMill> {
                   _alertDialog();
                 },
                 child: Icon(Icons.send_and_archive, color: Colors.grey[800]),
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                // addData();
+                Get.snackbar(
+                  "Inspection",
+                  "Data anda telah berhasil disimpan",
+                  duration: Duration(milliseconds: 2200),
+                  backgroundColor: Colors.blueGrey[700].withOpacity(.5),
+                  snackPosition: SnackPosition.TOP,
+                  margin: EdgeInsets.symmetric(vertical: 14),
+                );
+              },
+              icon: Icon(
+                Icons.swap_calls,
+                color: Colors.grey[800],
               ),
             )
           ],

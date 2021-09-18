@@ -5,7 +5,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 
 class ListMill extends StatelessWidget {
-  ListMill({Key key, @required this.data}) : super(key: key);
+  const ListMill({Key key, @required this.data}) : super(key: key);
 
   final data;
 

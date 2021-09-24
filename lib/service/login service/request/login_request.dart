@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:Inspection/Database/database.dart';
-import 'package:Inspection/service/models/users.dart';
+import 'package:Inspection/service/login%20service/models/users.dart';
 import 'package:Inspection/Database/database_user.dart';
 
 class LoginRequest {

@@ -1,4 +1,4 @@
-import 'package:Inspection/controller/controller.dart';
+import 'package:Inspection/controller/checkbox.dart';
 import 'package:Inspection/widgets/input_detail/remarks_mill.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -62,7 +62,7 @@ class ListMill extends StatelessWidget {
                     // CheckBox
                     Transform.scale(
                       scale: .9,
-                      child: GetBuilder<Controller>(
+                      child: GetBuilder<Check>(
                         builder: (c) {
                           return Checkbox(
                             value: data.checklist_1,

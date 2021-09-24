@@ -1,18 +1,13 @@
 name: Inspection
-description: A new Flutter project.
-
-
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-
 version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=2.10.2 <3.0.0'
 
-environment:
-  sdk: ">=2.10.2 <3.0.0"
-
-dependencies:
-  flutter:
+dependencies: 
+  flutter: 
     sdk: flutter
-  
   shared_preferences: ^0.5.4
   flutter_slidable: ^0.5.7
   path_provider: ^2.0.1
@@ -22,38 +17,25 @@ dependencies:
   http: ^0.13.3
   pdf: ^3.0.1
   get: ^4.1.4
+  firebase_core: ^1.5.0
+  cloud_firestore: ^2.4.0
   
 
 
-dev_dependencies:
-  flutter_test:
+
+dev_dependencies: 
+  flutter_test: 
     sdk: flutter
 
-
-flutter:
-
-  uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
-  assets:
+flutter: 
+  assets: 
     - assets/data/
     - assets/icons/
     - assets/images/
-    
-    
-
-  
-  fonts:
+  fonts: 
     - family: Londrina
-      fonts:
+      fonts: 
         - asset: fonts/LondrinaSolid-Light.ttf
         - asset: fonts/LondrinaSolid-Regular.ttf
-          
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
+  uses-material-design: true
+

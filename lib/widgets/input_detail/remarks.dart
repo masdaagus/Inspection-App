@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Remarks extends StatefulWidget {
-  Remarks({Key key, @required this.data}) : super(key: key);
+  const Remarks({Key key, @required this.data}) : super(key: key);
   final data;
 
   @override

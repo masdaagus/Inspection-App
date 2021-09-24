@@ -1,5 +1,5 @@
-import 'package:Inspection/Mill/models/mill_model.dart';
-import 'package:Inspection/Packer/models/packer_model.dart';
+import 'package:Inspection/pages/mill/models/mill_model.dart';
+import 'package:Inspection/pages/packer/models/packer_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 

@@ -1,4 +1,4 @@
-import 'package:Inspection/controller/controller.dart';
+import 'package:Inspection/controller/checkbox.dart';
 import 'package:Inspection/widgets/input_detail/remarks.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -14,6 +14,8 @@ class ListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final ctrl = Get.lazyPut(() => Check());
+
     return Slidable(
       actionExtentRatio: .20,
       actionPane: SlidableDrawerActionPane(),
@@ -29,85 +31,89 @@ class ListItem extends StatelessWidget {
           },
         )
       ],
-      child: Column(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              gradient: LinearGradient(colors: [
-                Color(0xff8e9aaf).withOpacity(.2),
-                Color(0xffced4da),
-              ], begin: Alignment.topRight, end: Alignment.bottomRight),
-            ),
-            child: ListTile(
-              contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-              title: Text(
-                "${data.equipments}",
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 13,
-                  color: Colors.grey[800],
-                ),
+      child: Container(
+        child: Column(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                gradient: LinearGradient(colors: [
+                  Color(0xff8e9aaf).withOpacity(.2),
+                  Color(0xffced4da),
+                ], begin: Alignment.topRight, end: Alignment.bottomRight),
               ),
-              subtitle: Text(
-                "${data.checkpoints}",
-                style: TextStyle(color: Colors.grey[800], fontSize: 12),
-              ),
-              leading: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "${data.code}",
-                    style: TextStyle(color: Colors.black45, fontSize: 11),
+              child: ListTile(
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                title: Text(
+                  "${data.equipments}",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 13,
+                    color: Colors.grey[800],
                   ),
-                ],
-              ),
-              trailing: Container(
-                width: 100,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
+                ),
+                subtitle: Text(
+                  "${data.checkpoints}",
+                  style: TextStyle(color: Colors.grey[800], fontSize: 12),
+                ),
+                leading: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // CheckBox Line 1
-                    Transform.scale(
-                      scale: .9,
-                      child: GetBuilder<Controller>(
-                        builder: (c) {
-                          return Checkbox(
-                            value: data.checklist_1,
-                            onChanged: (value) {
-                              c.tesbox(data.checklist_1 = value);
-                            },
-                          );
-                        },
-                      ),
-                    ),
-
-                    // Line 2
-                    Transform.scale(
-                      scale: .9,
-                      child: GetBuilder<Controller>(
-                        builder: (c) {
-                          return Checkbox(
-                            value: data.checklist_2,
-                            onChanged: (value) {
-                              c.tesbox(data.checklist_2 = value);
-                            },
-                          );
-                        },
-                      ),
+                    Text(
+                      "${data.code}",
+                      style: TextStyle(color: Colors.black45, fontSize: 11),
                     ),
                   ],
                 ),
+                trailing: Container(
+                  width: 100,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      // CheckBox Line 1
+                      Transform.scale(
+                        scale: .9,
+                        child: Container(
+                          child: GetBuilder<Check>(
+                            builder: (c) {
+                              return Checkbox(
+                                value: data.checklist_1,
+                                onChanged: (value) {
+                                  c.tesbox(data.checklist_1 = value);
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+
+                      // Line 2
+                      Transform.scale(
+                        scale: .9,
+                        child: GetBuilder<Check>(
+                          builder: (c) {
+                            return Checkbox(
+                              value: data.checklist_2,
+                              onChanged: (value) {
+                                c.tesbox(data.checklist_2 = value);
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                dense: true,
               ),
-              dense: true,
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15, right: 15),
-            child: Divider(height: .5, color: Color(0xff001f30)),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: Divider(height: .5, color: Color(0xff001f30)),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -107,3 +107,40 @@ class PackerTittle {
       'Motor, indikasi panel (Pressure dan Temo),\nPressure Tank';
   static const String chdr = 'Temp, gauge, drainase, fan coller';
 }
+
+class MillTittle {
+  static const String bagfilter = 'Bag Filter';
+  static const String fncf = 'Motor temperatur dan vibrasi';
+  static const String bfcf = 'Hopper, cerobong dan sistem purging';
+  static const String neddle = 'Needle Gate';
+  static const String neddlecf = 'Posisi Round Bar';
+  static const String wf = 'Weight Feeder';
+  static const String wfcf = 'Belt, chute, buffle, motor, dan gear box';
+  static const String bc = 'Belt Conveyor';
+  static const String bccf =
+      "Motor, belt, rubber, roller (carry & return), cleaner";
+  static const String sc = 'Screw Conveyor';
+  static const String sccf = 'Level Oli, motor, screw, gear box';
+  static const String be = 'Bucket Elevator';
+  static const String becf = 'Level Oli, motor, screw, gear box, noise';
+  static const String bm = 'Ball Mill';
+  static const String bmcf =
+      'Motor gearbox (temp & vibration), \nBaut & Mur (tube mill main hole, coupling), \nMill head trinion (inlet & outlet)';
+  static const String lq = 'Oil Circulation GearBox';
+  static const String lqcf = 'Laju Sirkulasi Oli, level dan temp oli';
+  static const String sr = 'Clasifier';
+  static const String srcf =
+      'Motor, coupling dan V-Belt classifer, level grease';
+  static const String rf = 'Rotary Valve';
+  static const String rfcf = 'Motor dan putaran RV, leakage (kebocoran)';
+  static const String pp = 'Screw Pump & Blower';
+  static const String ppcf =
+      'Motor coupling, v-belt, \npressure, sealing screw pump, \npressure udara blower, leakage';
+  static const String sl = 'Valve & Pipa Transport';
+  static const String slcf = 'Open/close valve dan kondisi pipa';
+  static const String bfsl =
+      'Hopper, cerobong, flap valve, \nsistem purging dan pressure udara';
+  static const String hg = 'Hot Gas Generator';
+  static const String hgcf =
+      'Level solar, kebocoran solar \npada tank & pipa, temp dan \nkebocoran cassing/body \nhotgas, kebersihan';
+}

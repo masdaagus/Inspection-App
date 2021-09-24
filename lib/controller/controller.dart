@@ -21,17 +21,13 @@ class Controller extends GetxController {
       _shift = '1';
     }
     print("shift = $_shift");
+    update();
     return _shift;
   }
 
   @override
-  void onInit() async {
-    await shiftFormate();
+  void onInit() {
+    shiftFormate();
     super.onInit();
-  }
-
-  void tesbox(bool val) {
-    val = !val;
-    update();
   }
 }

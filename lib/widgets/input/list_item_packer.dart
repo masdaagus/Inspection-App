@@ -1,11 +1,11 @@
-import 'package:Inspection/controller/controller.dart';
+import 'package:Inspection/controller/checkbox.dart';
 import 'package:Inspection/widgets/input_detail/remarks_packer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 
 class ListPacker extends StatelessWidget {
-  ListPacker({
+  const ListPacker({
     Key key,
     @required this.data,
   }) : super(key: key);
@@ -64,7 +64,7 @@ class ListPacker extends StatelessWidget {
                     // CheckBox Line 1
                     Transform.scale(
                       scale: .9,
-                      child: GetBuilder<Controller>(
+                      child: GetBuilder<Check>(
                         builder: (c) {
                           return Checkbox(
                             value: data.checklist_1,
@@ -78,7 +78,7 @@ class ListPacker extends StatelessWidget {
                     // Line 2
                     Transform.scale(
                       scale: .9,
-                      child: GetBuilder<Controller>(
+                      child: GetBuilder<Check>(
                         builder: (c) {
                           return Checkbox(
                             value: data.checklist_2,
@@ -92,7 +92,7 @@ class ListPacker extends StatelessWidget {
                     // Line 3
                     Transform.scale(
                       scale: .9,
-                      child: GetBuilder<Controller>(
+                      child: GetBuilder<Check>(
                         builder: (c) {
                           return Checkbox(
                             value: data.checklist_3,

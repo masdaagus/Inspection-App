@@ -1,4 +1,4 @@
-import 'package:Inspection/Packer/models/packer_model.dart';
+import 'package:Inspection/pages/packer/models/packer_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 final String tablePacker = 'TABLE_PACKER';

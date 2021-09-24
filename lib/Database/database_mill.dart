@@ -1,4 +1,4 @@
-import 'package:Inspection/Mill/models/mill_model.dart';
+import 'package:Inspection/pages/mill/models/mill_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 final String tableMill = 'TableMill';

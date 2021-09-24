@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RemarksMill extends StatefulWidget {
-  RemarksMill({Key key, @required this.data}) : super(key: key);
+  const RemarksMill({Key key, @required this.data}) : super(key: key);
   final data;
 
   @override

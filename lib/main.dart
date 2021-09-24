@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'controller/controller.dart';
-import 'screens/login/login.dart';
+import 'pages/login/login.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(
     MyApp(),
   );
@@ -24,7 +26,6 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Get.put(Controller());
     return LoginScreen();
   }
 }

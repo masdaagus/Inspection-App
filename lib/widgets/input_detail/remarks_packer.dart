@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RemarksPacker extends StatefulWidget {
-  RemarksPacker({Key key, @required this.data}) : super(key: key);
+  const RemarksPacker({Key key, @required this.data}) : super(key: key);
   final data;
 
   @override

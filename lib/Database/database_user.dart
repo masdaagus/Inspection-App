@@ -24,7 +24,7 @@ Future userTable(Database db) async {
   db.rawInsert(
       'INSERT INTO $tableUser ($username, $password) VALUES ("ALFIAN SYAHPUTRA", "03301786")');
   db.rawInsert(
-      'INSERT INTO $tableUser ($username, $password) VALUES ("FRENGKI HASIOLAN SIBARA", "03301787")');
+      'INSERT INTO $tableUser ($username, $password) VALUES ("FRENGKI HASIHOLAN SIBARANI", "03301787")');
   db.rawInsert(
       'INSERT INTO $tableUser ($username, $password) VALUES ("FIKRIYANTO", "03302081")');
   db.rawInsert(

@@ -4,10 +4,8 @@ import 'package:Inspection/controller/add_mill.dart';
 import 'package:Inspection/controller/checkbox.dart';
 import 'package:Inspection/controller/controller.dart';
 import 'package:Inspection/pages/dashbord/dashbord.dart';
-import 'package:Inspection/pages/history/tab_mill/controller/tab_mill_ctrl.dart';
 import 'package:Inspection/pages/mill/models/data.dart';
 import 'package:Inspection/pages/mill/models/mill.dart';
-import 'package:Inspection/service/provider/mill.dart';
 import 'package:Inspection/widgets/header/header.dart';
 import 'package:Inspection/widgets/input/list_item.dart';
 import 'package:Inspection/widgets/input/list_item_mill.dart';
@@ -362,5 +360,6 @@ class _InputMillState extends State<InputMill> {
     );
 
     add.addData("mill", object.toJson());
+    return null;
   }
 }

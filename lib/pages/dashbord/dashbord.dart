@@ -1,4 +1,3 @@
-import 'package:Inspection/config/method/button_method.dart';
 import 'package:Inspection/pages/mill/input/input.dart';
 import 'package:Inspection/pages/packer/input/input.dart';
 import 'package:Inspection/config/palette.dart';
@@ -7,7 +6,6 @@ import 'package:Inspection/pages/dashbord/widget/buildCard.dart';
 import 'package:Inspection/pages/history/history.dart';
 import 'package:Inspection/pages/login/login.dart';
 import 'package:Inspection/pages/sampling/home.dart';
-import 'package:Inspection/service/provider/mill.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

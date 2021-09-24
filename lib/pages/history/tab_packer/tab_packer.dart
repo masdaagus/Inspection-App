@@ -1,5 +1,4 @@
 import 'package:Inspection/Database/database.dart';
-import 'package:Inspection/config/method/button_method.dart';
 import 'package:Inspection/pages/packer/input/input.dart';
 import 'package:Inspection/pages/packer/models/packer_model.dart';
 import 'package:Inspection/service/pdf_helper/models/model_pdf_packer.dart';
@@ -98,8 +97,6 @@ class PackerHistory extends StatelessWidget {
                                     child: IconButton(
                                       icon: Icon(Icons.delete),
                                       onPressed: () {
-                                        final c = Get.put(Method());
-                                        c.dialog(onTap: () => Get.back());
                                         print("masda");
                                       },
                                     ),

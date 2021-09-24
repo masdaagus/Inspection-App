@@ -1,3 +1,4 @@
+import 'package:Inspection/config/method/button_method.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
@@ -10,8 +11,16 @@ class TabMill extends GetxController {
     return mill.get();
   }
 
-  // Future<void> openPDF() async {
-  //   final invoice =
-  //       Invoice(name: name, id: id, shift: shift, date: date, items: items);
-  // }
+  Future<void> deleteData(String id) async {
+    DocumentReference docRef = firestore.collection('mill').doc(id);
+    final c = Get.put(Method());
+
+    return c.dialog(
+        msg: 'Apakah anda ingin menghapus data ',
+        onTap: () {
+          docRef.delete();
+          Get.back();
+          Get.back();
+        });
+  }
 }

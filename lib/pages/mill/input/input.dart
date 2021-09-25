@@ -1,8 +1,7 @@
 import 'dart:io';
 import 'package:Inspection/config/method/button_method.dart';
-import 'package:Inspection/controller/add_mill.dart';
-import 'package:Inspection/controller/checkbox.dart';
 import 'package:Inspection/controller/controller.dart';
+import 'package:Inspection/controller/mill_controller.dart';
 import 'package:Inspection/pages/dashbord/dashbord.dart';
 import 'package:Inspection/pages/mill/models/data.dart';
 import 'package:Inspection/pages/mill/models/mill.dart';
@@ -100,13 +99,6 @@ class _InputMillState extends State<InputMill> {
                 child: Icon(Icons.send_and_archive, color: Colors.grey[800]),
               ),
             ),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.ac_unit_outlined,
-                color: Colors.grey[800],
-              ),
-            )
           ],
         ),
         body: SingleChildScrollView(
@@ -165,7 +157,7 @@ class _InputMillState extends State<InputMill> {
 
   Future<void> addData() {
     final ctrl = Get.find<Controller>();
-    final add = AddMill();
+    final add = MillCloudController();
     final object = MillFirebase(
       userName: userName,
       idUser: userId,
@@ -359,7 +351,7 @@ class _InputMillState extends State<InputMill> {
       deshg01: _data2[6].description_1,
     );
 
-    add.addData("mill", object.toJson());
+    add.addData(object.toJson());
     return null;
   }
 }

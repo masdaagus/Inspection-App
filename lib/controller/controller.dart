@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 class Controller extends GetxController {
-  DateTime now = DateTime.now();
+  var now = DateTime.now();
   String _shift;
 
   String get shift => _shift;
@@ -9,7 +9,7 @@ class Controller extends GetxController {
   Future<String> shiftFormate() async {
     DateTime jam4 = DateTime(now.year, now.month, now.day, 16);
     DateTime jam8 = DateTime(now.year, now.month, now.day, 8);
-    DateTime jam12 = DateTime(now.year, now.month, now.day, 23, 58);
+    DateTime jam12 = DateTime(now.year, now.month, now.day, 0);
 
     if (now.compareTo(jam4) > 0 && now.compareTo(jam12) < 0) {
       _shift = '3';
@@ -18,7 +18,7 @@ class Controller extends GetxController {
     } else if (now.compareTo(jam12) > 0 && now.compareTo(jam8) < 0) {
       _shift = '1';
     } else {
-      _shift = '1';
+      // _shift = '1';
     }
     print("shift = $_shift");
     update();
@@ -29,5 +29,13 @@ class Controller extends GetxController {
   void onInit() {
     shiftFormate();
     super.onInit();
+  }
+}
+
+class Check extends GetxController {
+  bool tesbox(bool val) {
+    val = !val;
+    update();
+    return null;
   }
 }

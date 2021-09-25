@@ -1,7 +1,6 @@
 import 'package:Inspection/Database/database.dart';
 import 'package:Inspection/Database/database_packer.dart';
 import 'package:Inspection/config/method/button_method.dart';
-import 'package:Inspection/controller/checkbox.dart';
 
 import 'package:Inspection/controller/controller.dart';
 import 'package:Inspection/pages/dashbord/dashbord.dart';

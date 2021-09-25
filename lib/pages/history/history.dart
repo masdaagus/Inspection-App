@@ -1,4 +1,3 @@
-import 'package:Inspection/Database/database.dart';
 import 'package:Inspection/pages/history/tab_mill/tab_mill.dart';
 import 'package:Inspection/pages/history/tab_packer/tab_packer.dart';
 import 'package:flutter/material.dart';
@@ -32,24 +31,9 @@ class _HistoryState extends State<History> {
     ),
   ];
 
-  int _initializeTab;
-
-  Future<int> packer() async {
-    List _listPacker = await DatabaseMill.instance.readAllPacker();
-    List _listMill = await DatabaseMill.instance.readAllMill();
-
-    if (_listPacker.length > _listMill.length) {
-      return _initializeTab = 1;
-    } else {
-      return _initializeTab = 0;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    print(_initializeTab);
     return DefaultTabController(
-      initialIndex: _initializeTab ?? 0,
       length: tabs.length,
       child: Scaffold(
         appBar: AppBar(

@@ -1,9 +1,6 @@
-import 'package:Inspection/pages/mill/models/mill_model.dart';
 import 'package:Inspection/pages/packer/models/packer_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-
-import 'database_mill.dart';
 import 'database_packer.dart';
 import 'database_user.dart';
 
@@ -30,7 +27,7 @@ class DatabaseMill {
   // Table Database
   Future _createDB(Database db, int version) async {
     packerTable(db);
-    millTable(db);
+    // millTable(db);
     userTable(db);
   }
 
@@ -41,15 +38,15 @@ class DatabaseMill {
   }
 
   // Read List Mill
-  Future<List> readAllMill() async {
-    final db = await instance.database;
+  // Future<List> readAllMill() async {
+  //   final db = await instance.database;
 
-    final orderBy = '${MillFields.time} DESC';
+  //   final orderBy = '${MillFields.time} DESC';
 
-    final result = await db.query(tableMill, orderBy: orderBy);
+  //   final result = await db.query(tableMill, orderBy: orderBy);
 
-    return result.map((json) => Mill.fromJson(json)).toList();
-  }
+  //   return result.map((json) => Mill.fromJson(json)).toList();
+  // }
 
   // Read List Packer
   Future<List> readAllPacker() async {

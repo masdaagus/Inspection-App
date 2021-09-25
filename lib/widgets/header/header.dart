@@ -115,6 +115,7 @@ class _HeaderState extends State<Header> {
                             }).then((value) {
                           if (value != null) {
                             c.now = value;
+                            print(value);
                             setState(() {});
                           }
                         });

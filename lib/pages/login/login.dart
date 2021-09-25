@@ -212,10 +212,12 @@ class _LoginScreenState extends State<LoginScreen> implements LoginCallBack {
                                 Padding(
                                   padding: const EdgeInsets.only(bottom: 10),
                                   child: TextFormField(
+                                    maxLength: 8,
                                     onSaved: (val) =>
                                         _password = val.toString(),
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
+                                      counterText: "",
                                       prefixIcon: Icon(
                                         Icons.person,
                                         color: Palette.iconColor,

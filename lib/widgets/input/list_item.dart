@@ -1,4 +1,4 @@
-import 'package:Inspection/controller/checkbox.dart';
+import 'package:Inspection/controller/controller.dart';
 import 'package:Inspection/widgets/input_detail/remarks.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';

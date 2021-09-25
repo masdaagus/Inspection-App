@@ -7,11 +7,9 @@ import 'package:Inspection/config/palette.dart';
 import 'package:Inspection/config/tittle.dart';
 import 'package:Inspection/service/pdf_helper/api/detail_api.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 
 class PackerHistory extends StatelessWidget {
-  final f = new DateFormat('dd-MM-yyyy');
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -12,3 +12,4 @@ class Palette {
 }
 
 final DateFormat f = new DateFormat('dd-MM-yyyy');
+final ft = NumberFormat("##.##");

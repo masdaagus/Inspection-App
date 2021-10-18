@@ -1,8 +1,6 @@
 import 'package:Inspection/config/palette.dart';
 import 'package:Inspection/service/login%20service/models/users.dart';
-
 import 'package:Inspection/service/login%20service/response/login_respon.dart';
-
 import 'package:Inspection/pages/dashbord/dashbord.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -58,6 +56,8 @@ class _LoginScreenState extends State<LoginScreen> implements LoginCallBack {
       String masda = preferences.getString("user");
       _loginStatus = value == 1 ? LoginStatus.signIn : LoginStatus.notSignIn;
       print("Value from getPref:  $masda");
+      print('ID' + preferences.getString('pass'));
+      print(value);
     });
   }
 
@@ -78,16 +78,14 @@ class _LoginScreenState extends State<LoginScreen> implements LoginCallBack {
   @override
   // ignore: missing_return
   Widget build(BuildContext context) {
-    print("update screen");
+    print("Login Screen");
     switch (_loginStatus) {
       case LoginStatus.notSignIn:
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: Palette.backgroundColor,
           body: GestureDetector(
-            onTap: () {
-              FocusScope.of(context).requestFocus(new FocusNode());
-            },
+            onTap: () => FocusScope.of(context).requestFocus(new FocusNode()),
             child: Stack(
               children: <Widget>[
                 Positioned(

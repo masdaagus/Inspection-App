@@ -15,7 +15,6 @@ class ListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final ctrl = Get.lazyPut(() => Check());
-
     return Slidable(
       actionExtentRatio: .20,
       actionPane: SlidableDrawerActionPane(),
@@ -38,7 +37,7 @@ class ListItem extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 gradient: LinearGradient(colors: [
-                  Color(0xff8e9aaf).withOpacity(.2),
+                  Color(0xff8e9aaf).withOpacity(.1),
                   Color(0xffced4da),
                 ], begin: Alignment.topRight, end: Alignment.bottomRight),
               ),

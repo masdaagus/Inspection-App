@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:Inspection/config/method/button_method.dart';
 import 'package:Inspection/controller/controller.dart';
-import 'package:Inspection/controller/mill_controller.dart';
+import 'package:Inspection/pages/mill/controller/mill_cloud.dart';
 import 'package:Inspection/pages/dashbord/dashbord.dart';
 import 'package:Inspection/pages/mill/models/data.dart';
 import 'package:Inspection/pages/mill/models/mill.dart';
@@ -11,7 +11,6 @@ import 'package:Inspection/widgets/input/list_item_mill.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class InputMill extends StatefulWidget {
   @override
@@ -21,22 +20,8 @@ class InputMill extends StatefulWidget {
 class _InputMillState extends State<InputMill> {
   List<DataMill> _data1 = [];
   List<DataMill> _data2 = [];
-  String userName;
-  String userId;
 
-  Future getUser() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    setState(() {
-      userName = preferences.getString("user");
-      userId = preferences.getString("pass");
-    });
-  }
-
-  @override
-  void initState() {
-    getUser();
-    super.initState();
-  }
+  List<DataMill> get data1 => _data1;
 
   @override
   Widget build(BuildContext context) {
@@ -72,23 +57,15 @@ class _InputMillState extends State<InputMill> {
                 onTap: () async {
                   final c = Get.put(Method());
                   try {
-                    final result = await InternetAddress.lookup(
-                        'www.console.firebase.google.com');
+                    final result =
+                        await InternetAddress.lookup('www.google.com');
                     if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
                       c.dialog(
                         msg: "Simpan Inspection ?",
-                        onTap: () {
-                          addData();
+                        onTap: () async {
+                          await addData();
                           Get.offAll(Dashbaord());
-                          Get.snackbar(
-                            "Inspection",
-                            "Inspection telah berhasil",
-                            duration: Duration(milliseconds: 2500),
-                            backgroundColor:
-                                Colors.blueGrey[700].withOpacity(.5),
-                            snackPosition: SnackPosition.TOP,
-                            margin: EdgeInsets.symmetric(vertical: 14),
-                          );
+                          c.snack('Inspection telah berhasil');
                         },
                       );
                     }
@@ -102,13 +79,11 @@ class _InputMillState extends State<InputMill> {
           ],
         ),
         body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Container(
             child: Column(
               children: [
-                Header(
-                  userName: userName,
-                  userId: userId,
-                ),
+                Header(),
                 FutureBuilder(
                   future: fetchData1(context),
                   builder: (context, snapshot) {
@@ -116,7 +91,7 @@ class _InputMillState extends State<InputMill> {
                     return snapshot.data == null
                         ? Container()
                         : ListView.builder(
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const BouncingScrollPhysics(),
                             shrinkWrap: true,
                             itemCount: snapshot.data.length,
                             itemBuilder: (BuildContext context, int index) {
@@ -135,7 +110,7 @@ class _InputMillState extends State<InputMill> {
                     return snapshot.data == null
                         ? Container()
                         : ListView.builder(
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const BouncingScrollPhysics(),
                             shrinkWrap: true,
                             itemCount: snapshot.data.length,
                             itemBuilder: (BuildContext context, int index) {
@@ -159,8 +134,8 @@ class _InputMillState extends State<InputMill> {
     final ctrl = Get.find<Controller>();
     final add = MillCloudController();
     final object = MillFirebase(
-      userName: userName,
-      idUser: userId,
+      userName: ctrl.userName,
+      idUser: ctrl.idUser,
       shift: ctrl.shift ?? '1',
       createTime: ctrl.now.toString(),
 

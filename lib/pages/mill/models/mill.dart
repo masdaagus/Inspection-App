@@ -944,7 +944,7 @@ class MillFirebase {
         deshg01: json[MillFirebaseInput.deshg01] as String,
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String, Object> toJson() => {
         MillFirebaseInput.userName: userName,
         MillFirebaseInput.idUser: idUser,
         MillFirebaseInput.shift: shift,

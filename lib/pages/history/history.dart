@@ -1,6 +1,8 @@
-import 'package:Inspection/pages/history/tab_mill/tab_mill.dart';
-import 'package:Inspection/pages/history/tab_packer/tab_packer.dart';
+import 'package:Inspection/pages/mill/history/history-mill.dart';
+import 'package:Inspection/pages/packer/history/history-packer.dart';
 import 'package:flutter/material.dart';
+
+import '../croscheck/history/history_checker.dart';
 
 class History extends StatefulWidget {
   @override
@@ -26,6 +28,15 @@ class _HistoryState extends State<History> {
           fontSize: 15,
           fontWeight: FontWeight.bold,
           letterSpacing: 1,
+        ),
+      ),
+    ),
+    Tab(
+      child: Text(
+        "CrossCheck",
+        style: TextStyle(
+          fontSize: 15,
+          fontWeight: FontWeight.bold,
         ),
       ),
     ),
@@ -67,6 +78,7 @@ class _HistoryState extends State<History> {
           children: [
             MillStory(),
             PackerHistory(),
+            CheckerStory(),
           ],
         ),
       ),

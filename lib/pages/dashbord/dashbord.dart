@@ -1,3 +1,5 @@
+import 'package:Inspection/controller/controller.dart';
+import 'package:Inspection/pages/croscheck/crosscheck.dart';
 import 'package:Inspection/pages/mill/input/input.dart';
 import 'package:Inspection/pages/packer/input/input.dart';
 import 'package:Inspection/config/palette.dart';
@@ -5,29 +7,17 @@ import 'package:Inspection/config/palette.dart';
 import 'package:Inspection/pages/dashbord/widget/buildCard.dart';
 import 'package:Inspection/pages/history/history.dart';
 import 'package:Inspection/pages/login/login.dart';
-import 'package:Inspection/pages/sampling/home.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-class Dashbaord extends StatefulWidget {
-  @override
-  _DashboardState createState() => _DashboardState();
-}
-
-class _DashboardState extends State<Dashbaord> {
-  signOut() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    setState(() {
-      preferences.setInt("value", null);
-    });
-  }
+class Dashbaord extends StatelessWidget {
+  final controller = Get.put(Controller());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Palette.backgroundColor,
+      backgroundColor: Palette.backgroundColor.withOpacity(.9),
       appBar: AppBar(
         backgroundColor: Colors.white70,
         centerTitle: true,
@@ -52,7 +42,7 @@ class _DashboardState extends State<Dashbaord> {
                 onConfirm: () {
                   Get.back();
                   Get.offAll(LoginScreen());
-                  signOut();
+                  controller.signOut();
                 },
               );
             },
@@ -85,7 +75,7 @@ class _DashboardState extends State<Dashbaord> {
                   tittle: "Sampling",
                   image: "assets/icons/icons8-scales-50.png",
                   press: () {
-                    Get.to(() => HomeScreen());
+                    Get.to(() => CrossCheck());
                   },
                 ),
                 BuildCard(

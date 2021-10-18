@@ -22,17 +22,18 @@ class BuildCard extends StatelessWidget {
           onTap: press,
           child: Container(
             decoration: BoxDecoration(
-              // gradient: LinearGradient(colors: [
-              //   Color(0xff30638e).withOpacity(.15),
-              //   Color(0xff003d5b).withOpacity(.15),
-              // ], begin: Alignment.topRight, end: Alignment.bottomRight),
               color: Colors.white70,
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.black.withOpacity(0.28),
-                    blurRadius: 8,
-                    spreadRadius: 3),
+                    color: Colors.black.withOpacity(0.30),
+                    blurRadius: 12,
+                    offset: Offset(4, 4)),
+                BoxShadow(
+                  blurRadius: 12,
+                  offset: Offset(-4, -4),
+                  color: Colors.black.withOpacity(.10),
+                ),
               ],
             ),
             child: Column(
@@ -41,6 +42,7 @@ class BuildCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
                   child: Image(
+                    color: Colors.grey[850],
                     image: AssetImage(image),
                   ),
                 ),

@@ -1,6 +1,6 @@
 import 'package:Inspection/config/tittle.dart';
-import 'package:Inspection/controller/mill_controller.dart';
-import 'package:Inspection/pages/mill/input/input.dart';
+import 'package:Inspection/controller/controller.dart';
+import 'package:Inspection/pages/mill/controller/mill_cloud.dart';
 import 'package:Inspection/pages/mill/models/mill.dart';
 import 'package:Inspection/pages/show-pdf/mill/pdf_detail.dart';
 import 'package:Inspection/config/palette.dart';
@@ -11,7 +11,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class MillStory extends StatefulWidget {
   @override
@@ -21,30 +20,9 @@ class MillStory extends StatefulWidget {
 class _MillStoryState extends State<MillStory> {
   MillCloudController controller = MillCloudController();
 
-  /// Initialize user
-  String userName;
-  Future getUser() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    setState(() {
-      userName = preferences.getString("user");
-    });
-  }
-
-  @override
-  void initState() {
-    getUser();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: IconButton(
-        icon: Icon(Icons.add),
-        onPressed: () {
-          Get.to(() => InputMill());
-        },
-      ),
       backgroundColor: Palette.backgroundColor,
       body: SingleChildScrollView(
         child: Container(
@@ -60,7 +38,7 @@ class _MillStoryState extends State<MillStory> {
                 );
               } else {
                 return ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: snapshot.data.docs.length,
                   itemBuilder: (BuildContext context, int index) {
@@ -68,8 +46,8 @@ class _MillStoryState extends State<MillStory> {
                         as Map<String, dynamic>;
                     DateTime date = DateFormat('yyyy-MM-dd hh:mm:ss')
                         .parse(data[MillFirebaseInput.time]);
-
-                    if (data[MillFirebaseInput.userName] == userName) {
+                    final ctrl = Get.put(Controller());
+                    if (data[MillFirebaseInput.userName] == ctrl.userName) {
                       return Column(
                         children: [
                           Container(

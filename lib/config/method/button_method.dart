@@ -20,7 +20,7 @@ class Method extends GetxController {
       "Inspection",
       msg,
       duration: Duration(milliseconds: 2200),
-      backgroundColor: Colors.blueGrey[700].withOpacity(.5),
+      backgroundColor: Colors.white60,
       snackPosition: SnackPosition.TOP,
       margin: EdgeInsets.symmetric(vertical: 14),
     );

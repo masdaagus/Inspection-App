@@ -1,17 +1,15 @@
-import 'package:Inspection/Database/database.dart';
-import 'package:Inspection/Database/database_packer.dart';
+import 'dart:io';
 import 'package:Inspection/config/method/button_method.dart';
-
 import 'package:Inspection/controller/controller.dart';
 import 'package:Inspection/pages/dashbord/dashbord.dart';
+import 'package:Inspection/pages/packer/controller/packer_cloud.dart';
 import 'package:Inspection/pages/packer/models/data_packer.dart';
-import 'package:Inspection/pages/packer/models/packer_model.dart';
+import 'package:Inspection/pages/packer/models/packer.dart';
 import 'package:Inspection/widgets/header/header.dart';
 import 'package:Inspection/widgets/input/list_item.dart';
 import 'package:Inspection/widgets/input/list_item_packer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class InputPacker extends StatefulWidget {
   @override
@@ -23,22 +21,8 @@ class _InputPackerState extends State<InputPacker> {
   List<DataPacker> _data1 = [];
   List<DataPacker> _data2 = [];
 
-  // Get user
-  String userName;
-  String userId;
-  Future getUser() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    setState(() {
-      userName = preferences.getString("user");
-      userId = preferences.getString("pass");
-    });
-  }
-
-  @override
-  void initState() {
-    getUser();
-    super.initState();
-  }
+  List<DataPacker> get data1 => _data1;
+  List<DataPacker> get data2 => _data2;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +45,9 @@ class _InputPackerState extends State<InputPacker> {
             icon: Icon(Icons.arrow_back, color: Colors.grey[800]),
             onPressed: () {
               final c = Get.put(Method());
-              c.dialog(onTap: () => Get.offAll(Dashbaord()));
+              c.dialog(
+                  msg: "Apakah anda ingin keluar ?",
+                  onTap: () => Get.offAll(Dashbaord()));
             },
           ),
           actions: [
@@ -69,7 +55,23 @@ class _InputPackerState extends State<InputPacker> {
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: () async {
-                  _alertPacker();
+                  final c = Get.put(Method());
+                  try {
+                    final result =
+                        await InternetAddress.lookup('www.google.com');
+                    if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+                      c.dialog(
+                        msg: "Simpan Inspection ?",
+                        onTap: () async {
+                          await addData();
+                          Get.offAll(Dashbaord());
+                          c.snack('Inspection telah berhasil');
+                        },
+                      );
+                    }
+                  } on SocketException catch (_) {
+                    c.snack("Cek Koneksi Internet anda");
+                  }
                 },
                 child: Icon(Icons.send_and_archive, color: Colors.grey[800]),
               ),
@@ -79,10 +81,7 @@ class _InputPackerState extends State<InputPacker> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Header(
-                userName: userName,
-                userId: userId,
-              ),
+              Header(),
               FutureBuilder(
                 future: fetchData1(context),
                 builder: (context, snapshot) {
@@ -90,7 +89,7 @@ class _InputPackerState extends State<InputPacker> {
                   return snapshot.data == null
                       ? Container()
                       : ListView.builder(
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: snapshot.data.length,
                           itemBuilder: (BuildContext context, int index) {
@@ -109,7 +108,7 @@ class _InputPackerState extends State<InputPacker> {
                   return snapshot.data == null
                       ? Container()
                       : ListView.builder(
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: snapshot.data.length,
                           itemBuilder: (BuildContext context, int index) {
@@ -130,11 +129,12 @@ class _InputPackerState extends State<InputPacker> {
 
   Future addData() async {
     final ctrl = Get.find<Controller>();
-    final inputData = Packer(
-      userName: userName,
-      idUser: userId,
-      shift: ctrl.shift ?? '2',
-      createTime: ctrl.now,
+    final add = PackerCloudController();
+    final object = PackerCloud(
+      userName: ctrl.userName,
+      idUser: ctrl.idUser,
+      shift: ctrl.shift ?? '1',
+      createTime: ctrl.now.toString(),
 
       // Line 1
       sg011: _data1[0].checklist_1,
@@ -313,35 +313,7 @@ class _InputPackerState extends State<InputPacker> {
       desbl3: _data1[4].description_3,
     );
 
-    await DatabaseMill.instance
-        .create(table: tablePacker, object: inputData.toJson());
-  }
-
-  Future<void> _alertPacker() async {
-    await showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          content: Text('Send Inspection ?'),
-          title: Text('Inspection'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                addData();
-                Navigator.pop(context, "Yes");
-                Navigator.pop(context);
-              },
-              child: const Text('Yes'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context, "No");
-              },
-              child: const Text('No'),
-            ),
-          ],
-        );
-      },
-    );
+    add.addData(object.toJson());
+    return null;
   }
 }

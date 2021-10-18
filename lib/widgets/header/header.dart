@@ -8,12 +8,7 @@ import 'package:get/get.dart';
 class Header extends StatefulWidget {
   const Header({
     Key key,
-    @required this.userName,
-    @required this.userId,
   }) : super(key: key);
-
-  final String userName;
-  final String userId;
 
   @override
   _HeaderState createState() => _HeaderState();
@@ -30,17 +25,21 @@ class _HeaderState extends State<Header> {
       padding: const EdgeInsets.all(10),
       width: double.infinity,
       decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-                color: Colors.black.withOpacity(0.33),
-                blurRadius: 8,
-                spreadRadius: 3),
-          ],
-          gradient: LinearGradient(colors: [
-            Color(0xffced4da),
-            Colors.white70,
-          ], begin: Alignment.topRight, end: Alignment.bottomRight),
-          borderRadius: BorderRadius.circular(10)),
+        borderRadius: BorderRadius.circular(10),
+        color: Color(0xfffff4f1).withOpacity(.5),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(.25),
+            blurRadius: 12,
+            offset: Offset(4, 4),
+          ),
+          BoxShadow(
+            color: Colors.white54.withOpacity(.70),
+            blurRadius: 12,
+            offset: Offset(-4, -4),
+          ),
+        ],
+      ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,7 +55,7 @@ class _HeaderState extends State<Header> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "${widget.userName}",
+                        "${ctrl.userName}",
                         style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w700,
@@ -64,7 +63,7 @@ class _HeaderState extends State<Header> {
                       ),
                       SizedBox(height: 2),
                       Text(
-                        "${widget.userId}",
+                        "${ctrl.idUser}",
                         style: TextStyle(
                             fontSize: 10,
                             fontWeight: FontWeight.w500,
